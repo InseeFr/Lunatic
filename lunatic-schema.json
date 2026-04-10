@@ -9,13 +9,26 @@
 			"$ref": "#/$defs/VTLExpression"
 		},
 		"pagination": {
-			"enum": ["question", "sequence"]
+			"enum": [
+				"question",
+				"sequence"
+			]
 		},
-		"enoCoreVersion": { "type": "string" },
-		"lunaticModelVersion": { "type": "string" },
-		"generatingDate": { "type": "string" },
-		"modele": { "type": "string" },
-		"id": { "type": "string" },
+		"enoCoreVersion": {
+			"type": "string"
+		},
+		"lunaticModelVersion": {
+			"type": "string"
+		},
+		"generatingDate": {
+			"type": "string"
+		},
+		"modele": {
+			"type": "string"
+		},
+		"id": {
+			"type": "string"
+		},
 		"components": {
 			"type": "array",
 			"items": {
@@ -40,18 +53,35 @@
 				"type": "object",
 				"additionalProperties": {
 					"oneOf": [
-						{ "type": "string" },
+						{
+							"type": "string"
+						},
 						{
 							"type": "array",
 							"items": {
 								"type": "object",
 								"properties": {
-									"expression": { "type": "string" },
-									"shapeFrom": { "type": "string" },
-									"isAggregatorUsed": { "type": "boolean" },
-									"shouldCheckAllIterations": { "type": "boolean" }
+									"expression": {
+										"type": "string"
+									},
+									"shapeFrom": {
+										"type": "string"
+									},
+									"isAggregatorUsed": {
+										"type": "boolean",
+										"deprecated": true,
+										"description": "use shouldCheckDuringResizing since lunaticModelVersion 5.16.0"
+									},
+									"shouldCheckDuringResizing": {
+										"type": "boolean"
+									},
+									"shouldCheckAllIterations": {
+										"type": "boolean"
+									}
 								},
-								"required": ["expression", "isAggregatorUsed"]
+								"required": [
+									"expression"
+								]
 							}
 						}
 					]
@@ -85,7 +115,10 @@
 								}
 							}
 						},
-						"required": ["size", "variables"]
+						"required": [
+							"size",
+							"variables"
+						]
 					},
 					{
 						"type": "object",
@@ -114,7 +147,10 @@
 												"type": "string"
 											}
 										},
-										"required": ["xAxisSize", "yAxisSize"]
+										"required": [
+											"xAxisSize",
+											"yAxisSize"
+										]
 									}
 								]
 							},
@@ -125,7 +161,10 @@
 								}
 							}
 						},
-						"required": ["sizeForLinksVariables", "linksVariables"]
+						"required": [
+							"sizeForLinksVariables",
+							"linksVariables"
+						]
 					},
 					{
 						"type": "object",
@@ -164,7 +203,10 @@
 												"type": "string"
 											}
 										},
-										"required": ["xAxisSize", "yAxisSize"]
+										"required": [
+											"xAxisSize",
+											"yAxisSize"
+										]
 									}
 								]
 							},
@@ -200,7 +242,10 @@
 					"description": "Ligne du tableau d'articulation",
 					"items": {
 						"type": "object",
-						"required": ["label", "value"],
+						"required": [
+							"label",
+							"value"
+						],
 						"properties": {
 							"label": {
 								"type": "string",
@@ -214,7 +259,10 @@
 					}
 				}
 			},
-			"required": ["source", "items"]
+			"required": [
+				"source",
+				"items"
+			]
 		},
 		"multimode": {
 			"type": "object",
@@ -229,12 +277,16 @@
 							}
 						}
 					},
-					"required": ["rules"]
+					"required": [
+						"rules"
+					]
 				},
 				"leaf": {
 					"type": "object",
 					"properties": {
-						"source": { "type": "string" },
+						"source": {
+							"type": "string"
+						},
 						"rules": {
 							"type": "object",
 							"additionalProperties": {
@@ -242,13 +294,22 @@
 							}
 						}
 					},
-					"required": ["source", "rules"]
+					"required": [
+						"source",
+						"rules"
+					]
 				}
 			},
-			"required": ["questionnaire", "leaf"]
+			"required": [
+				"questionnaire",
+				"leaf"
+			]
 		}
 	},
-	"required": ["components", "variables"],
+	"required": [
+		"components",
+		"variables"
+	],
 	"$defs": {
 		"VTLExpression": {
 			"type": "object",
@@ -266,10 +327,17 @@
 				},
 				"type": {
 					"type": "string",
-					"enum": ["VTL", "VTL|MD", "TXT"]
+					"enum": [
+						"VTL",
+						"VTL|MD",
+						"TXT"
+					]
 				}
 			},
-			"required": ["value", "type"],
+			"required": [
+				"value",
+				"type"
+			],
 			"additionalProperties": false
 		},
 		"VTLScalarExpression": {
@@ -294,7 +362,10 @@
 					"type": "string"
 				}
 			},
-			"required": ["value", "type"],
+			"required": [
+				"value",
+				"type"
+			],
 			"additionalProperties": false
 		},
 		"Declaration": {
@@ -327,7 +398,12 @@
 					"$ref": "#/$defs/VTLExpression"
 				}
 			},
-			"required": ["id", "declarationType", "position", "label"],
+			"required": [
+				"id",
+				"declarationType",
+				"position",
+				"label"
+			],
 			"additionalProperties": false
 		},
 		"ControlDefinition": {
@@ -338,11 +414,19 @@
 				},
 				"criticality": {
 					"type": "string",
-					"enum": ["INFO", "WARN", "ERROR"]
+					"enum": [
+						"INFO",
+						"WARN",
+						"ERROR"
+					]
 				},
 				"typeOfControl": {
 					"type": "string",
-					"enum": ["FORMAT", "CONSISTENCY", "MANDATORY"]
+					"enum": [
+						"FORMAT",
+						"CONSISTENCY",
+						"MANDATORY"
+					]
 				},
 				"control": {
 					"$ref": "#/$defs/VTLExpression"
@@ -358,13 +442,22 @@
 				},
 				"type": {
 					"type": "string",
-					"enum": ["roundabout", "ROW", "simple"]
+					"enum": [
+						"roundabout",
+						"ROW",
+						"simple"
+					]
 				},
 				"iterations": {
 					"$ref": "#/$defs/VTLScalarExpression"
 				}
 			},
-			"required": ["id", "criticality", "control", "errorMessage"],
+			"required": [
+				"id",
+				"criticality",
+				"control",
+				"errorMessage"
+			],
 			"additionalProperties": false
 		},
 		"ResponseDefinition": {
@@ -374,7 +467,9 @@
 					"type": "string"
 				}
 			},
-			"required": ["name"],
+			"required": [
+				"name"
+			],
 			"additionalProperties": false
 		},
 		"ComponentDefinition": {
@@ -461,7 +556,9 @@
 									"type": "string"
 								}
 							},
-							"required": ["page"]
+							"required": [
+								"page"
+							]
 						},
 						{
 							"properties": {
@@ -469,7 +566,9 @@
 									"type": "string"
 								}
 							},
-							"required": ["goToPage"]
+							"required": [
+								"goToPage"
+							]
 						}
 					]
 				}
@@ -512,7 +611,9 @@
 					"$ref": "#/$defs/VTLScalarExpression"
 				}
 			},
-			"required": ["id"]
+			"required": [
+				"id"
+			]
 		},
 		"ComponentDefinitionBaseWithResponse": {
 			"allOf": [
@@ -521,7 +622,9 @@
 				},
 				{
 					"type": "object",
-					"required": ["response"],
+					"required": [
+						"response"
+					],
 					"properties": {
 						"response": {
 							"$ref": "#/$defs/ResponseDefinition"
@@ -535,13 +638,18 @@
 			"properties": {
 				"componentType": {
 					"type": "string",
-					"enum": ["Input", "Textarea"]
+					"enum": [
+						"Input",
+						"Textarea"
+					]
 				},
 				"maxLength": {
 					"type": "integer"
 				}
 			},
-			"required": ["componentType"],
+			"required": [
+				"componentType"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -559,7 +667,11 @@
 					"type": "array",
 					"items": {
 						"type": "object",
-						"required": ["id", "title", "responses"],
+						"required": [
+							"id",
+							"title",
+							"responses"
+						],
 						"properties": {
 							"id": {
 								"type": "string"
@@ -585,14 +697,21 @@
 											"$ref": "#/$defs/VTLExpression"
 										}
 									},
-									"required": ["id", "label", "value"]
+									"required": [
+										"id",
+										"label",
+										"value"
+									]
 								}
 							}
 						}
 					}
 				}
 			},
-			"required": ["componentType", "sections"],
+			"required": [
+				"componentType",
+				"sections"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"
@@ -604,13 +723,18 @@
 			"properties": {
 				"componentType": {
 					"type": "string",
-					"enum": ["Sequence", "Subsequence"]
+					"enum": [
+						"Sequence",
+						"Subsequence"
+					]
 				},
 				"goToPage": {
 					"type": "string"
 				}
 			},
-			"required": ["componentType"],
+			"required": [
+				"componentType"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"
@@ -636,7 +760,9 @@
 				"locked": {
 					"type": "boolean"
 				},
-				"progressVariable": { "type": "string" },
+				"progressVariable": {
+					"type": "string"
+				},
 				"item": {
 					"type": "object",
 					"properties": {
@@ -650,7 +776,9 @@
 							"$ref": "#/$defs/VTLScalarExpression"
 						}
 					},
-					"required": ["label"]
+					"required": [
+						"label"
+					]
 				},
 				"components": {
 					"type": "array",
@@ -696,13 +824,20 @@
 							"$ref": "#/$defs/VTLScalarExpression"
 						}
 					},
-					"required": ["min", "max"]
+					"required": [
+						"min",
+						"max"
+					]
 				},
 				"header": {
 					"$ref": "#/$defs/TableHeader"
 				}
 			},
-			"required": ["componentType", "components", "lines"],
+			"required": [
+				"componentType",
+				"components",
+				"lines"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"
@@ -723,7 +858,9 @@
 					}
 				}
 			},
-			"required": ["componentType"],
+			"required": [
+				"componentType"
+			],
 			"oneOf": [
 				{
 					"$ref": "#/$defs/PaginatedLoop"
@@ -763,7 +900,9 @@
 								},
 								{
 									"type": "object",
-									"required": ["label"],
+									"required": [
+										"label"
+									],
 									"properties": {
 										"label": {
 											"$ref": "#/$defs/VTLExpression"
@@ -771,7 +910,9 @@
 									},
 									"not": {
 										"type": "object",
-										"required": ["componentType"],
+										"required": [
+											"componentType"
+										],
 										"properties": {
 											"componentType": {
 												"type": "string"
@@ -784,7 +925,10 @@
 					}
 				}
 			},
-			"required": ["componentType", "body"],
+			"required": [
+				"componentType",
+				"body"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"
@@ -818,7 +962,9 @@
 					"type": "integer"
 				}
 			},
-			"required": ["componentType"],
+			"required": [
+				"componentType"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -834,7 +980,11 @@
 				},
 				"dateFormat": {
 					"type": "string",
-					"enum": ["YYYY-MM-DD", "YYYY", "YYYY-MM"]
+					"enum": [
+						"YYYY-MM-DD",
+						"YYYY",
+						"YYYY-MM"
+					]
 				},
 				"min": {
 					"type": "string"
@@ -843,7 +993,10 @@
 					"type": "string"
 				}
 			},
-			"required": ["componentType", "dateFormat"],
+			"required": [
+				"componentType",
+				"dateFormat"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -859,10 +1012,16 @@
 				},
 				"format": {
 					"type": "string",
-					"enum": ["PnYnM", "PTnHnM"]
+					"enum": [
+						"PnYnM",
+						"PTnHnM"
+					]
 				}
 			},
-			"required": ["componentType", "format"],
+			"required": [
+				"componentType",
+				"format"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -877,13 +1036,20 @@
 					"const": "CheckboxGroup"
 				},
 				"orientation": {
-					"enum": ["horizontal", "vertical"]
+					"enum": [
+						"horizontal",
+						"vertical"
+					]
 				},
 				"responses": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"required": ["label", "response", "id"],
+						"required": [
+							"label",
+							"response",
+							"id"
+						],
 						"properties": {
 							"label": {
 								"$ref": "#/$defs/VTLExpression"
@@ -913,13 +1079,18 @@
 										"$ref": "#/$defs/ResponseDefinition"
 									}
 								},
-								"required": ["response"]
+								"required": [
+									"response"
+								]
 							}
 						}
 					}
 				}
 			},
-			"required": ["componentType", "responses"],
+			"required": [
+				"componentType",
+				"responses"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"
@@ -934,7 +1105,9 @@
 					"const": "CheckboxBoolean"
 				}
 			},
-			"required": ["componentType"],
+			"required": [
+				"componentType"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -950,10 +1123,15 @@
 				},
 				"orientation": {
 					"type": "string",
-					"enum": ["horizontal", "vertical"]
+					"enum": [
+						"horizontal",
+						"vertical"
+					]
 				}
 			},
-			"required": ["componentType"],
+			"required": [
+				"componentType"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -976,7 +1154,9 @@
 					"const": "Dropdown"
 				}
 			},
-			"required": ["componentType"],
+			"required": [
+				"componentType"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -1005,7 +1185,10 @@
 					}
 				}
 			},
-			"required": ["componentType", "components"],
+			"required": [
+				"componentType",
+				"components"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"
@@ -1020,7 +1203,9 @@
 					"const": "CheckboxOne"
 				}
 			},
-			"required": ["componentType"],
+			"required": [
+				"componentType"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -1054,7 +1239,9 @@
 							"$ref": "#/$defs/ResponseDefinition"
 						}
 					},
-					"required": ["response"]
+					"required": [
+						"response"
+					]
 				},
 				"optionResponses": {
 					"type": "array",
@@ -1071,11 +1258,17 @@
 								"type": "string"
 							}
 						},
-						"required": ["name", "attribute"]
+						"required": [
+							"name",
+							"attribute"
+						]
 					}
 				}
 			},
-			"required": ["componentType", "storeName"],
+			"required": [
+				"componentType",
+				"storeName"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
@@ -1131,7 +1324,11 @@
 					}
 				}
 			},
-			"required": ["componentType", "symLinks", "components"],
+			"required": [
+				"componentType",
+				"symLinks",
+				"components"
+			],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"
@@ -1149,7 +1346,10 @@
 					"$ref": "#/$defs/VTLExpression"
 				}
 			},
-			"required": ["componentType", "label"]
+			"required": [
+				"componentType",
+				"label"
+			]
 		},
 		"ComponentFilterDescriptionDefinition": {
 			"type": "object",
@@ -1162,7 +1362,10 @@
 					"$ref": "#/$defs/VTLExpression"
 				}
 			},
-			"required": ["componentType", "label"]
+			"required": [
+				"componentType",
+				"label"
+			]
 		},
 		"ComponentAccordion": {
 			"type": "object",
@@ -1183,11 +1386,17 @@
 								"$ref": "#/$defs/VTLExpression"
 							}
 						},
-						"required": ["label", "body"]
+						"required": [
+							"label",
+							"body"
+						]
 					}
 				}
 			},
-			"required": ["componentType", "items"]
+			"required": [
+				"componentType",
+				"items"
+			]
 		},
 		"Variable": {
 			"discriminator": {
@@ -1217,7 +1426,11 @@
 							"type": "boolean"
 						}
 					},
-					"required": ["variableType", "name", "value"],
+					"required": [
+						"variableType",
+						"name",
+						"value"
+					],
 					"additionalProperties": false
 				},
 				{
@@ -1237,7 +1450,9 @@
 									"$ref": "#/$defs/VariableValue"
 								}
 							},
-							"required": ["COLLECTED"]
+							"required": [
+								"COLLECTED"
+							]
 						},
 						"iterationReference": {
 							"type": "string"
@@ -1246,7 +1461,10 @@
 							"type": "number"
 						}
 					},
-					"required": ["variableType", "name"],
+					"required": [
+						"variableType",
+						"name"
+					],
 					"additionalProperties": false
 				},
 				{
@@ -1291,7 +1509,11 @@
 							"type": "number"
 						}
 					},
-					"required": ["variableType", "name", "expression"],
+					"required": [
+						"variableType",
+						"name",
+						"expression"
+					],
 					"additionalProperties": false
 				}
 			]
@@ -1323,7 +1545,12 @@
 			]
 		},
 		"PaginatedLoop": {
-			"required": ["paginatedLoop", "maxPage", "iterations", "components"],
+			"required": [
+				"paginatedLoop",
+				"maxPage",
+				"iterations",
+				"components"
+			],
 			"properties": {
 				"components": {
 					"type": "array",
@@ -1350,7 +1577,10 @@
 			]
 		},
 		"BlockLoop": {
-			"required": ["paginatedLoop", "components"],
+			"required": [
+				"paginatedLoop",
+				"components"
+			],
 			"properties": {
 				"paginatedLoop": {
 					"const": false,
@@ -1371,7 +1601,9 @@
 			"oneOf": [
 				{
 					"type": "object",
-					"required": ["lines"],
+					"required": [
+						"lines"
+					],
 					"properties": {
 						"lines": {
 							"type": "object",
@@ -1383,13 +1615,18 @@
 									"$ref": "#/$defs/VTLExpression"
 								}
 							},
-							"required": ["min", "max"]
+							"required": [
+								"min",
+								"max"
+							]
 						}
 					}
 				},
 				{
 					"type": "object",
-					"required": ["iterations"],
+					"required": [
+						"iterations"
+					],
 					"properties": {
 						"iterations": {
 							"$ref": "#/$defs/VTLExpression"
@@ -1406,7 +1643,9 @@
 					"$ref": "#/$defs/OptionsWithDetail"
 				}
 			},
-			"required": ["options"]
+			"required": [
+				"options"
+			]
 		},
 		"OptionsFromVariable": {
 			"type": "object",
@@ -1418,7 +1657,9 @@
 					"$ref": "#/$defs/VTLExpression"
 				}
 			},
-			"required": ["optionSource"]
+			"required": [
+				"optionSource"
+			]
 		},
 		"Options": {
 			"type": "array",
@@ -1445,7 +1686,10 @@
 						"$ref": "#/$defs/VTLExpression"
 					}
 				},
-				"required": ["value", "label"]
+				"required": [
+					"value",
+					"label"
+				]
 			}
 		},
 		"OptionsWithDetail": {
@@ -1485,13 +1729,21 @@
 										"type": "string"
 									}
 								},
-								"required": ["name"]
+								"required": [
+									"name"
+								]
 							}
 						},
-						"required": ["label", "response"]
+						"required": [
+							"label",
+							"response"
+						]
 					}
 				},
-				"required": ["value", "label"]
+				"required": [
+					"value",
+					"label"
+				]
 			}
 		},
 		"TableHeader": {
@@ -1515,7 +1767,9 @@
 						"$ref": "#/$defs/Options"
 					}
 				},
-				"required": ["label"]
+				"required": [
+					"label"
+				]
 			}
 		},
 		"SuggesterDefinition": {
@@ -1530,7 +1784,9 @@
 					"type": "array",
 					"items": {
 						"type": "object",
-						"required": ["name"],
+						"required": [
+							"name"
+						],
 						"properties": {
 							"name": {
 								"description": "Property name in the JSON",
@@ -1586,7 +1842,10 @@
 									"properties": {
 										"language": {
 											"type": "string",
-											"enum": ["French", "English"],
+											"enum": [
+												"French",
+												"English"
+											],
 											"description": "Language used for stemming (keeping the root of a word)."
 										},
 										"pattern": {
@@ -1598,12 +1857,18 @@
 											"description": "Minimum length for a token to be used in the search."
 										}
 									},
-									"required": ["language", "pattern"],
+									"required": [
+										"language",
+										"pattern"
+									],
 									"additionalProperties": false,
 									"description": "Parameters for tokenized search."
 								}
 							},
-							"required": ["type", "params"],
+							"required": [
+								"type",
+								"params"
+							],
 							"additionalProperties": false
 						},
 						{
@@ -1614,7 +1879,9 @@
 									"const": "soft"
 								}
 							},
-							"required": ["type"],
+							"required": [
+								"type"
+							],
 							"additionalProperties": false
 						}
 					]
@@ -1627,7 +1894,12 @@
 					}
 				}
 			},
-			"required": ["name", "fields", "queryParser", "version"]
+			"required": [
+				"name",
+				"fields",
+				"queryParser",
+				"version"
+			]
 		}
 	}
 }
