@@ -140,7 +140,13 @@ const CleaningInfo = ({
 			| {
 					expression: string;
 					shapeFrom?: string;
-					isAggregatorUsed: boolean;
+					/**
+					 * @deprecated
+					 * use shouldCheckDuringResizing since lunaticModelVersion 5.16.0
+					 */
+					isAggregatorUsed?: boolean;
+					shouldCheckDuringResizing?: boolean;
+					shouldCheckAllIterations?: boolean;
 			  }[];
 	};
 }) => {
