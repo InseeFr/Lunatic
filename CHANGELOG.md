@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.13.3](https://github.com/InseeFr/Lunatic/releases/tag/3.13.3) - 2026-04-10
+
 ### Fixed
 
 - Cleaning: use new attribute: `shouldCheckDuringResizing` instead of `isAggregatorUsed`. Ensure backward compatibility with the old attribute.
