@@ -278,7 +278,10 @@ function expressionsHaveShapeFrom(
 		isAggregatorUsed: boolean;
 	}[]
 ) {
-	return expressions.every((expression) => hasShapeFrom(expression));
+	return (
+		expressions.length !== 0 &&
+		expressions.every((expression) => hasShapeFrom(expression))
+	);
 }
 
 function findFirstExpressionWithShapeFrom(expressions: CleaningExpression[]) {
