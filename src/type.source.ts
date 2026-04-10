@@ -301,7 +301,12 @@ export type LunaticSource = {
 				| {
 						expression: string;
 						shapeFrom?: string;
-						isAggregatorUsed: boolean;
+						/**
+						 * @deprecated
+						 * use shouldCheckDuringResizing since lunaticModelVersion 5.16.0
+						 */
+						isAggregatorUsed?: boolean;
+						shouldCheckDuringResizing?: boolean;
 						shouldCheckAllIterations?: boolean;
 				  }[];
 		};
@@ -365,13 +370,13 @@ export type LunaticSource = {
 	multimode?: {
 		questionnaire: {
 			rules: {
-				[k: string]: VTLExpression1;
+				[k: string]: VTLExpression;
 			};
 		};
 		leaf: {
 			source: string;
 			rules: {
-				[k: string]: VTLExpression2;
+				[k: string]: VTLExpression;
 			};
 		};
 	};
@@ -521,26 +526,4 @@ export type SuggesterDefinition = {
 	 * list of words to exclude from the searching
 	 */
 	stopWords?: string[];
-};
-export type VTLExpression1 = {
-	/**
-	 * Valid VTL Expression
-	 */
-	value: string;
-	/**
-	 * Variables used in the expression
-	 */
-	bindingDependencies?: string[];
-	type: 'VTL' | 'VTL|MD' | 'TXT';
-};
-export type VTLExpression2 = {
-	/**
-	 * Valid VTL Expression
-	 */
-	value: string;
-	/**
-	 * Variables used in the expression
-	 */
-	bindingDependencies?: string[];
-	type: 'VTL' | 'VTL|MD' | 'TXT';
 };

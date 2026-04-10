@@ -509,7 +509,7 @@ describe('lunatic-variables-store', () => {
 							},
 							{
 								expression: 'NB_HAB > 1',
-								isAggregatorUsed: true,
+								shouldCheckDuringResizing: true,
 							},
 						],
 					},
@@ -672,7 +672,6 @@ describe('lunatic-variables-store', () => {
 							{
 								expression: 'PRENOM <> ""',
 								shapeFrom: 'PRENOM',
-								isAggregatorUsed: true,
 							},
 						],
 					},

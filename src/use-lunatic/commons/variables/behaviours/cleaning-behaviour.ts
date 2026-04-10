@@ -10,7 +10,11 @@ import { IterationLevel } from '../models';
 type CleaningExpression = {
 	expression: string;
 	shapeFrom?: string;
-	isAggregatorUsed: boolean;
+	/**
+	 * @deprecated: use `shouldCheckDuringResizing` since lunaticModelVersion 5.16.0
+	 */
+	isAggregatorUsed?: boolean;
+	shouldCheckDuringResizing?: boolean;
 	shouldCheckAllIterations?: boolean;
 };
 
@@ -153,8 +157,10 @@ function shouldClean(
 
 	// Handle a new format with expression objects shaped like this { expression, shapeFrom, isAggregatorUsed }
 	if (isResizing) {
-		// During resize operations, only consider expressions with aggregators (count, sum...)
-		expressions = expressions.filter((expr) => expr.isAggregatorUsed);
+		// During resize operations, only consider expressions with shouldCheckDuringResizing (expression with aggregators (count, sum...) or other business rules)
+		expressions = expressions.filter(
+			(expr) => expr.shouldCheckDuringResizing || expr.isAggregatorUsed // keep deprecated isAggregatorUsed for backward compatibility
+		);
 	}
 
 	// At least one expression requires to compute on each iteration
@@ -271,14 +277,11 @@ function hasShapeFrom(expression: CleaningExpression) {
  *
  * @returns true if all expressions have a non-null shapeFrom property
  */
-function expressionsHaveShapeFrom(
-	expressions: {
-		expression: string;
-		shapeFrom?: string;
-		isAggregatorUsed: boolean;
-	}[]
-) {
-	return expressions.every((expression) => hasShapeFrom(expression));
+function expressionsHaveShapeFrom(expressions: CleaningExpression[]) {
+	return (
+		expressions.length !== 0 &&
+		expressions.every((expression) => hasShapeFrom(expression))
+	);
 }
 
 function findFirstExpressionWithShapeFrom(expressions: CleaningExpression[]) {
