@@ -34,4 +34,6 @@ test(`can complete pairwise form when pairwise is empty`, async ({ page }) => {
 	// Expect only one link to collect
 	await expect(page.getByRole('combobox')).toHaveCount(1);
 	await expect(page.getByText('Qui est Dad pour Unknow ?')).toBeVisible();
+	// Expect that no error component is visible
+	await expect(page.getByText('must be a dropdown')).not.toBeVisible();
 });
