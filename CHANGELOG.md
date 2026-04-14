@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.13.4](https://github.com/InseeFr/Lunatic/releases/tag/3.13.4) - 2026-04-14
+
 ### Fixed
 
 - Pairwise: do not display error component when pairwise is filtered (fix regression cause due to [Pairwise in Loop](https://github.com/InseeFr/Lunatic/pull/1308/changes#diff-53dc61283189edb8911e5e66a822b1c29f411bf985c1b190ccec3d05bbc5e0e0L47))
