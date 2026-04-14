@@ -37,6 +37,8 @@ export const PairwiseLinks = (
 				.map(([x, y]) => {
 					const components = getComponents(x, y);
 					const firstComponent = components[0];
+					// Display nothing if there is no component (due to filter)
+					if (firstComponent === undefined || firstComponent === null) return;
 					if (firstComponent?.componentType !== 'Dropdown') {
 						return (
 							<div key={'PairwiseLinksLoop-error'}>
