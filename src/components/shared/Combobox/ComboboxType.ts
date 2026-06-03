@@ -32,6 +32,7 @@ export type ComboboxSelectionProps = {
 	options: Array<ComboboxOptionType>;
 	search?: string;
 	disabled?: boolean;
+	required?: boolean;
 };
 
 export type ComboboxPanelProps = {

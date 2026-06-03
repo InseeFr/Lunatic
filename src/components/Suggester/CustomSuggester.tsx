@@ -35,6 +35,7 @@ type Props = {
 	onClear: () => void;
 	search: string;
 	state: 'loading' | 'error' | 'success';
+	required?: boolean;
 };
 
 export const CustomSuggester = slottableComponent<Props>(
@@ -61,6 +62,7 @@ export const CustomSuggester = slottableComponent<Props>(
 		onClear,
 		state,
 		onFocus,
+		required,
 	}) => {
 		const handleSelect = (id: string | null) => {
 			if (id === null) {
@@ -94,6 +96,7 @@ export const CustomSuggester = slottableComponent<Props>(
 				declarations={declarations}
 				description={description}
 				errors={errors}
+				required={required}
 			/>
 		);
 	}

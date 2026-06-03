@@ -35,6 +35,7 @@ export function WrappedSuggester({
 	iteration,
 	arbitrary,
 	arbitraryValue,
+	required,
 }: LunaticComponentProps<'Suggester'>) {
 	const { store, storeState, setStoreState, getLabelById } = useStore({
 		storeName,
@@ -182,6 +183,7 @@ export function WrappedSuggester({
 			onClear={handleClear}
 			disabled={disabled}
 			readOnly={readOnly}
+			required={required}
 			value={selectedOptions}
 			label={label}
 			onBlur={onBlur}

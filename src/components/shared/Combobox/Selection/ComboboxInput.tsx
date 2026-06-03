@@ -15,6 +15,7 @@ export type InputProps = {
 	focused?: boolean;
 	invalid?: boolean;
 	readOnly?: boolean;
+	required?: boolean;
 } & HTMLAttributes<HTMLInputElement>;
 
 function LunaticComboboxInput({
@@ -27,6 +28,7 @@ function LunaticComboboxInput({
 	focused,
 	className,
 	invalid,
+	required,
 }: InputProps) {
 	const inputEl = useRef<HTMLInputElement>(null);
 
@@ -52,6 +54,8 @@ function LunaticComboboxInput({
 			onChange={onChange}
 			value={value}
 			aria-invalid={invalid}
+			aria-required={required}
+			required={required}
 			title="combo-box"
 			autoComplete="off"
 			autoCapitalize="off"

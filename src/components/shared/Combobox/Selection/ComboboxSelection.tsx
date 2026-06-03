@@ -24,6 +24,7 @@ export function ComboboxSelection({
 	id,
 	classNamePrefix,
 	invalid,
+	required,
 }: ComboboxSelectionProps) {
 	const showLabel = !editable || !expanded;
 	const selectedOption =
@@ -70,6 +71,7 @@ export function ComboboxSelection({
 					readOnly={readOnly}
 					focused={focused}
 					labelledBy={labelId}
+					required={required}
 				/>
 			)}
 		</div>
