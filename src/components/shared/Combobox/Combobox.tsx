@@ -68,6 +68,7 @@ function LunaticComboBox({
 	onBlur,
 	onFocus,
 	isLoading,
+	required,
 }: Props) {
 	const [expanded, setExpanded] = useState(false);
 	const [focused, setFocused] = useState(false);
@@ -180,6 +181,7 @@ function LunaticComboBox({
 					onChange={handleChange}
 					classNamePrefix={classNamePrefix}
 					invalid={!!errors}
+					required={required}
 				/>
 				<ComboboxPanel
 					isLoading={isLoading}

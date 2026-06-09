@@ -24,10 +24,11 @@ export function ComboboxSelection({
 	id,
 	classNamePrefix,
 	invalid,
+	required,
 }: ComboboxSelectionProps) {
 	const showLabel = !editable || !expanded;
 	const selectedOption =
-		selectedIndex !== undefined ? options[selectedIndex] : undefined;
+		selectedIndex === undefined ? undefined : options[selectedIndex];
 	const LabelSelectionComponent = labelRenderer ?? ComboboxLabelSelection;
 
 	return (
@@ -41,7 +42,6 @@ export function ComboboxSelection({
 				}
 			)}
 			role="combobox"
-			aria-controls={'todo'}
 			aria-haspopup="listbox"
 			aria-expanded={expanded}
 			aria-autocomplete="list"
@@ -70,6 +70,7 @@ export function ComboboxSelection({
 					readOnly={readOnly}
 					focused={focused}
 					labelledBy={labelId}
+					required={required}
 				/>
 			)}
 		</div>

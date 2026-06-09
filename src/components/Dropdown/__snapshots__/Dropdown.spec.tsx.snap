@@ -15,7 +15,6 @@ exports[`Dropdown > renders without crashing 1`] = `
       >
         <div
           aria-autocomplete="list"
-          aria-controls="todo"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="label-dropdown"
@@ -51,7 +50,6 @@ exports[`Dropdown > should handle readOnly 1`] = `
       >
         <div
           aria-autocomplete="list"
-          aria-controls="todo"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="label-dropdown"
