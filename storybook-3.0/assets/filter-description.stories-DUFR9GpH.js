@@ -1,9 +1,0 @@
-import{a as i}from"./Orchestrator-B87rQBP2.js";import"./jsx-runtime-BjG_zV1W.js";import"./Combobox-BMViUnsY.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-xW6owYLq.js";import"./index-BL20XVM2.js";import"./index-Dk74W0Oi.js";const c="1",l=[{componentType:"FilterDescription",label:{value:"I'm a filter description",type:"VTL|MD"},id:"desc",page:"1"}],m=[],u={maxPage:c,components:l,variables:m},d="3",T=[{componentType:"InputNumber",label:{value:'"How old are you?"',type:"VTL|MD"},conditionFilter:{value:"true",type:"VTL"},max:"120",id:"q1",response:{name:"Q1"},page:"1"},{componentType:"FilterDescription",label:{value:`"If you are minor, you'll be redirected to page 3"`,type:"VTL|MD"},conditionFilter:{value:"true",type:"VTL"},id:"desc",page:"1"},{componentType:"Input",label:{value:'"Fake Q2"',type:"VTL|MD"},conditionFilter:{value:"cast(Q1, number) < 18",type:"VTL"},id:"q2",response:{name:"Q2"},page:"2"},{componentType:"Input",label:{value:'"Fake Q3"',type:"VTL|MD"},conditionFilter:{value:"true",type:"VTL"},id:"q3",response:{name:"Q3"},page:"3"}],L=[{variableType:"COLLECTED",name:"Q1",values:{COLLECTED:null}},{variableType:"COLLECTED",name:"Q2",values:{COLLECTED:null}},{variableType:"COLLECTED",name:"Q3",values:{COLLECTED:null}}],y={maxPage:d,components:T,variables:L},F={title:"Components/FilterDescription",...i},e={args:{source:u}},a={args:{source:y}};var o,t,r;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:`{
-  args: {
-    source
-  }
-}`,...(r=(t=e.parameters)==null?void 0:t.docs)==null?void 0:r.source}}};var n,s,p;a.parameters={...a.parameters,docs:{...(n=a.parameters)==null?void 0:n.docs,source:{originalSource:`{
-  args: {
-    source: sourceOptions
-  }
-}`,...(p=(s=a.parameters)==null?void 0:s.docs)==null?void 0:p.source}}};const Q=["Default","Options"];export{e as Default,a as Options,Q as __namedExportsOrder,F as default};
