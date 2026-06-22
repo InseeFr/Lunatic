@@ -29,6 +29,7 @@
 			"email": "nicolas.laval@insee.fr"
 		}
 	],
+	"packageManager": "pnpm@11.8.0",
 	"scripts": {
 		"test": "vitest run",
 		"test:e2e": "playwright test",

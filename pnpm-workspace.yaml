@@ -1,0 +1,6 @@
+allowBuilds:
+  '@playwright/browser-chromium': true
+  '@swc/core': true
+  data-forge: true
+  esbuild: true
+minimumReleaseAge: 0
