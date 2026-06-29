@@ -28,10 +28,6 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v6
-      - name: Free disk space
-        run: |
-          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
-          df -h
       - name: Install pnpm
         uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
@@ -40,19 +36,19 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - name: Cache Playwright browsers
-        uses: actions/cache@v4
         id: playwright-cache
+        uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ hashFiles('**/package.json') }}
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps
-      - name: Install Playwright system deps
-        if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps
+        run: npx playwright install chromium firefox --with-deps
+        timeout-minutes: 5
       - name: E2E Tests
-        run: npx playwright test --reporter=html
+        run: npx playwright test --reporter=html,list
       - uses: actions/upload-artifact@v4
         if: always()
         with:
