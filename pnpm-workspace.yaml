@@ -1,5 +1,5 @@
 allowBuilds:
-  '@playwright/browser-chromium': true
+  '@playwright/browser-chromium': false
   '@swc/core': true
   data-forge: true
   esbuild: true
