@@ -5,7 +5,11 @@ on:
     branches: ["main", "2.*", "3.*"]
   pull_request:
     branches: ["main", "2.*", "3.*"]
-
+    
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -143,6 +147,5 @@ jobs:
           fi
           npm publish $EXTRA_ARGS
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ needs.check_if_version_upgraded.outputs.version }}
           IS_PRE_RELEASE: ${{ needs.check_if_version_upgraded.outputs.is_pre_release }}
