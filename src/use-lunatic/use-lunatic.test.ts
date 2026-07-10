@@ -9,7 +9,7 @@ import sourceRoundabout from '../stories/roundabout/source.json';
 import sourcePaginatedLoop from '../stories/loop/source-paginated.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
-import type { PageTag } from './type';
+import type { LunaticSource, PageTag } from './type';
 import { useLunatic } from './use-lunatic';
 import { useCallback } from 'react';
 import { dataFromObject } from '../utils/object';
@@ -466,6 +466,82 @@ describe('use-lunatic()', () => {
 				result.current.handleChanges([{ name: 'NATIO1N1', value: false }]);
 			});
 			expect(result.current.hasPageResponse()).toBeFalsy();
+		});
+	});
+
+	describe('getNextPageWithoutResponse()', () => {
+		const sourceThreePages: LunaticSource = {
+			maxPage: '3',
+			components: [
+				{
+					id: 'q1',
+					componentType: 'Input',
+					page: '1',
+					label: { value: 'Q1', type: 'TXT' },
+					response: { name: 'VAR1' },
+				},
+				{
+					id: 'q2',
+					componentType: 'Input',
+					page: '2',
+					label: { value: 'Q2', type: 'TXT' },
+					response: { name: 'VAR2' },
+				},
+				{
+					id: 'q3',
+					componentType: 'Input',
+					page: '3',
+					label: { value: 'Q3', type: 'TXT' },
+					response: { name: 'VAR3' },
+				},
+			],
+			variables: [
+				{ variableType: 'COLLECTED', name: 'VAR1', values: { COLLECTED: null } },
+				{ variableType: 'COLLECTED', name: 'VAR2', values: { COLLECTED: null } },
+				{ variableType: 'COLLECTED', name: 'VAR3', values: { COLLECTED: null } },
+			],
+		} as unknown as LunaticSource;
+
+		it('should return the current page when it has no response', () => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceThreePages, undefined, {})
+			);
+			expect(result.current.getNextPageWithoutResponse()).toBe('1');
+		});
+
+		it('should skip pages that already have a response', () => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceThreePages, undefined, {})
+			);
+			act(() => {
+				result.current.handleChanges([{ name: 'VAR1', value: 'hello' }]);
+			});
+			expect(result.current.getNextPageWithoutResponse()).toBe('2');
+		});
+
+		it('should return undefined when every remaining page has a response', () => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceThreePages, undefined, {})
+			);
+			act(() => {
+				result.current.handleChanges([
+					{ name: 'VAR1', value: 'hello' },
+					{ name: 'VAR2', value: 'hello' },
+					{ name: 'VAR3', value: 'hello' },
+				]);
+			});
+			expect(result.current.getNextPageWithoutResponse()).toBeUndefined();
+		});
+
+		it('should not navigate, only return the page tag', () => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceThreePages, undefined, {})
+			);
+			act(() => {
+				result.current.handleChanges([{ name: 'VAR1', value: 'hello' }]);
+			});
+			result.current.getNextPageWithoutResponse();
+			expect(result.current.pager.page).toBe(1);
 		});
 	});
 

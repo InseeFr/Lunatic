@@ -23,6 +23,7 @@ import { useLoopVariables } from './hooks/use-loop-variables';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
 import { useTrackChanges } from '../hooks/use-track-changes';
 import { usePageHasResponse } from './hooks/use-page-has-response';
+import { findFirstPageWithoutResponse } from './commons/pagination/find-page-without-response';
 import { useOverview } from './hooks/useOverview';
 import { reducerInitializer } from './reducer/reducerInitializer';
 import { getComponentsFromState } from './commons/get-components-from-state';
@@ -226,6 +227,22 @@ export function useLunatic(
 		return components;
 	};
 
+	const getNextPageWithoutResponse: LunaticState['getNextPageWithoutResponse'] =
+		() => {
+			return findFirstPageWithoutResponse(state, {
+				disableFilters,
+				disableFiltersDescription,
+				handleChanges,
+				goToPage,
+				goNextPage,
+				goPreviousPage,
+				shortcut,
+				management,
+				preferences,
+				logger,
+			});
+		};
+
 	return {
 		pageTag,
 		isFirstPage,
@@ -250,6 +267,7 @@ export function useLunatic(
 		getChangedData,
 		resetChangedData,
 		hasPageResponse: usePageHasResponse(components, state.executeExpression),
+		getNextPageWithoutResponse,
 		// Components
 		Provider,
 		handleChanges,
