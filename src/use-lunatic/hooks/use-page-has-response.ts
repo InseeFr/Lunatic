@@ -63,7 +63,7 @@ const hasOneResponseInRosterForLoop = (
 	);
 };
 
-function hasOneResponse(
+export function hasOneResponse(
 	components: LunaticComponentProps[],
 	executeExpression: LunaticReducerState['executeExpression']
 ): boolean {

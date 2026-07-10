@@ -390,6 +390,12 @@ export type LunaticState = {
 	/** Return `true` as soon as the current page has at least one answer. */
 	hasPageResponse: () => boolean;
 	/**
+	 * Starting from the current page (included), return the page tag of the first page
+	 * that doesn't have any response yet, or `undefined` if every remaining page already
+	 * has a response.
+	 */
+	getNextPageWithoutResponse: () => PageTag | undefined;
+	/**
 	 * Change several variable values.
 	 *
 	 * Be careful when using this function.
