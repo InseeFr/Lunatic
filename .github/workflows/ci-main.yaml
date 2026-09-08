@@ -143,6 +143,7 @@ jobs:
           fi
           EXTRA_ARGS=""
           if [ "$IS_PRE_RELEASE" = "true" ]; then
+              echo "pre-release: true"
               EXTRA_ARGS="--tag beta"
           fi
           npm publish $EXTRA_ARGS
