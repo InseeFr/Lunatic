@@ -107,6 +107,9 @@ jobs:
     needs:
       - create_github_release
       - check_if_version_upgraded
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v6
         with:
