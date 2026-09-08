@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: ["main", "2.*", "3.*"]
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -107,9 +111,6 @@ jobs:
     needs:
       - create_github_release
       - check_if_version_upgraded
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v6
         with:
