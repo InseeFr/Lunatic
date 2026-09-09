@@ -145,7 +145,7 @@ jobs:
           if [ "$IS_PRE_RELEASE" = "true" ]; then
               EXTRA_ARGS="--tag beta"
           fi
-          npm publish $EXTRA_ARGS
+          npm publish --access public --provenance $EXTRA_ARGS
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ needs.check_if_version_upgraded.outputs.version }}
