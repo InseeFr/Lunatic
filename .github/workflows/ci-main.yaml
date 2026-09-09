@@ -114,6 +114,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
+    environment: npm-publish
     needs:
       - create_github_release
       - check_if_version_upgraded
