@@ -143,7 +143,7 @@ jobs:
         run: |
           PKG_NAME=$(node -p "require('./package.json').name")
           PKG_VERSION=$(node -p "require('./package.json').version")
-          if npm view "${PKG_NAME}@${PKG_VERSION}" version >/dev/null 2>&1; then
+          if pnpm view "${PKG_NAME}@${PKG_VERSION}" version >/dev/null 2>&1; then
             echo "Package ${PKG_NAME}@${PKG_VERSION} already published. Skipping publish."
             echo "should_publish=false" >> "$GITHUB_OUTPUT"
           else
@@ -157,8 +157,8 @@ jobs:
           if [ "$IS_PRE_RELEASE" = "true" ]; then
               EXTRA_ARGS="--tag beta"
           fi
-          npm publish --access public --provenance $EXTRA_ARGS
+          pnpm publish --access public --provenance $EXTRA_ARGS
         env:
-          NODE_AUTH_TOKEN: ""
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ needs.check_if_version_upgraded.outputs.version }}
           IS_PRE_RELEASE: ${{ needs.check_if_version_upgraded.outputs.is_pre_release }}
