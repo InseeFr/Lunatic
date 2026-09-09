@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ["main", "2.*", "3.*"]
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,6 +28,8 @@ jobs:
   build-deploy-assets:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.event_name == 'push'
     steps:
       - name: Get branch name
@@ -83,6 +88,8 @@ jobs:
 
   create_github_release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     # We create release only if the version in the package.json have been upgraded and this CI is running against the main branch.
     # We allow branches with a PR open on main to publish pre-release (x.y.z-rc.u) but not actual releases.
     if: |
@@ -104,6 +111,10 @@ jobs:
 
   publish_on_npm:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    environment: npm-publish
     needs:
       - create_github_release
       - check_if_version_upgraded
@@ -127,22 +138,27 @@ jobs:
       - uses: garronej/ts-ci@v2.1.5
         with:
           action_name: remove_dark_mode_specific_images_from_readme
-      - name: Publishing on NPM
+      - name: Check if version already exists on npm
+        id: npm_version_check
+        shell: bash
         run: |
-          if [ "$(npm show . version)" = "$VERSION" ]; then
-            echo "This version is already published"
-            exit 0
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          if npm view "${PKG_NAME}@${PKG_VERSION}" version >/dev/null 2>&1; then
+            echo "Package ${PKG_NAME}@${PKG_VERSION} already published. Skipping publish."
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Package ${PKG_NAME}@${PKG_VERSION} not found on npm. Publish enabled."
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
           fi
-          if [ "$NODE_AUTH_TOKEN" = "" ]; then
-            echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
-            false
-          fi
+      - name: Publish package (trusted publishing)
+        if: steps.npm_version_check.outputs.should_publish == 'true'
+        run: |
           EXTRA_ARGS=""
           if [ "$IS_PRE_RELEASE" = "true" ]; then
               EXTRA_ARGS="--tag beta"
           fi
-          npm publish $EXTRA_ARGS
+          npm publish $EXTRA_ARGS --access public --provenance
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ needs.check_if_version_upgraded.outputs.version }}
           IS_PRE_RELEASE: ${{ needs.check_if_version_upgraded.outputs.is_pre_release }}
