@@ -1,39 +1,79 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:recommended", ":semanticCommits", ":disableRateLimiting"],
-	"baseBranches": ["$default", "2.6"],
+	"extends": [
+		"config:recommended",
+		":semanticCommits",
+		":disableRateLimiting"
+	],
+	"baseBranches": [
+		"$default"
+	],
 	"packageRules": [
 		{
 			"description": "Documentation website dependencies",
-			"matchPaths": ["website/**"],
-			"matchDepTypes": ["dependencies", "devDependencies"],
-			"matchUpdateTypes": ["minor", "patch"],
+			"matchPaths": [
+				"website/**"
+			],
+			"matchDepTypes": [
+				"dependencies",
+				"devDependencies"
+			],
+			"matchUpdateTypes": [
+				"minor",
+				"patch"
+			],
 			"groupName": "docs website dependencies",
 			"groupSlug": "docs-minor-patch",
-			"labels": ["docs", "dependencies"]
+			"labels": [
+				"docs",
+				"dependencies"
+			]
 		},
 		{
 			"description": "CI dependencies",
-			"matchPaths": [".github/workflows/**"],
+			"matchPaths": [
+				".github/workflows/**"
+			],
 			"groupName": "CI dependencies",
-			"labels": ["ci", "dependencies"]
+			"labels": [
+				"ci",
+				"dependencies"
+			]
 		},
 		{
-			"matchPaths": ["package.json"],
-			"matchDepTypes": ["dependencies"],
-			"matchUpdateTypes": ["minor", "patch"],
+			"matchPaths": [
+				"package.json"
+			],
+			"matchDepTypes": [
+				"dependencies"
+			],
+			"matchUpdateTypes": [
+				"minor",
+				"patch"
+			],
 			"groupName": "all minor and patch updates",
 			"groupSlug": "minor-patch",
-			"labels": ["dependencies"],
+			"labels": [
+				"dependencies"
+			],
 			"automerge": true
 		},
 		{
-			"matchPaths": ["package.json"],
-			"matchDepTypes": ["devDependencies"],
-			"matchUpdateTypes": ["minor", "patch"],
+			"matchPaths": [
+				"package.json"
+			],
+			"matchDepTypes": [
+				"devDependencies"
+			],
+			"matchUpdateTypes": [
+				"minor",
+				"patch"
+			],
 			"groupName": "all minor and patch devDependencies updates",
 			"groupSlug": "minor-patch",
-			"labels": ["devDependencies"],
+			"labels": [
+				"devDependencies"
+			],
 			"automerge": true
 		}
 	],
