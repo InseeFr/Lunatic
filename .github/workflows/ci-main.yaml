@@ -159,6 +159,5 @@ jobs:
           fi
           npm publish $EXTRA_ARGS --access public --provenance
         env:
-          NODE_AUTH_TOKEN: ""
           VERSION: ${{ needs.check_if_version_upgraded.outputs.version }}
           IS_PRE_RELEASE: ${{ needs.check_if_version_upgraded.outputs.is_pre_release }}
