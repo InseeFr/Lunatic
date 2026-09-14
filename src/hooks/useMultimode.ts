@@ -64,7 +64,9 @@ export function useMultimode(
 			...Object.keys(source.multimode.questionnaire.rules),
 			...Object.keys(source.multimode.leaf.rules),
 		]);
-		const iterations = forceInt(store.run(roundabout?.iterations.value ?? '0'));
+		const iterations = forceInt(
+			store.run(roundabout?.iterations.value ?? '') ?? 0
+		);
 
 		return Object.fromEntries(
 			Array.from(keys).map((key) => {
