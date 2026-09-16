@@ -1,4 +1,4 @@
-import { Fragment, type PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import Markdown, { type Components } from 'react-markdown';
 import { MarkdownLink } from './MarkdownLink';
 import remarkBreaks from 'remark-breaks';
@@ -12,7 +12,7 @@ type Props = {
 export function MDLabel({ expression, MarkdownLinkOverride }: Props) {
 	const hasParagraphs = /\n\n/.test(expression);
 	const components = {
-		p: hasParagraphs ? 'p' : Fragment,
+		p: hasParagraphs ? 'p' : 'div',
 		br: 'br',
 		a: (props: MarkdownAProps) => (
 			<MarkdownA
