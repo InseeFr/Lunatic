@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed 
+- MDLabel does no longer render a fragment when the label does not contain parahraphs.
+
 ## [3.13.4](https://github.com/InseeFr/Lunatic/releases/tag/3.13.4) - 2026-04-14
 
 ### Fixed
