@@ -71,6 +71,12 @@ export function getArticulationState(
 	source: LunaticSource & { articulation: Articulation },
 	data: LunaticData
 ): { items: Item[] } {
+	if (!source.articulation) {
+		return {
+			items: [],
+		};
+	}
+
 	const roundabout = findComponentById(
 		source.components,
 		source.articulation.source
