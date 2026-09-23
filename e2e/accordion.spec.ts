@@ -6,6 +6,7 @@ test.describe('Accordion', () => {
 		await goToStory(page, 'components-accordion--default');
 		const input = page.getByRole('textbox', { name: 'Nom' });
 		await expect(input).toBeVisible();
+		await page.getByText('Pourquoi cette question ?').first().click();
 		await expectPageToHaveText(page, 'Pour en connaître plus sur Inconnu');
 		await input.fill('John');
 		await expectPageToHaveText(page, 'Pour en connaître plus sur John');
