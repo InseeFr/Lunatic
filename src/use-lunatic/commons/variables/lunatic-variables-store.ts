@@ -496,10 +496,12 @@ export class LunaticVariable {
 			this.name !== this.expression &&
 			!Array.isArray(shapeFromValue)
 		) {
+			// PAS ICI !!
 			iteration = undefined;
 		}
 
 		const deps = this.getDependencies();
+		// ON CONYTINUR
 		const hasNoBindings = deps.length === 0;
 
 		// A static expression should not be reevaluated
@@ -573,6 +575,14 @@ export class LunaticVariable {
 		value: unknown,
 		opts: { iteration?: IterationLevel; ignoreIterationOnScalar?: boolean }
 	): boolean {
+		if (this.name === 'not(isnull(CTRL1))')
+			console.log(
+				'CALLING set value with value',
+				value,
+				'iteration',
+				opts.iteration
+			);
+
 		const { iteration, ignoreIterationOnScalar } = opts;
 
 		// We want to save a value at a specific iteration
@@ -588,6 +598,42 @@ export class LunaticVariable {
 			this.value = [];
 		}
 
+		// GROS pb
+
+		// on a une formule qui est à calculer sur 2 niveaux:
+		// - undefined (niveau racine)
+		// - avec des iterations , ex: [0], [1]
+		//
+		// le problème, il y a conflit dans le cache (savedValue), quand on veut sauvegarder une valeur niveau undefined,
+		// on écrase le cache des valeurs à des itérations
+		// au dépard on a
+		// cache=`[ true, false]`
+		// il devient `false` (valeur à undefined, niveau racine)
+		//
+		// et inveresement, lorsqu'on veut sauvegarder le cache à un niveau itération, on supprime le cache niveau racine / undefined
+
+		// proposition de fix
+		// revoir le format de stockage de cache / savedValue pour une variable donnée
+		// au lieu d'un tableau, avoir un objet { 'root': false, 0: true, 1: false } pour l'exemple ci-dessus,
+
+		// fonctions à adapter:
+		// - setValue (permet de mettre à jour le cache),
+		// - peut-être setValueForArray
+		// - getSavedValue : fonction permettannt de récupérer un valeur mise en cache
+
+		if (
+			Array.isArray(iteration) &&
+			!Array.isArray(this.value) &&
+			this.value !== undefined &&
+			this.value !== null
+		) {
+			if (this.name === 'not(isnull(CTRL1))')
+				console.log("DON't kill the cache of unefined");
+		}
+		if (iteration === undefined && Array.isArray(this.value)) {
+			if (this.name === 'not(isnull(CTRL1))')
+				console.log("DON't kill the cache of other that not undef");
+		}
 		if (value === this.getSavedValue(iteration)) {
 			return false;
 		}
@@ -638,10 +684,13 @@ export class LunaticVariable {
 	}
 
 	private getSavedValue(iteration?: IterationLevel): unknown {
+		// iteration is not an array, root level
 		if (!Array.isArray(iteration)) {
 			return this.value;
 		}
+
 		let current = this.value;
+
 		for (const index of iteration) {
 			if (!Array.isArray(current)) {
 				return current;
