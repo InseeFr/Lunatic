@@ -119,6 +119,10 @@ function computeIterations(
 	component: InterpretedComponent | ComponentDefinition,
 	executeExpression: LunaticReducerState['executeExpression']
 ): number {
+	// iterations is present and it's already computed, return the actual value (case of InterpretedComponent)
+	if ('iterations' in component && typeof component.iterations === 'number')
+		return component.iterations;
+	// iteratons is present and it's an expression, compute it
 	if (
 		'iterations' in component &&
 		component.iterations &&
@@ -127,6 +131,8 @@ function computeIterations(
 	) {
 		return executeExpression<number>(component.iterations);
 	}
+
+	// Fallback to variable collectes by this component, return it's length
 	if ('response' in component) {
 		const value = executeExpression({
 			type: 'VTL',
