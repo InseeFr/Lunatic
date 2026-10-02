@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `compileControls` on Roundabount or Loop, `computeIteration` now handle already computed `iterations` attribute
 - prevent crash on duration component when value is undefined (default case) [#1335](https://github.com/InseeFr/Lunatic/pull/1335)
+- `getArticulationState` and `useMultimode` doesn't fail if no roundabout or articulation is defined in lunatic questionnaire [#1333](https://github.com/InseeFr/Lunatic/pull/1333)
 
 
 ## [3.13.4](https://github.com/InseeFr/Lunatic/releases/tag/3.13.4) - 2026-04-14

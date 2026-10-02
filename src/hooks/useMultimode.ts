@@ -55,22 +55,37 @@ export function useMultimode(
 			return {};
 		}
 
-		const roundabout = findComponentById(
-			source.components,
-			source.multimode.leaf.source
-		);
+		// Initialize rules to empty objects if they do not exist
+		const questionnaireRules = source.multimode.questionnaire?.rules || {};
+		const leafRules = source.multimode.leaf?.rules || {};
 
+		// If neither has rules, return an empty object
+		if (Object.keys(questionnaireRules).length === 0 && Object.keys(leafRules).length === 0) {
+			return {};
+		}
+
+		// Get unique rule keys
 		const keys = new Set([
-			...Object.keys(source.multimode.questionnaire.rules),
-			...Object.keys(source.multimode.leaf.rules),
+			...Object.keys(questionnaireRules),
+			...Object.keys(leafRules),
 		]);
-		const iterations = forceInt(store.run(roundabout?.iterations.value ?? '0'));
+
+		// Handle the case where leaf.source exists to retrieve iterations
+		let iterations = 0;
+		if (source.multimode.leaf?.source) {
+			const roundabout = findComponentById(
+				source.components,
+				source.multimode.leaf.source
+			);
+			iterations = forceInt(
+				store.run(roundabout?.iterations?.value ?? '') ?? 0
+			);
+		}
 
 		return Object.fromEntries(
 			Array.from(keys).map((key) => {
-				// Check the value at questionnaire level
-				const questionnaireExpression =
-					source.multimode?.questionnaire.rules[key];
+				// Check the rule at the questionnaire level
+				const questionnaireExpression = questionnaireRules[key];
 				if (
 					questionnaireExpression &&
 					store.run(questionnaireExpression.value)
@@ -78,9 +93,8 @@ export function useMultimode(
 					return [key, true];
 				}
 
-				const leafExpression = source.multimode?.leaf.rules[key];
-
-				// There is no expression for the leaf
+				// Check the rule at the leaf level
+				const leafExpression = leafRules[key];
 				if (!leafExpression) {
 					return [key, false];
 				}
