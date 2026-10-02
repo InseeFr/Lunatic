@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- prevent crash on duration component when value is undefined (default case) [#1335](https://github.com/InseeFr/Lunatic/pull/1335)
+
+
 ## [3.13.4](https://github.com/InseeFr/Lunatic/releases/tag/3.13.4) - 2026-04-14
 
 ### Fixed
