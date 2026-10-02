@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `compileControls` on Roundabount or Loop, `computeIteration` now handle already computed `iterations` attribute
 - prevent crash on duration component when value is undefined (default case) [#1335](https://github.com/InseeFr/Lunatic/pull/1335)
 
 
