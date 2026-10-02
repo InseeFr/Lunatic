@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.13.5](https://github.com/InseeFr/Lunatic/releases/tag/3.13.5) - 2026-10-02
+
 ### Fixed
 
 - `compileControls` on Roundabount or Loop, `computeIteration` now handle already computed `iterations` attribute
