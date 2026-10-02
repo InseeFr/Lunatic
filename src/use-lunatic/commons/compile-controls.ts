@@ -115,7 +115,7 @@ function checkControls(
 /**
  * Figure out the number of iterations of a component.
  */
-function computeIterations(
+export function computeIterations(
 	component: InterpretedComponent | ComponentDefinition,
 	executeExpression: LunaticReducerState['executeExpression']
 ): number {
