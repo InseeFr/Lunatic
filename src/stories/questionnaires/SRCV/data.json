@@ -1,0 +1,116 @@
+{
+    "id": "5a90586e-a2a3-4853-aa3a-f8ebd0f6e86b",
+    "questionnaireId": "4552-CAPI",
+    "personalization": [],
+    "data": {
+        "EXTERNAL": {
+            "ADR": "1 RUE DU GRAND CHENE 79200 PARTHENAY",
+            "TROPIQUE": "1"
+        },
+        "COLLECTED": {
+            "RESIND": [],
+            "LIENS": {
+                "COLLECTED": [
+                    [
+                        null,
+                        "17",
+                        "17"
+                    ],
+                    [
+                        "17",
+                        null,
+                        "17"
+                    ],
+                    [
+                        "17",
+                        "17"
+                    ]
+                ]
+            },
+            "T_NHAB": {
+                "COLLECTED": 3
+            },
+            "T_SEXE": {
+                "COLLECTED": [
+                    "1",
+                    "1",
+                    "1"
+                ]
+            },
+            "T_STOC": {
+                "COLLECTED": "3"
+            },
+            "T_STOL": {
+                "COLLECTED": "2"
+            },
+            "T_LNAIS": {
+                "COLLECTED": [
+                    "1",
+                    "1",
+                    "1"
+                ]
+            },
+            "T_UNLOG": {
+                "COLLECTED": [
+                    "2",
+                    "2",
+                    "2"
+                ]
+            },
+            "DATE_ITW": {
+                "COLLECTED": "2027-03-01"
+            },
+            "T_PRENOM": {
+                "COLLECTED": [
+                    "Lucas",
+                    "Mathieu",
+                    "Antoine"
+                ]
+            },
+            "T_TYPLOG": {
+                "COLLECTED": "1"
+            },
+            "T_DEPNAIS": {
+                "COLLECTED": [
+                    "Seine-Saint-Denis",
+                    "Seine-et-Marne",
+                    "Seine-Maritime"
+                ]
+            },
+            "T_NATION1": {
+                "COLLECTED": [
+                    true,
+                    true,
+                    true
+                ]
+            },
+            "T_NPIECES": {
+                "COLLECTED": 5
+            },
+            "T_SURFACE": {
+                "COLLECTED": 98
+            },
+            "T_TYPMAIS": {
+                "COLLECTED": "2"
+            },
+            "T_DATENAIS": {
+                "COLLECTED": [
+                    "1998-02-19",
+                    "1997-06-03",
+                    "1999-06-14"
+                ]
+            },
+            "T_EMMENAGE": {
+                "COLLECTED": "2023"
+            },
+            "T_LOGPROPRI": {
+                "COLLECTED": "6"
+            }
+        }
+    },
+    "stateData": {
+        "state": "INIT",
+        "date": 1790865361892,
+        "currentPage": "1"
+    }
+}
