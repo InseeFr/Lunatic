@@ -12,11 +12,13 @@ describe('md-label', () => {
 		const obj = render(<MDLabel expression="This **is** a simple test" />);
 		return expect(obj.container).toMatchInlineSnapshot(`
 			<div>
-			  This 
-			  <strong>
-			    is
-			  </strong>
-			   a simple test
+			  <div>
+			    This 
+			    <strong>
+			      is
+			    </strong>
+			     a simple test
+			  </div>
 			</div>
 		`);
 	});
@@ -26,15 +28,17 @@ describe('md-label', () => {
 		);
 		return expect(obj.container).toMatchInlineSnapshot(`
 			<div>
-			  This 
-			  <strong>
-			    is
-			  </strong>
-			   a simple test
-			  <br />
-			  
+			  <div>
+			    This 
+			    <strong>
+			      is
+			    </strong>
+			     a simple test
+			    <br />
+			    
 
-			  on multiple line
+			    on multiple line
+			  </div>
 			</div>
 		`);
 	});
@@ -66,16 +70,18 @@ describe('md-label', () => {
 		const obj = render(<MDLabel expression={'**Demo** of a :dog:'} />);
 		return expect(obj.container).toMatchInlineSnapshot(`
 			<div>
-			  <strong>
-			    Demo
-			  </strong>
-			   of a 
-			  <span
-			    aria-label="dog emoji"
-			    role="img"
-			  >
-			    🐶
-			  </span>
+			  <div>
+			    <strong>
+			      Demo
+			    </strong>
+			     of a 
+			    <span
+			      aria-label="dog emoji"
+			      role="img"
+			    >
+			      🐶
+			    </span>
+			  </div>
 			</div>
 		`);
 	});
@@ -89,7 +95,7 @@ describe('md-label', () => {
 		const stringHtmlWithoutId = getStringHtmlWithoutId(obj.container);
 
 		return expect(stringHtmlWithoutId).toMatchInlineSnapshot(
-			`"<div>This is a <a href="https://inseefr.github.io/Lunatic/docs" target="_blank" rel="noopener noreferrer" >link</a></div>"`
+			`"<div><div>This is a <a href="https://inseefr.github.io/Lunatic/docs" target="_blank" rel="noopener noreferrer" >link</a></div></div>"`
 		);
 	});
 
@@ -120,7 +126,7 @@ describe('md-label', () => {
 			<MDLabel expression={'This is an [internal link](/docs)'} />
 		);
 		return expect(getStringHtmlWithoutId(obj.container)).toMatchInlineSnapshot(
-			`"<div>This is an <a href="/docs" >internal link</a></div>"`
+			`"<div><div>This is an <a href="/docs" >internal link</a></div></div>"`
 		);
 	});
 

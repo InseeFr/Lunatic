@@ -4,7 +4,7 @@ import { expectCollectedData, goToStory } from './utils';
 test.describe('RadioGroup', () => {
 	test(`Keyboard shortcut should select radio option`, async ({ page }) => {
 		await goToStory(page, 'components-radio--default');
-		await expect(page.getByText('oui')).toBeVisible();
+		await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
 
 		// select modality 1
 		await page.keyboard.type('1');
@@ -27,7 +27,7 @@ test.describe('RadioGroup', () => {
 		page,
 	}) => {
 		await goToStory(page, 'components-radio--with-detail');
-		await expect(page.getByText('oui')).toBeVisible();
+		await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
 
 		// no focus on a field, shorcut is enabled
 		await page.keyboard.type('3');
