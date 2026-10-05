@@ -52,10 +52,25 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
           destination_dir: ./storybook-${{ steps.branch-name.outputs.current_branch }}
+
+  build-docs-website:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: "pnpm"
       - name: build docs website
         working-directory: ./website/
         run: pnpm install --frozen-lockfile && pnpm run build
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

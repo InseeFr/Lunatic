@@ -1,20 +1,24 @@
 import { DurationFormat } from '../type';
 import { type DurationValue } from './durationUtils';
 
+const isNullOrUndefined = (value: any): value is null | undefined =>
+	value === null || value === undefined;
+
 /**
  * Convert a string into a duration
  *
  * ## Example
- * - "P12Y5M" => {year: 12, month: 5}
+ * - "P12Y5M" => {years: 12, months: 5}
  */
 export const getDurationFromValue = (
-	value: string | null,
+	value: string | null | undefined,
 	format: DurationFormat
 ): DurationValue => {
-	// Handle nulls value
-	if (value === null && format === 'PTnHnM') {
-		return { hours: null, minutes: null };
-	} else if (value === null) {
+	// Handle nulls or undefined value
+	if (isNullOrUndefined(value)) {
+		if (format === 'PTnHnM') {
+			return { hours: null, minutes: null };
+		}
 		return { years: null, months: null };
 	}
 

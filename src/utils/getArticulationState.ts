@@ -9,6 +9,7 @@ import { type ReactNode } from 'react';
 import { times } from './array';
 import { forceInt } from './number';
 import { isRoundaboutComponent } from '../use-lunatic/commons/component';
+import { castNumber } from './cast';
 
 export enum ArticulationState {
 	COMPLETED = 1,
@@ -70,13 +71,26 @@ export function getArticulationState(
 	source: LunaticSource & { articulation: Articulation },
 	data: LunaticData
 ): { items: Item[] } {
+	if (!source.articulation) {
+		return {
+			items: [],
+		};
+	}
+
 	const roundabout = findComponentById(
 		source.components,
 		source.articulation.source
 	);
+
+	if (!roundabout) {
+		return {
+			items: [],
+		};
+	}
+
 	const { variables } = reducerInitializer({ source, data });
-	const iterations = forceInt(
-		variables.run(roundabout?.iterations.value ?? '0')
+	const iterations = castNumber(
+		variables.run(roundabout.iterations.value ?? '0')
 	);
 
 	const rows = times(iterations, (k) =>
@@ -85,12 +99,6 @@ export function getArticulationState(
 			value: variables.run(item.value, { iteration: [k] }) as ReactNode,
 		}))
 	);
-
-	if (!roundabout) {
-		return {
-			items: [],
-		};
-	}
 
 	return {
 		items: rows.map((row, k) => ({

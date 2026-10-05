@@ -1,6 +1,10 @@
+packages:
+  - '.'
+  - 'website'
 allowBuilds:
   '@playwright/browser-chromium': false
   '@swc/core': true
+  core-js: true
   data-forge: true
   esbuild: true
 minimumReleaseAge: 0
