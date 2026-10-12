@@ -59,6 +59,7 @@ export type LunaticError = Pick<
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
 export type LunaticExpression = VTLExpression | VTLScalarExpression;
+export type ActiveFilterType = 'ALL' | 'EXTERNAL' | 'NONE';
 
 /**
  * Page numerotation.
@@ -142,22 +143,22 @@ export type LunaticReducerState = {
 	pager: LunaticPager;
 	pages: {
 		[key: number | string]:
-			| {
-					components: LunaticSource['components'];
-					isLoop: false;
-					iterations?: undefined;
-					loopDependencies?: undefined;
-					subPages?: undefined;
-			  }
-			| {
-					components: LunaticSource['components'];
-					isLoop: true;
-					iterations: VTLScalarExpression;
-					/** Variables affecting this loop. */
-					loopDependencies: string[];
-					/** List of child pages (ex: ['20.1', '20.2'] */
-					subPages: string[];
-			  };
+		| {
+			components: LunaticSource['components'];
+			isLoop: false;
+			iterations?: undefined;
+			loopDependencies?: undefined;
+			subPages?: undefined;
+		}
+		| {
+			components: LunaticSource['components'];
+			isLoop: true;
+			iterations: VTLScalarExpression;
+			/** Variables affecting this loop. */
+			loopDependencies: string[];
+			/** List of child pages (ex: ['20.1', '20.2'] */
+			subPages: string[];
+		};
 	};
 	/** Run an expression using the value from the state. */
 	executeExpression: <T = unknown>(
@@ -180,6 +181,7 @@ export type LunaticReducerState = {
 	options: {
 		disableFilters?: boolean;
 		disableFiltersDescription?: boolean;
+		activeFilters?: ActiveFilterType;
 	};
 };
 
@@ -188,6 +190,7 @@ export type LunaticOptions = {
 	/**
 	 * Ignore filters.
 	 * @default false
+	 * @deprecated use activeFilters instead 
 	 */
 	disableFilters?: boolean;
 
@@ -196,6 +199,12 @@ export type LunaticOptions = {
 	 * @default true
 	 */
 	disableFiltersDescription?: boolean;
+
+	/**
+	 * Decides whether or not filters are active.
+	 * @default 'ALL'
+	 */
+	activeFilters?: ActiveFilterType;
 
 	/** Enable VTL and Markdown support. */
 	features?: ('MD' | 'VTL')[];
