@@ -1,4 +1,5 @@
 import type {
+	ActiveFilterType,
 	LunaticChangesHandler,
 	LunaticComponentDefinition,
 	LunaticOptions,
@@ -18,6 +19,7 @@ import { VTLScalarExpression } from '../../../type.source';
 export type FillComponentArgs = {
 	disableFilters?: boolean;
 	disableFiltersDescription?: true;
+	activeFilters?: ActiveFilterType;
 	handleChanges: LunaticChangesHandler;
 	executeExpression: LunaticReducerState['executeExpression'];
 	goToPage: LunaticState['goToPage'];
@@ -128,11 +130,11 @@ export function fillComponents(
 			(filledComponent.conditionFilter ?? true)
 				? filledComponent
 				: // Replace the component by an empty text component
-					({
-						...filledComponent,
-						label: '',
-						componentType: 'Text',
-					} as LunaticComponentProps)
+				({
+					...filledComponent,
+					label: '',
+					componentType: 'Text',
+				} as LunaticComponentProps)
 		);
 	}
 

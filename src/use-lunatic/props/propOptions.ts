@@ -79,10 +79,10 @@ export function computeOptionsFromComponent(
 				},
 				onDetailChange: response.detail?.response
 					? (v: string) => {
-							handleChanges([
-								{ name: response.detail!.response.name, value: v },
-							]);
-						}
+						handleChanges([
+							{ name: response.detail!.response.name, value: v },
+						]);
+					}
 					: undefined,
 				shouldBeFiltered:
 					shouldParentBeFiltered ||
@@ -156,8 +156,8 @@ export function computeOptionsFromComponent(
 			onDetailChange:
 				'detail' in option && option.detail
 					? (value: string) => {
-							handleChanges([{ name: option.detail!.response.name, value }]);
-						}
+						handleChanges([{ name: option.detail!.response.name, value }]);
+					}
 					: null,
 			shouldBeFiltered:
 				shouldParentBeFiltered ||
