@@ -202,6 +202,9 @@ export type LunaticOptions = {
 
 	/**
 	 * Decides whether or not filters are active.
+	 * - "ALL": Keep every filters
+	 * - "EXTERNAL": Keep filter only if it is based on external variables only
+	 * - "NONE": Ignore every filters
 	 * @default 'ALL'
 	 */
 	activeFilters?: ActiveFilterType;

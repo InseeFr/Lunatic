@@ -21,7 +21,7 @@ import { Logger } from '../../utils/logger';
 import { OrchestratorOverview } from './OrchestratorOverview';
 import { SchemaValidator } from './SchemaValidator';
 import { OrchestratorData } from './OrchestratorData';
-import type { PageTag } from '../../use-lunatic/type';
+import type { ActiveFilterType, PageTag } from '../../use-lunatic/type';
 import type { IndexEntry } from '../../utils/search/SearchInterface';
 import { OrchestratorSidebar } from './OrchestratorSidebar';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -50,6 +50,7 @@ type Props = {
 	autoSuggesterLoading: boolean;
 	disableFiltersDescription?: boolean;
 	disableFilters?: boolean;
+	activeFilters?: ActiveFilterType;
 	management?: boolean;
 	shortcut?: boolean;
 	activeControls?: boolean;
@@ -68,6 +69,7 @@ function OrchestratorForStories(props: Readonly<Props>) {
 		data,
 		disableFilters,
 		disableFiltersDescription,
+		activeFilters,
 		management,
 		shortcut,
 		activeControls,
@@ -109,6 +111,7 @@ function OrchestratorForStories(props: Readonly<Props>) {
 		initialPage,
 		disableFilters,
 		disableFiltersDescription,
+		activeFilters,
 		onChange: onLogChange,
 		getReferentiel,
 		management,

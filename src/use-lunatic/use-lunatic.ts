@@ -91,7 +91,6 @@ export function useLunatic(
 	const {
 		disableFilters,
 		disableFiltersDescription,
-		activeFilters,
 		management,
 		missing,
 		missingStrategy,
