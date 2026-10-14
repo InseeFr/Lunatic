@@ -53,7 +53,7 @@ export const None: OrchestratorStory = {
 	},
 };
 
-export const LegacyDisableFilters: OrchestratorStory = {
+export const OldDisableFilter: OrchestratorStory = {
 	args: {
 		source,
 		disableFilters: true,
