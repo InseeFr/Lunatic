@@ -1,3 +1,4 @@
+import { ComponentDefinitionWithPage } from '../../type.source';
 import type {
 	ActiveFilterType,
 	LunaticExpression,
@@ -17,6 +18,7 @@ export function shouldKeepFilter(
 	if (!filter) return true;
 	if (activeFilters === 'ALL') return true;
 	if (activeFilters === 'NONE') return false;
+	// For external active filter we have to check dependencies and remove any filter based on collected or calculated variables
 	const dependencies = filter.variablesDependencies;
 	return Boolean(
 		dependencies &&
@@ -36,8 +38,8 @@ export function removeConditionFilters(
 		return source;
 	}
 	const removeFilterIfChanged = (
-		elements: any[],
-		cleanFilterFunction: (element: any) => any
+		elements: ComponentDefinitionWithPage[],
+		cleanFilterFunction: (element: ComponentDefinitionWithPage) => ComponentDefinitionWithPage
 	): any[] => {
 		const cleaned = elements.map((element) => cleanFilterFunction(element));
 		return cleaned.some(
@@ -48,16 +50,19 @@ export function removeConditionFilters(
 	};
 
 	// Element that can have a conditon filter 
-	const cleanSingleElement = (element: any): any => {
-		if (shouldKeepFilter(element?.conditionFilter, activeFilters)) {
-			return element;
+	const cleanSingleElement = (element: ComponentDefinitionWithPage): any => {
+
+		if ('conditionFilter' in element && !shouldKeepFilter(element?.conditionFilter, activeFilters)) {
+			const rest = { ...element };
+			delete rest.conditionFilter;
+			return rest;
 		}
-		const rest = { ...element };
-		delete rest.conditionFilter;
-		return rest;
+
+		return element;
 	};
-	const cleanComponents = (component: any): any => {
+	const cleanComponents = (component: ComponentDefinitionWithPage): ComponentDefinitionWithPage => {
 		let current = cleanSingleElement(component);
+		console.log('component', component)
 		if (Array.isArray(current.components)) {
 			const components = removeFilterIfChanged(current.components, cleanComponents);
 			if (components !== current.components) {

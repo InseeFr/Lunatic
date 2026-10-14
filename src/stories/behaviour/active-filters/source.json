@@ -183,7 +183,7 @@
 					"id": "declaration-age",
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"TDéopend de NAME\""
+						"value": "\"Dépend de NAME\""
 					},
 					"position": "AFTER_QUESTION_TEXT",
 					"declarationType": "HELP"
