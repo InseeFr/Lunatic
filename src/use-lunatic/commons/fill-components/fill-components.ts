@@ -17,7 +17,6 @@ import { LunaticLogger } from '../../logger/type';
 import { VTLScalarExpression } from '../../../type.source';
 
 export type FillComponentArgs = {
-	disableFilters?: boolean;
 	disableFiltersDescription?: true;
 	activeFilters?: ActiveFilterType;
 	handleChanges: LunaticChangesHandler;
@@ -88,7 +87,7 @@ export const fillComponent = (
 			pagerIteration: state.pager.iteration,
 			value,
 			logger: state.logger,
-			disableFilters: state.disableFilters,
+			activeFilters: state.activeFilters,
 			shouldParentBeFiltered: shouldBeFiltered,
 		}),
 		...getComponentTypeProps(interpretedProps, state),
@@ -120,7 +119,7 @@ export function fillComponents(
 		];
 	});
 
-	if (state.disableFilters) {
+	if (state.activeFilters === 'NONE') {
 		return filledComponents;
 	}
 

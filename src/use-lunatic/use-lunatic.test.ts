@@ -240,8 +240,8 @@ describe('use-lunatic()', () => {
 		});
 	});
 
-	describe('disable filters', () => {
-		const lunaticConfigurationWithoutDisableFilters = {
+	describe('active filters', () => {
+		const lunaticConfiguration = {
 			management: false,
 			activeControls: false,
 			initialPage: '1' as PageTag,
@@ -258,29 +258,29 @@ describe('use-lunatic()', () => {
 				useLunatic(
 					sourceLogement,
 					undefined,
-					lunaticConfigurationWithoutDisableFilters
+					lunaticConfiguration
 				)
 			);
 			act(() => result.current.goToPage({ page: '3' }));
 			const currentPage = result.current.pageTag;
 			expect(currentPage).not.toBe('3');
 		});
-		it('should filter out some components when false', function () {
+		it('should filter out some components when activeFilters is ALL', function () {
 			const { result } = renderHook(() =>
 				useLunatic(sourceLogement, undefined, {
-					...lunaticConfigurationWithoutDisableFilters,
-					disableFilters: false,
+					...lunaticConfiguration,
+					activeFilters: 'ALL',
 				})
 			);
 			act(() => result.current.goToPage({ page: '3' }));
 			const currentPage = result.current.pageTag;
 			expect(currentPage).not.toBe('3');
 		});
-		it('should not filter any component when true', function () {
+		it('should not filter any component when activeFilters is NONE', function () {
 			const { result } = renderHook(() =>
 				useLunatic(sourceLogement, undefined, {
-					...lunaticConfigurationWithoutDisableFilters,
-					disableFilters: true,
+					...lunaticConfiguration,
+					activeFilters: 'NONE',
 				})
 			);
 			act(() => result.current.goToPage({ page: '3' }));

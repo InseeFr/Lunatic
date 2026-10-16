@@ -36,7 +36,10 @@ const baseState = {
 	overview: [],
 	updateBindings: () => { },
 	executeExpression: <T,>() => null as T,
-	options: { disableFilters: false, disableFiltersDescription: true },
+	options: {
+		activeFilters: 'ALL',
+		disableFiltersDescription: true,
+	},
 } satisfies LunaticReducerState;
 
 const onChange = { current: () => { } };
@@ -48,7 +51,6 @@ export function reducerInitializer({
 	initialPage = '1',
 	lastReachedPage = undefined,
 	withOverview = false,
-	disableFilters = false,
 	disableFiltersDescription = true,
 	activeFilters,
 	getReferentiel,
@@ -61,7 +63,6 @@ export function reducerInitializer({
 	initialPage?: LunaticOptions['initialPage'];
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
-	disableFilters?: LunaticOptions['disableFilters'];
 	disableFiltersDescription?: LunaticOptions['disableFiltersDescription'];
 	activeFilters?: LunaticOptions['activeFilters'];
 	getReferentiel?: LunaticOptions['getReferentiel'];
@@ -73,10 +74,8 @@ export function reducerInitializer({
 			? removeConditionFilters(source, activeFilters)
 			: source;
 
-	// Cleaning is disabled if not all filters are active (or old disableFilters prop)
-	const disableCleaning =
-		disableFilters ||
-		(activeFilters !== undefined && activeFilters !== 'ALL');
+	// Cleaning is disabled if not all filters are active.
+	const disableCleaning = activeFilters !== undefined && activeFilters !== 'ALL';
 	const variables = LunaticVariablesStore.makeFromSource(filteredSource, data, {
 		autoCommit: filteredSource.pagination !== 'question',
 		changeHandler: onVariableChange,
@@ -166,7 +165,10 @@ export function reducerInitializer({
 		overview: withOverview ? buildOverview(source) : [],
 		updateBindings,
 		executeExpression,
-		options: { disableFilters, disableFiltersDescription },
+		options: {
+			activeFilters: activeFilters ?? 'ALL',
+			disableFiltersDescription,
+		},
 	});
 }
 

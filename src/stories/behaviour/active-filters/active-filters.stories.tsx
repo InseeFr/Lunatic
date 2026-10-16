@@ -52,11 +52,3 @@ export const None: OrchestratorStory = {
 		data: externalData('NON'),
 	},
 };
-
-export const OldDisableFilter: OrchestratorStory = {
-	args: {
-		source,
-		disableFilters: true,
-		data: externalData('NON'),
-	},
-};

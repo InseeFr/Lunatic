@@ -49,7 +49,6 @@ type Props = {
 	// Preload suggester data at the start of the form
 	autoSuggesterLoading: boolean;
 	disableFiltersDescription?: boolean;
-	disableFilters?: boolean;
 	activeFilters?: ActiveFilterType;
 	management?: boolean;
 	shortcut?: boolean;
@@ -67,7 +66,6 @@ function OrchestratorForStories(props: Readonly<Props>) {
 	const {
 		source,
 		data,
-		disableFilters,
 		disableFiltersDescription,
 		activeFilters,
 		management,
@@ -109,7 +107,6 @@ function OrchestratorForStories(props: Readonly<Props>) {
 		getMultimode,
 	} = useLunatic(source, data, {
 		initialPage,
-		disableFilters,
 		disableFiltersDescription,
 		activeFilters,
 		onChange: onLogChange,
@@ -310,7 +307,6 @@ export const OrchestratorMeta: Meta<typeof Orchestrator> = {
 		extraTabs: { table: { disable: true } },
 	},
 	args: {
-		disableFilters: false,
 		disableFiltersDescription: false,
 		management: false,
 		shortcut: false,
