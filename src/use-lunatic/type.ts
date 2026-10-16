@@ -59,6 +59,7 @@ export type LunaticError = Pick<
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
 export type LunaticExpression = VTLExpression | VTLScalarExpression;
+export type ActiveFilter = 'ALL' | 'EXTERNAL' | 'NONE';
 
 /**
  * Page numerotation.
@@ -142,22 +143,22 @@ export type LunaticReducerState = {
 	pager: LunaticPager;
 	pages: {
 		[key: number | string]:
-			| {
-					components: LunaticSource['components'];
-					isLoop: false;
-					iterations?: undefined;
-					loopDependencies?: undefined;
-					subPages?: undefined;
-			  }
-			| {
-					components: LunaticSource['components'];
-					isLoop: true;
-					iterations: VTLScalarExpression;
-					/** Variables affecting this loop. */
-					loopDependencies: string[];
-					/** List of child pages (ex: ['20.1', '20.2'] */
-					subPages: string[];
-			  };
+		| {
+			components: LunaticSource['components'];
+			isLoop: false;
+			iterations?: undefined;
+			loopDependencies?: undefined;
+			subPages?: undefined;
+		}
+		| {
+			components: LunaticSource['components'];
+			isLoop: true;
+			iterations: VTLScalarExpression;
+			/** Variables affecting this loop. */
+			loopDependencies: string[];
+			/** List of child pages (ex: ['20.1', '20.2'] */
+			subPages: string[];
+		};
 	};
 	/** Run an expression using the value from the state. */
 	executeExpression: <T = unknown>(
@@ -178,24 +179,27 @@ export type LunaticReducerState = {
 		options: { iteration?: number[] }
 	) => unknown;
 	options: {
-		disableFilters?: boolean;
 		disableFiltersDescription?: boolean;
+		activeFilters?: ActiveFilter;
 	};
 };
 
 /** Specific behaviour options defined in the {@link useLunatic} hook. */
 export type LunaticOptions = {
 	/**
-	 * Ignore filters.
-	 * @default false
-	 */
-	disableFilters?: boolean;
-
-	/**
 	 * Disable filters description.
 	 * @default true
 	 */
 	disableFiltersDescription?: boolean;
+
+	/**
+	 * Decides whether or not filters are active.
+	 * - "ALL": Keep every filters
+	 * - "EXTERNAL": Keep filter only if it is based on external variables only
+	 * - "NONE": Ignore every filters
+	 * @default 'ALL'
+	 */
+	activeFilters?: ActiveFilter;
 
 	/** Enable VTL and Markdown support. */
 	features?: ('MD' | 'VTL')[];

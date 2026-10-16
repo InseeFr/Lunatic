@@ -1,4 +1,5 @@
 import type {
+	ActiveFilter,
 	LunaticChangesHandler,
 	LunaticComponentDefinition,
 	LunaticOptions,
@@ -16,8 +17,8 @@ import { LunaticLogger } from '../../logger/type';
 import { VTLScalarExpression } from '../../../type.source';
 
 export type FillComponentArgs = {
-	disableFilters?: boolean;
 	disableFiltersDescription?: true;
+	activeFilters?: ActiveFilter;
 	handleChanges: LunaticChangesHandler;
 	executeExpression: LunaticReducerState['executeExpression'];
 	goToPage: LunaticState['goToPage'];
@@ -86,7 +87,6 @@ export const fillComponent = (
 			pagerIteration: state.pager.iteration,
 			value,
 			logger: state.logger,
-			disableFilters: state.disableFilters,
 			shouldParentBeFiltered: shouldBeFiltered,
 		}),
 		...getComponentTypeProps(interpretedProps, state),
@@ -118,7 +118,7 @@ export function fillComponents(
 		];
 	});
 
-	if (state.disableFilters) {
+	if (state.activeFilters === 'NONE') {
 		return filledComponents;
 	}
 
@@ -128,11 +128,11 @@ export function fillComponents(
 			(filledComponent.conditionFilter ?? true)
 				? filledComponent
 				: // Replace the component by an empty text component
-					({
-						...filledComponent,
-						label: '',
-						componentType: 'Text',
-					} as LunaticComponentProps)
+				({
+					...filledComponent,
+					label: '',
+					componentType: 'Text',
+				} as LunaticComponentProps)
 		);
 	}
 

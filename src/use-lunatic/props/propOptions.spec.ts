@@ -5,7 +5,9 @@ import type { DeepTranslateExpression } from '../commons/fill-components/fill-co
 import type {
 	LunaticChangesHandler,
 	LunaticComponentDefinition,
+	LunaticSource,
 } from '../type';
+import { removeConditionFilters } from '../commons/remove-condition-filters';
 
 describe('computeOptionsFromComponent', () => {
 	let variables: LunaticVariablesStore;
@@ -318,7 +320,7 @@ describe('computeOptionsFromComponent', () => {
 			expect(options).toHaveLength(1);
 			expect(options[0].shouldBeFiltered).toBe(false);
 		});
-		it('should not filter any response (CheckboxGroup) when disableFilters is true', () => {
+		it('should keep responses after NONE filters have been removed during initialization', () => {
 			const definition = {
 				...checkboxGroupDefinition,
 				responses: [
@@ -331,26 +333,27 @@ describe('computeOptionsFromComponent', () => {
 				],
 			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
 
-			// ensure interpreted expression is false
-			vi.spyOn(variables, 'run').mockImplementation(() => {
-				return false;
-			});
+			const cleanedDefinition = removeConditionFilters(
+				{
+					variables: [],
+					components: [definition as any],
+				} as LunaticSource,
+				'NONE'
+			)
+				.components[0] as unknown as DeepTranslateExpression<LunaticComponentDefinition>;
 
-			const options = computeOptionsFromComponent(definition, {
+			const options = computeOptionsFromComponent(cleanedDefinition, {
 				variables,
 				handleChanges: mockChange,
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
 			});
 
-			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
-			// the option should would have been filtered if we did not disable filters
-			expect(options[0].shouldBeFiltered).toBe(true);
+			expect(options[0].shouldBeFiltered).toBe(false);
 		});
-		it('should not filter any option (Radio) when disableFilters is true', () => {
+		it('should keep options after NONE filters have been removed during initialization', () => {
 			const definition = {
 				...radioDefinition,
 				options: [
@@ -362,79 +365,99 @@ describe('computeOptionsFromComponent', () => {
 				],
 			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
 
-			// ensure interpreted expression is false
-			vi.spyOn(variables, 'run').mockImplementation(() => {
-				return false;
-			});
+			const cleanedDefinition = removeConditionFilters(
+				{
+					variables: [],
+					components: [definition as any],
+				} as LunaticSource,
+				'NONE'
+			)
+				.components[0] as unknown as DeepTranslateExpression<LunaticComponentDefinition>;
 
-			const options = computeOptionsFromComponent(definition, {
+			const options = computeOptionsFromComponent(cleanedDefinition, {
 				variables,
 				handleChanges: mockChange,
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
 			});
 
-			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
-			// the option should would have been filtered if we did not disable filters
-			expect(options[0].shouldBeFiltered).toBe(true);
+			expect(options[0].shouldBeFiltered).toBe(false);
 		});
-		it('should set the response (CheckboxGroup) shouldBeFiltered=true when the parent component should be filtered', () => {
-			const definition = {
-				...checkboxGroupDefinition,
-				responses: [
-					{
-						label: 'Option 1',
-						response: { name: 'O1' },
-						id: 'id1',
-						conditionFilter: { type: 'VTL', value: 'expression' },
-					},
-				],
-			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
 
-			const options = computeOptionsFromComponent(definition, {
-				variables,
-				handleChanges: mockChange,
-				pagerIteration: undefined,
-				value: undefined,
-				logger: mockLogger,
-				disableFilters: true,
-				shouldParentBeFiltered: true,
-			});
-
-			// Ensure the option is not filtered
-			expect(options).toHaveLength(1);
-			// the option would have been filtered if we did not disable filters because its parent would
-			expect(options[0].shouldBeFiltered).toBe(true);
-		});
-		it('should set the option (Radio) shouldBeFiltered=true when the parent component should be filtered', () => {
+		it('should evaluate the external-only filters retained during initialization', () => {
 			const definition = {
 				...radioDefinition,
 				options: [
 					{
-						label: 'Option 1',
-						value: 'id1',
-						conditionFilter: { type: 'VTL', value: 'expression' },
+						label: 'External option',
+						value: 'external',
+						conditionFilter: {
+							type: 'VTL',
+							value: 'externalFilter',
+							variablesDependencies: {
+								EXTERNAL: ['CADRE'],
+								COLLECTED: [],
+								CALCULATED: [],
+							},
+						},
+					},
+					{
+						label: 'Collected option',
+						value: 'collected',
+						conditionFilter: {
+							type: 'VTL',
+							value: 'collectedFilter',
+							variablesDependencies: {
+								EXTERNAL: [],
+								COLLECTED: ['NAME'],
+								CALCULATED: [],
+							},
+						},
 					},
 				],
 			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
 
-			const options = computeOptionsFromComponent(definition, {
+			const cleanedDefinition = removeConditionFilters(
+				{
+					variables: [],
+					components: [definition as any],
+				} as LunaticSource,
+				'EXTERNAL'
+			)
+				.components[0] as unknown as DeepTranslateExpression<LunaticComponentDefinition>;
+			expect((cleanedDefinition as any).options).toEqual([
+				{
+					label: 'External option',
+					value: 'external',
+					conditionFilter: {
+						type: 'VTL',
+						value: 'externalFilter',
+						variablesDependencies: {
+							EXTERNAL: ['CADRE'],
+							COLLECTED: [],
+							CALCULATED: [],
+						},
+					},
+				},
+				{ label: 'Collected option', value: 'collected' },
+			]);
+			vi.spyOn(variables, 'run').mockImplementation(
+				(expression) => expression !== 'externalFilter'
+			);
+
+			const options = computeOptionsFromComponent(cleanedDefinition, {
 				variables,
 				handleChanges: mockChange,
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
-				shouldParentBeFiltered: true,
 			});
 
-			// Ensure the option is not filtered
-			expect(options).toHaveLength(1);
-			// the option would have been filtered if we did not disable filters because its parent would
-			expect(options[0].shouldBeFiltered).toBe(true);
+			expect(
+				(options as InterpretedOption[]).map((option) => option.value)
+			).toEqual(['collected']);
 		});
 	});
 

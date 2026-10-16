@@ -390,7 +390,16 @@ export type VTLExpression = {
 	 * Variables used in the expression
 	 */
 	bindingDependencies?: string[];
+	variablesDependencies?: VariablesDependencies;
 	type: 'VTL' | 'VTL|MD' | 'TXT';
+};
+/**
+ * Variables grouped by type (collected, external and calculated)
+ */
+export type VariablesDependencies = {
+	COLLECTED?: string[];
+	EXTERNAL?: string[];
+	CALCULATED?: string[];
 };
 export type ComponentDefinitionBase = {
 	label?: VTLExpression;
@@ -428,6 +437,7 @@ export type VTLScalarExpression = {
 	 * Variables used in the expression
 	 */
 	bindingDependencies?: string[];
+	variablesDependencies?: VariablesDependencies;
 	type: 'VTL';
 	shapeFrom?: string;
 };

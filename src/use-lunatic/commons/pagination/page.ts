@@ -94,7 +94,7 @@ export function isPageEmpty(state: LunaticReducerState): boolean {
 	const components = getComponentsFromState(state, true);
 
 	const visibleComponents = components.filter((component) => {
-		if (options.disableFilters) {
+		if (options.activeFilters === 'NONE') {
 			return true;
 		}
 

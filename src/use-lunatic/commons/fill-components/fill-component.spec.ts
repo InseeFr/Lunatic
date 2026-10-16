@@ -378,7 +378,7 @@ describe('fillComponents', () => {
 		expect(filledComponents[1].componentType).toBe('Input');
 	});
 
-	it('should filter out components with conditionFilter=false when disableFilters is false or undefined', () => {
+	it('should filter out components with conditionFilter=false by default', () => {
 		const components = [
 			{
 				id: 'input1',
@@ -407,7 +407,6 @@ describe('fillComponents', () => {
 		const mockState = {
 			...defaultMockState,
 			variables: mockVariables,
-			disableFilters: false,
 		};
 
 		const filledComponents = fillComponents(
@@ -418,7 +417,7 @@ describe('fillComponents', () => {
 		expect(filledComponents).toHaveLength(0);
 	});
 
-	it('should not filter out components with conditionFilter=false when disableFilters is true', () => {
+	it('should not filter out components with conditionFilter=false when activeFilters is NONE', () => {
 		const components = [
 			{
 				id: 'input1',
@@ -447,7 +446,7 @@ describe('fillComponents', () => {
 		const mockState = {
 			...defaultMockState,
 			variables: mockVariables,
-			disableFilters: true,
+			activeFilters: 'NONE',
 		};
 
 		const filledComponents = fillComponents(
@@ -527,7 +526,7 @@ describe('fillComponents', () => {
 		expect(radio.options[1].label).toBe('"No"');
 	});
 
-	it('should never transform components into Text when disableFilters is true', () => {
+	it('should never transform components into Text when activeFilters is NONE', () => {
 		const components = [
 			{
 				id: 'input1',
@@ -562,7 +561,7 @@ describe('fillComponents', () => {
 
 		const mockState = {
 			...defaultMockState,
-			disableFilters: true,
+			activeFilters: 'NONE',
 			variables: mockVariables,
 		};
 
@@ -627,7 +626,7 @@ describe('fillComponents', () => {
 
 		const mockState = {
 			...defaultMockState,
-			disableFilters: true,
+			activeFilters: 'NONE',
 			variables: mockVariables,
 		};
 
@@ -681,7 +680,7 @@ describe('fillComponents', () => {
 
 		const mockState = {
 			...defaultMockState,
-			disableFilters: true,
+			activeFilters: 'NONE',
 			variables: mockVariables,
 		};
 
@@ -739,7 +738,6 @@ describe('fillComponents', () => {
 
 		const mockState = {
 			...defaultMockState,
-			disableFilters: true,
 			variables: mockVariables,
 		};
 

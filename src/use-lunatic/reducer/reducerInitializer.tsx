@@ -6,6 +6,7 @@ import type {
 } from '../type';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { checkLoops, createMapPages } from '../commons';
+import { removeConditionFilters } from '../commons/remove-condition-filters';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
 import { MD, VTL } from '../../utils/constants';
 import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
@@ -33,12 +34,15 @@ const baseState = {
 	isInLoop: false,
 	updatedAt: Date.now(),
 	overview: [],
-	updateBindings: () => {},
+	updateBindings: () => { },
 	executeExpression: <T,>() => null as T,
-	options: { disableFilters: false, disableFiltersDescription: true },
+	options: {
+		activeFilters: 'ALL',
+		disableFiltersDescription: true,
+	},
 } satisfies LunaticReducerState;
 
-const onChange = { current: () => {} };
+const onChange = { current: () => { } };
 
 export function reducerInitializer({
 	source,
@@ -47,8 +51,8 @@ export function reducerInitializer({
 	initialPage = '1',
 	lastReachedPage = undefined,
 	withOverview = false,
-	disableFilters = false,
 	disableFiltersDescription = true,
+	activeFilters,
 	getReferentiel,
 	onVariableChange = onChange,
 	logger = console.error,
@@ -59,18 +63,25 @@ export function reducerInitializer({
 	initialPage?: LunaticOptions['initialPage'];
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
-	disableFilters?: LunaticOptions['disableFilters'];
 	disableFiltersDescription?: LunaticOptions['disableFiltersDescription'];
+	activeFilters?: LunaticOptions['activeFilters'];
 	getReferentiel?: LunaticOptions['getReferentiel'];
 	onVariableChange?: RefObject<LunaticOptions['onVariableChange']>;
 	logger?: LunaticLogger;
 }): LunaticReducerState {
-	const variables = LunaticVariablesStore.makeFromSource(source, data, {
-		autoCommit: source.pagination !== 'question',
+	const filteredSource =
+		activeFilters && activeFilters !== 'ALL'
+			? removeConditionFilters(source, activeFilters)
+			: source;
+
+	// Cleaning is disabled if not all filters are active.
+	const disableCleaning = activeFilters !== undefined && activeFilters !== 'ALL';
+	const variables = LunaticVariablesStore.makeFromSource(filteredSource, data, {
+		autoCommit: filteredSource.pagination !== 'question',
 		changeHandler: onVariableChange,
-		disableCleaning: disableFilters,
+		disableCleaning: disableCleaning,
 	});
-	const pages = checkLoops(createMapPages(source));
+	const pages = checkLoops(createMapPages(filteredSource));
 
 	if (!source || !data) {
 		return baseState;
@@ -151,10 +162,13 @@ export function reducerInitializer({
 		pages,
 		isInLoop: pager.subPage !== undefined,
 		updatedAt: Date.now(),
-		overview: withOverview ? buildOverview(source) : [],
+		overview: withOverview ? buildOverview(filteredSource) : [],
 		updateBindings,
 		executeExpression,
-		options: { disableFilters, disableFiltersDescription },
+		options: {
+			activeFilters: activeFilters ?? 'ALL',
+			disableFiltersDescription,
+		},
 	});
 }
 
