@@ -5,7 +5,16 @@ export type SearchInfo = LunaticSuggester;
 export type IndexEntry = {
 	id: string;
 	label: string;
-	[k: string]: string;
+	/**
+	 * Score computed by MiniSearch algo
+	 */
+	score: number;
+
+	/**
+	 * Score compute by melauto algo
+	 */
+	melautoScore: number;
+	[k: string]: any;
 };
 
 export interface SearchInterface<T extends IndexEntry> {

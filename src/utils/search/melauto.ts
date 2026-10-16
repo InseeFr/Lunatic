@@ -7,24 +7,29 @@
  *    (e.g., "0111Z" will appear before "0115Z" when both match "011")
  *    Numeric awareness means "item2" will come before "item10" (not "item10" before "item2")
  */
+export type WithMelautoScore<T> = T & { melautoScore: number };
+
 export function applyMelauto<T extends { id: string; label?: string }>(
 	query: string,
 	data: T[]
-): T[] {
-	return data.sort((a, b) => {
-		const sa = melautoScore(a.label ?? a.id, query);
-		const sb = melautoScore(b.label ?? b.id, query);
-		const diff = sb - sa;
-		if (diff !== 0) return diff;
+): WithMelautoScore<T>[] {
+	return data
+		.map((item) => ({
+			...item,
+			melautoScore: melautoScore(item.label ?? item.id, query),
+		}))
+		.sort((a, b) => {
+			const diff = b.melautoScore - a.melautoScore;
+			if (diff !== 0) return diff;
 
-		// If scores are equals: alphanumeric sort with numeric awareness
-		const ta = (a.label ?? a.id).toString();
-		const tb = (b.label ?? b.id).toString();
-		return ta.localeCompare(tb, undefined, {
-			numeric: true,
-			sensitivity: 'base',
+			// if equal -> sort alphabetically with numeric awareness
+			const ta = (a.label ?? a.id).toString();
+			const tb = (b.label ?? b.id).toString();
+			return ta.localeCompare(tb, undefined, {
+				numeric: true,
+				sensitivity: 'base',
+			});
 		});
-	});
 }
 
 /**

@@ -6,6 +6,8 @@ export type ComboboxOptionType = {
 	label?: ReactNode;
 	value: string;
 	search?: string;
+	score?: number;
+	melautoScore?: number;
 };
 
 export type ComboboxSelectionProps = {
