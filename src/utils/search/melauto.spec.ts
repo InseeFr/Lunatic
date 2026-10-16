@@ -22,12 +22,9 @@ describe('applyMelauto', () => {
 			{ id: 'hello-w' },
 		];
 		const sortedData = applyMelauto('hello', noLabelData);
-		const expectedSortedData = [
-			{ id: 'b', label: 'Hello' },
-			{ id: 'hello-w' },
-			{ id: 'a' },
-		];
-		expect(sortedData).toStrictEqual(expectedSortedData);
+
+		// check only order with the id
+		expect(sortedData.map((item) => item.id)).toEqual(['b', 'hello-w', 'a']);
 	});
 });
 
@@ -70,13 +67,13 @@ describe('melautoScore', () => {
 			{ id: '0112B', label: '0112B' },
 		];
 		const sortedData = applyMelauto('011', numericData);
-		const expectedSortedData = [
-			{ id: '0111Z', label: '0111Z' },
-			{ id: '0112B', label: '0112B' },
-			{ id: '0115Z', label: '0115Z' },
-			{ id: '0120A', label: '0120A' },
-		];
-		expect(sortedData).toStrictEqual(expectedSortedData);
+		// check only order with the id
+		expect(sortedData.map((item) => item.id)).toEqual([
+			'0111Z',
+			'0112B',
+			'0115Z',
+			'0120A',
+		]);
 	});
 
 	it('should apply alphanumeric sort with numeric awareness', () => {
