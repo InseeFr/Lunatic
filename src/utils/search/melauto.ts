@@ -7,12 +7,14 @@
  *    (e.g., "0111Z" will appear before "0115Z" when both match "011")
  *    Numeric awareness means "item2" will come before "item10" (not "item10" before "item2")
  */
-export type WithMelautoScore<T> = T & { melautoScore: number };
+export type WithMelautoScore<T> = T & { melautoScore?: number };
 
 export function applyMelauto<T extends { id: string; label?: string }>(
 	query: string,
 	data: T[]
 ): WithMelautoScore<T>[] {
+	// no query -> no sort
+	if (query === undefined || query === '') return data;
 	return data
 		.map((item) => ({
 			...item,
