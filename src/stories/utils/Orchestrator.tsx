@@ -21,7 +21,7 @@ import { Logger } from '../../utils/logger';
 import { OrchestratorOverview } from './OrchestratorOverview';
 import { SchemaValidator } from './SchemaValidator';
 import { OrchestratorData } from './OrchestratorData';
-import type { ActiveFilterType, PageTag } from '../../use-lunatic/type';
+import type { ActiveFilter, PageTag } from '../../use-lunatic/type';
 import type { IndexEntry } from '../../utils/search/SearchInterface';
 import { OrchestratorSidebar } from './OrchestratorSidebar';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -49,7 +49,7 @@ type Props = {
 	// Preload suggester data at the start of the form
 	autoSuggesterLoading: boolean;
 	disableFiltersDescription?: boolean;
-	activeFilters?: ActiveFilterType;
+	activeFilters?: ActiveFilter;
 	management?: boolean;
 	shortcut?: boolean;
 	activeControls?: boolean;
@@ -305,9 +305,11 @@ export const OrchestratorMeta: Meta<typeof Orchestrator> = {
 		autoSuggesterLoading: { table: { disable: true } },
 		missingStrategy: { table: { disable: true } },
 		extraTabs: { table: { disable: true } },
+		activeFilters: { control: 'select', options: ['ALL', 'EXTERNAL', 'NONE'] },
 	},
 	args: {
 		disableFiltersDescription: false,
+		activeFilters: 'ALL',
 		management: false,
 		shortcut: false,
 		activeControls: true,

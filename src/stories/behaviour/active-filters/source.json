@@ -66,7 +66,7 @@
 			},
 			"description": {
 				"type": "VTL|MD",
-				"value": "\"TThe next question will be filtered if the external variable CADRE=!OUI, its filter is kept when activeFilters is EXTERNAL\""
+				"value": "\"The next question will be filtered if the external variable CADRE=!OUI, its filter is kept when activeFilters is EXTERNAL\""
 			},
 			"componentType": "Sequence"
 		},
