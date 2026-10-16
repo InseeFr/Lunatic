@@ -1,5 +1,4 @@
 import type {
-	ActiveFilterType,
 	LunaticChangesHandler,
 	LunaticComponentDefinition,
 	LunaticState,
@@ -37,7 +36,6 @@ export function computeOptionsFromComponent(
 		pagerIteration,
 		value,
 		logger,
-		activeFilters,
 		shouldParentBeFiltered,
 	}: {
 		variables: LunaticVariablesStore;
@@ -45,7 +43,6 @@ export function computeOptionsFromComponent(
 		pagerIteration: LunaticState['pager']['iteration'];
 		value: unknown;
 		logger: LunaticLogger;
-		activeFilters?: ActiveFilterType;
 		shouldParentBeFiltered?: boolean;
 	}
 ) {
@@ -54,7 +51,7 @@ export function computeOptionsFromComponent(
 	if (definition.componentType === 'CheckboxGroup') {
 		return definition.responses
 			.filter((response) => {
-				if (activeFilters === 'NONE' || !response.conditionFilter) {
+				if (!response.conditionFilter) {
 					return true;
 				}
 				return !isFilteredOutOption(
@@ -80,10 +77,10 @@ export function computeOptionsFromComponent(
 				},
 				onDetailChange: response.detail?.response
 					? (v: string) => {
-						handleChanges([
-							{ name: response.detail!.response.name, value: v },
-						]);
-					}
+							handleChanges([
+								{ name: response.detail!.response.name, value: v },
+							]);
+						}
 					: undefined,
 				shouldBeFiltered:
 					shouldParentBeFiltered ||
@@ -119,11 +116,7 @@ export function computeOptionsFromComponent(
 
 	return definition.options
 		.filter((option) => {
-			if (
-				activeFilters === 'NONE' ||
-				!('conditionFilter' in option) ||
-				!option.conditionFilter
-			) {
+			if (!('conditionFilter' in option) || !option.conditionFilter) {
 				return true;
 			}
 			return !isFilteredOutOption(
@@ -157,8 +150,8 @@ export function computeOptionsFromComponent(
 			onDetailChange:
 				'detail' in option && option.detail
 					? (value: string) => {
-						handleChanges([{ name: option.detail!.response.name, value }]);
-					}
+							handleChanges([{ name: option.detail!.response.name, value }]);
+						}
 					: null,
 			shouldBeFiltered:
 				shouldParentBeFiltered ||

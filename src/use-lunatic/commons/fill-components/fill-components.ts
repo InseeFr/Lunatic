@@ -1,5 +1,5 @@
 import type {
-	ActiveFilterType,
+	ActiveFilter,
 	LunaticChangesHandler,
 	LunaticComponentDefinition,
 	LunaticOptions,
@@ -18,7 +18,7 @@ import { VTLScalarExpression } from '../../../type.source';
 
 export type FillComponentArgs = {
 	disableFiltersDescription?: true;
-	activeFilters?: ActiveFilterType;
+	activeFilters?: ActiveFilter;
 	handleChanges: LunaticChangesHandler;
 	executeExpression: LunaticReducerState['executeExpression'];
 	goToPage: LunaticState['goToPage'];
@@ -87,7 +87,6 @@ export const fillComponent = (
 			pagerIteration: state.pager.iteration,
 			value,
 			logger: state.logger,
-			activeFilters: state.activeFilters,
 			shouldParentBeFiltered: shouldBeFiltered,
 		}),
 		...getComponentTypeProps(interpretedProps, state),

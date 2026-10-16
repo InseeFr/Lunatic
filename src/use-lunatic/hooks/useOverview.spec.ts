@@ -40,4 +40,15 @@ describe('use-overview test with useLunatic()', () => {
 		// All elements have to be presents
 		expect(result.current.overview.length).toBe(9);
 	});
+
+	it('should show items without external-only filter dependencies when activeFilters is EXTERNAL', () => {
+		const params = [
+			source as any,
+			dataFromObject({}),
+			{ withOverview: true, activeFilters: 'EXTERNAL' },
+		] as const;
+
+		const { result } = renderHook(() => useLunatic(...params));
+		expect(result.current.overview.length).toBe(9);
+	});
 });

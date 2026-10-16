@@ -162,7 +162,7 @@ export function reducerInitializer({
 		pages,
 		isInLoop: pager.subPage !== undefined,
 		updatedAt: Date.now(),
-		overview: withOverview ? buildOverview(source) : [],
+		overview: withOverview ? buildOverview(filteredSource) : [],
 		updateBindings,
 		executeExpression,
 		options: {

@@ -1,19 +1,17 @@
-import { ComponentDefinitionWithPage } from '../../type.source';
 import type {
-	ActiveFilterType,
-	LunaticExpression,
-	LunaticSource,
-} from '../type';
+	ComponentDefinitionWithPage,
+} from '../../type.source';
+import type { ActiveFilter, LunaticExpression, LunaticSource } from '../type';
 
 /**
  * Decide if a conditionFilter must be kept, depending on the active filters mode.
- * - "ALL": Keep every filters
- * - "EXTERNAL": Keep filter only if it is based on external variables only
- * - "NONE": Ignore every filters
+ * - "ALL": Keep every filter
+ * - "EXTERNAL": Keep filters based only on external variables
+ * - "NONE": Ignore every filter
  */
 export function shouldKeepFilter(
 	filter: LunaticExpression | undefined,
-	activeFilters: ActiveFilterType
+	activeFilters: ActiveFilter
 ): boolean {
 	if (!filter) return true;
 	if (activeFilters === 'ALL') return true;
@@ -32,7 +30,7 @@ export function shouldKeepFilter(
  */
 export function removeConditionFilters(
 	source: LunaticSource,
-	activeFilters: ActiveFilterType
+	activeFilters: ActiveFilter
 ): LunaticSource {
 	if (activeFilters === 'ALL') {
 		return source;
@@ -62,7 +60,6 @@ export function removeConditionFilters(
 	};
 	const cleanComponents = (component: ComponentDefinitionWithPage): ComponentDefinitionWithPage => {
 		let current = cleanSingleElement(component);
-		console.log('component', component)
 		if (Array.isArray(current.components)) {
 			const components = removeFilterIfChanged(current.components, cleanComponents);
 			if (components !== current.components) {

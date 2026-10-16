@@ -59,7 +59,7 @@ export type LunaticError = Pick<
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
 export type LunaticExpression = VTLExpression | VTLScalarExpression;
-export type ActiveFilterType = 'ALL' | 'EXTERNAL' | 'NONE';
+export type ActiveFilter = 'ALL' | 'EXTERNAL' | 'NONE';
 
 /**
  * Page numerotation.
@@ -180,7 +180,7 @@ export type LunaticReducerState = {
 	) => unknown;
 	options: {
 		disableFiltersDescription?: boolean;
-		activeFilters?: ActiveFilterType;
+		activeFilters?: ActiveFilter;
 	};
 };
 
@@ -199,7 +199,7 @@ export type LunaticOptions = {
 	 * - "NONE": Ignore every filters
 	 * @default 'ALL'
 	 */
-	activeFilters?: ActiveFilterType;
+	activeFilters?: ActiveFilter;
 
 	/** Enable VTL and Markdown support. */
 	features?: ('MD' | 'VTL')[];
