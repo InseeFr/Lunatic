@@ -179,7 +179,6 @@ export type LunaticReducerState = {
 		options: { iteration?: number[] }
 	) => unknown;
 	options: {
-		disableFilters?: boolean;
 		disableFiltersDescription?: boolean;
 		activeFilters?: ActiveFilterType;
 	};
@@ -187,13 +186,6 @@ export type LunaticReducerState = {
 
 /** Specific behaviour options defined in the {@link useLunatic} hook. */
 export type LunaticOptions = {
-	/**
-	 * Ignore filters.
-	 * @default false
-	 * @deprecated use activeFilters instead 
-	 */
-	disableFilters?: boolean;
-
 	/**
 	 * Disable filters description.
 	 * @default true

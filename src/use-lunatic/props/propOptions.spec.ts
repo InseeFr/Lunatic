@@ -318,7 +318,7 @@ describe('computeOptionsFromComponent', () => {
 			expect(options).toHaveLength(1);
 			expect(options[0].shouldBeFiltered).toBe(false);
 		});
-		it('should not filter any response (CheckboxGroup) when disableFilters is true', () => {
+		it('should not filter any response (CheckboxGroup) when activeFilters is NONE', () => {
 			const definition = {
 				...checkboxGroupDefinition,
 				responses: [
@@ -342,7 +342,7 @@ describe('computeOptionsFromComponent', () => {
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
+				activeFilters: 'NONE',
 			});
 
 			// Ensure the option is not filtered
@@ -350,7 +350,7 @@ describe('computeOptionsFromComponent', () => {
 			// the option should would have been filtered if we did not disable filters
 			expect(options[0].shouldBeFiltered).toBe(true);
 		});
-		it('should not filter any option (Radio) when disableFilters is true', () => {
+		it('should not filter any option (Radio) when activeFilters is NONE', () => {
 			const definition = {
 				...radioDefinition,
 				options: [
@@ -373,7 +373,7 @@ describe('computeOptionsFromComponent', () => {
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
+				activeFilters: 'NONE',
 			});
 
 			// Ensure the option is not filtered
@@ -400,7 +400,7 @@ describe('computeOptionsFromComponent', () => {
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
+				activeFilters: 'NONE',
 				shouldParentBeFiltered: true,
 			});
 
@@ -427,7 +427,7 @@ describe('computeOptionsFromComponent', () => {
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
+				activeFilters: 'NONE',
 				shouldParentBeFiltered: true,
 			});
 
