@@ -36,7 +36,6 @@ export function computeOptionsFromComponent(
 		pagerIteration,
 		value,
 		logger,
-		disableFilters,
 		shouldParentBeFiltered,
 	}: {
 		variables: LunaticVariablesStore;
@@ -44,7 +43,6 @@ export function computeOptionsFromComponent(
 		pagerIteration: LunaticState['pager']['iteration'];
 		value: unknown;
 		logger: LunaticLogger;
-		disableFilters?: boolean;
 		shouldParentBeFiltered?: boolean;
 	}
 ) {
@@ -53,7 +51,7 @@ export function computeOptionsFromComponent(
 	if (definition.componentType === 'CheckboxGroup') {
 		return definition.responses
 			.filter((response) => {
-				if (disableFilters || !response.conditionFilter) {
+				if (!response.conditionFilter) {
 					return true;
 				}
 				return !isFilteredOutOption(
@@ -118,11 +116,7 @@ export function computeOptionsFromComponent(
 
 	return definition.options
 		.filter((option) => {
-			if (
-				disableFilters ||
-				!('conditionFilter' in option) ||
-				!option.conditionFilter
-			) {
+			if (!('conditionFilter' in option) || !option.conditionFilter) {
 				return true;
 			}
 			return !isFilteredOutOption(

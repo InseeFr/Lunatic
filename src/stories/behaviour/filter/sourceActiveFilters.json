@@ -1,0 +1,275 @@
+{
+	"$schema": "../../../../lunatic-schema.json",
+	"id": "activefilters",
+	"label": {
+		"type": "VTL|MD",
+		"value": "Story filters with external condition"
+	},
+	"modele": "ACTIVEFILTERS",
+	"maxPage": "5",
+	"resizing": {},
+	"variables": [
+		{
+			"name": "CADRE",
+			"variableType": "EXTERNAL",
+			"value": "OUI"
+		},
+		{
+			"name": "CADRE_ANSWER",
+			"values": {
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "NAME",
+			"values": {
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "AGE",
+			"values": {
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "APPLE",
+			"values": {
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "HAS_NAME",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "not(isnull(NAME))"
+			},
+			"variableType": "CALCULATED"
+		}
+	],
+	"components": [
+		{
+			"id": "seq-situation",
+			"page": "1",
+			"label": {
+				"type": "VTL",
+				"value": "\"I - \" || \"Votre situation\""
+			},
+			"description": {
+				"type": "VTL|MD",
+				"value": "\"The next question will be filtered if the external variable CADRE=NON, its filter is kept when activeFilters is EXTERNAL\""
+			},
+			"componentType": "Sequence"
+		},
+		{
+			"id": "question-cadre",
+			"page": "2",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"1\\. \" || \"Question filtrée si CADRE = NON \""
+			},
+			"components": [
+				{
+					"id": "radio-cadre",
+					"page": "2",
+					"options": [
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Oui\""
+							},
+							"value": "1"
+						},
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Non\""
+							},
+							"value": "2"
+						}
+					],
+					"response": {
+						"name": "CADRE_ANSWER"
+					},
+					"isMandatory": false,
+					"orientation": "vertical",
+					"componentType": "Radio"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "CADRE = \"OUI\"",
+				"variablesDependencies": {
+					"COLLECTED": [],
+					"EXTERNAL": ["CADRE"],
+					"CALCULATED": []
+				}
+			}
+		},
+		{
+			"id": "question-name",
+			"page": "3",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"2\\. \" || \"What is your name ?\""
+			},
+			"components": [
+				{
+					"id": "input-name",
+					"page": "3",
+					"response": {
+						"name": "NAME"
+					},
+					"isMandatory": false,
+					"maxLength": 249,
+					"componentType": "Input"
+				}
+			],
+			"declarations": [
+				{
+					"id": "m48q03bn",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Age filtered if name is not Paul, modality filtered if name is null\""
+					},
+					"position": "AFTER_QUESTION_TEXT",
+					"declarationType": "HELP"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true",
+				"variablesDependencies": {
+					"COLLECTED": [],
+					"EXTERNAL": [],
+					"CALCULATED": []
+				}
+			}
+		},
+		{
+			"id": "question-age",
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"3\\. \" || \"How old are you ?\""
+			},
+			"components": [
+				{
+					"id": "input-age",
+					"page": "4",
+					"max": 200,
+					"min": 1,
+					"response": {
+						"name": "AGE"
+					},
+					"isMandatory": false,
+					"decimals": 0,
+					"componentType": "InputNumber"
+				}
+			],
+			"declarations": [
+				{
+					"id": "declaration-age",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Filtered is NAME is not Paul\""
+					},
+					"position": "AFTER_QUESTION_TEXT",
+					"declarationType": "HELP"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "NAME = \"Paul\"",
+				"variablesDependencies": {
+					"COLLECTED": ["NAME"],
+					"EXTERNAL": [],
+					"CALCULATED": []
+				}
+			}
+		},
+		{
+			"id": "question-apple",
+			"page": "5",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"4\\. \" || \"Do you like apple ?\""
+			},
+			"declarations": [
+				{
+					"id": "declaration-apple",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Filtered if there is no name provided\""
+					},
+					"position": "AFTER_QUESTION_TEXT",
+					"declarationType": "HELP"
+				}
+			],
+			"components": [
+				{
+					"id": "radio-apple",
+					"page": "5",
+					"options": [
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"yes\""
+							},
+							"value": "1"
+						},
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"no\""
+							},
+							"value": "2",
+							"conditionFilter": {
+								"type": "VTL",
+								"value": "HAS_NAME",
+								"variablesDependencies": {
+									"COLLECTED": [],
+									"EXTERNAL": [],
+									"CALCULATED": ["HAS_NAME"]
+								}
+							}
+						}
+					],
+					"response": {
+						"name": "APPLE"
+					},
+					"isMandatory": false,
+					"orientation": "vertical",
+					"componentType": "Radio"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true",
+				"variablesDependencies": {
+					"COLLECTED": [],
+					"EXTERNAL": [],
+					"CALCULATED": []
+				}
+			}
+		}
+	],
+	"pagination": "question",
+	"componentType": "Questionnaire",
+	"enoCoreVersion": "3.29.3-SNAPSHOT",
+	"generatingDate": "12-10-2026",
+	"lunaticModelVersion": "6.1.0"
+}

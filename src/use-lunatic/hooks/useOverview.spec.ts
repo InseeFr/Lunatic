@@ -6,7 +6,7 @@ import { useLunatic } from '../use-lunatic';
 import { dataFromObject } from '../../utils/object';
 
 describe('use-overview test with useLunatic()', () => {
-	it('should initialize correctly with disableFilters: false (without data)', () => {
+	it('should initialize correctly with all filters active (without data)', () => {
 		const params = [
 			source as any,
 			dataFromObject({}),
@@ -16,7 +16,7 @@ describe('use-overview test with useLunatic()', () => {
 		expect(result.current.overview.length).toBe(3);
 	});
 
-	it('should initialize correctly with disableFilters: false (with data)', () => {
+	it('should initialize correctly with all filters active (with data)', () => {
 		const params = [
 			source as any,
 			dataFromObject({
@@ -29,15 +29,26 @@ describe('use-overview test with useLunatic()', () => {
 		expect(result.current.overview.length).toBe(9);
 	});
 
-	it('should initialize correctly with disableFilters: true (without data)', () => {
+	it('should show filtered items when activeFilters is NONE', () => {
 		const params = [
 			source as any,
 			dataFromObject({}),
-			{ withOverview: true, disableFilters: true },
+			{ withOverview: true, activeFilters: 'NONE' },
 		] as const;
 
 		const { result } = renderHook(() => useLunatic(...params));
 		// All elements have to be presents
+		expect(result.current.overview.length).toBe(9);
+	});
+
+	it('should show items without external-only filter dependencies when activeFilters is EXTERNAL', () => {
+		const params = [
+			source as any,
+			dataFromObject({}),
+			{ withOverview: true, activeFilters: 'EXTERNAL' },
+		] as const;
+
+		const { result } = renderHook(() => useLunatic(...params));
 		expect(result.current.overview.length).toBe(9);
 	});
 });
