@@ -26,6 +26,23 @@ export function shouldKeepFilter(
 }
 
 /**
+ * Compare the existing element against the outcome of the filtering function 
+ * and remove it from the source if needed
+ */
+const removeFilterIfChanged = (
+	elements: ComponentDefinitionWithPage[],
+	cleanFilterFunction: (element: ComponentDefinitionWithPage) => ComponentDefinitionWithPage
+): any[] => {
+	const cleaned = elements.map((element) => cleanFilterFunction(element));
+	return cleaned.some(
+		(element, index) => element !== elements[index]
+	)
+		? cleaned
+		: elements;
+};
+
+
+/**
  * Remove filters from source based from activeFilters props
  */
 export function removeConditionFilters(
@@ -35,17 +52,6 @@ export function removeConditionFilters(
 	if (activeFilters === 'ALL') {
 		return source;
 	}
-	const removeFilterIfChanged = (
-		elements: ComponentDefinitionWithPage[],
-		cleanFilterFunction: (element: ComponentDefinitionWithPage) => ComponentDefinitionWithPage
-	): any[] => {
-		const cleaned = elements.map((element) => cleanFilterFunction(element));
-		return cleaned.some(
-			(element, index) => element !== elements[index]
-		)
-			? cleaned
-			: elements;
-	};
 
 	// Element that can have a conditon filter 
 	const cleanSingleElement = (element: ComponentDefinitionWithPage): any => {
@@ -58,6 +64,8 @@ export function removeConditionFilters(
 
 		return element;
 	};
+
+
 	const cleanComponents = (component: ComponentDefinitionWithPage): ComponentDefinitionWithPage => {
 		let current = cleanSingleElement(component);
 		if (Array.isArray(current.components)) {

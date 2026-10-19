@@ -3,7 +3,7 @@
 	"id": "activefilters",
 	"label": {
 		"type": "VTL|MD",
-		"value": "Story active filters"
+		"value": "Story filters with external condition"
 	},
 	"modele": "ACTIVEFILTERS",
 	"maxPage": "5",
@@ -66,7 +66,7 @@
 			},
 			"description": {
 				"type": "VTL|MD",
-				"value": "\"The next question will be filtered if the external variable CADRE=!OUI, its filter is kept when activeFilters is EXTERNAL\""
+				"value": "\"The next question will be filtered if the external variable CADRE=NON, its filter is kept when activeFilters is EXTERNAL\""
 			},
 			"componentType": "Sequence"
 		},
@@ -75,7 +75,7 @@
 			"page": "2",
 			"label": {
 				"type": "VTL|MD",
-				"value": "\"1\\. \" || \"Question filtrée si cadre != oui \""
+				"value": "\"1\\. \" || \"Question filtrée si CADRE = NON \""
 			},
 			"components": [
 				{
@@ -183,7 +183,7 @@
 					"id": "declaration-age",
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"Dépend de NAME\""
+						"value": "\"Filtered is NAME is not Paul\""
 					},
 					"position": "AFTER_QUESTION_TEXT",
 					"declarationType": "HELP"
@@ -212,7 +212,7 @@
 					"id": "declaration-apple",
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"Dépend de la var calc has_name\""
+						"value": "\"Filtered if there is no name provided\""
 					},
 					"position": "AFTER_QUESTION_TEXT",
 					"declarationType": "HELP"

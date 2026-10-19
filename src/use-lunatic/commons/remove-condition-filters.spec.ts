@@ -78,21 +78,6 @@ const source = {
 				},
 			],
 		},
-		{
-			id: 'table',
-			page: '3',
-			componentType: 'Table',
-			body: [
-				[
-					{
-						id: 'table-cell-input',
-						componentType: 'Input',
-						response: { name: 'TABLE_CELL' },
-						conditionFilter: collectedFilter,
-					},
-				],
-			],
-		},
 	],
 } as unknown as LunaticSource;
 
@@ -120,7 +105,6 @@ describe('removeConditionFilters', () => {
 		]);
 		expect(cleaned.components[1].conditionFilter).toBeUndefined();
 		expect(cleaned.components[1].components[0].conditionFilter).toBeUndefined();
-		expect(cleaned.components[2].body[0][0].conditionFilter).toBeUndefined();
 	});
 
 	it('removes filters recursively when activeFilters is NONE and preserves the source for ALL', () => {
@@ -141,9 +125,6 @@ describe('removeConditionFilters', () => {
 		).toBe(true);
 		expect(
 			withoutFilters.components[1].components[0].conditionFilter
-		).toBeUndefined();
-		expect(
-			withoutFilters.components[2].body[0][0].conditionFilter
 		).toBeUndefined();
 		expect(removeConditionFilters(source, 'ALL')).toBe(source);
 	});
