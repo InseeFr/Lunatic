@@ -1,6 +1,4 @@
-import type {
-	ComponentDefinitionWithPage,
-} from '../../type.source';
+import type { ComponentDefinition } from '../../type.source';
 import type { ActiveFilter, LunaticExpression, LunaticSource } from '../type';
 
 /**
@@ -26,21 +24,18 @@ export function shouldKeepFilter(
 }
 
 /**
- * Compare the existing element against the outcome of the filtering function 
+ * Compare the existing element against the outcome of the filtering function
  * and remove it from the source if needed
  */
-const removeFilterIfChanged = (
-	elements: ComponentDefinitionWithPage[],
-	cleanFilterFunction: (element: ComponentDefinitionWithPage) => ComponentDefinitionWithPage
-): any[] => {
+const removeFilterIfChanged = <T>(
+	elements: T[],
+	cleanFilterFunction: (element: T) => T
+): T[] => {
 	const cleaned = elements.map((element) => cleanFilterFunction(element));
-	return cleaned.some(
-		(element, index) => element !== elements[index]
-	)
+	return cleaned.some((element, index) => element !== elements[index])
 		? cleaned
 		: elements;
 };
-
 
 /**
  * Remove filters from source based from activeFilters props
@@ -53,37 +48,50 @@ export function removeConditionFilters(
 		return source;
 	}
 
-	// Element that can have a conditon filter 
-	const cleanSingleElement = (element: ComponentDefinitionWithPage): any => {
-
-		if ('conditionFilter' in element && !shouldKeepFilter(element?.conditionFilter, activeFilters)) {
+	// 	Element that can have a condition filter
+	//  Component is too dynamic to be typed
+	const cleanSingleElement = <T extends object>(element: T): T => {
+		if (
+			'conditionFilter' in element &&
+			!shouldKeepFilter(
+				element.conditionFilter as LunaticExpression | undefined,
+				activeFilters
+			)
+		) {
 			const rest = { ...element };
 			delete rest.conditionFilter;
-			return rest;
+			return rest as T;
 		}
 
 		return element;
 	};
 
-
-	const cleanComponents = (component: ComponentDefinitionWithPage): ComponentDefinitionWithPage => {
+	const cleanComponents = <T extends ComponentDefinition>(component: T): T => {
 		let current = cleanSingleElement(component);
-		if (Array.isArray(current.components)) {
-			const components = removeFilterIfChanged(current.components, cleanComponents);
+		if ('components' in current && Array.isArray(current.components)) {
+			const components = removeFilterIfChanged(
+				current.components,
+				cleanComponents
+			);
 			if (components !== current.components) {
-				current = { ...current, components };
+				current = { ...current, components } as T;
 			}
 		}
-		if (Array.isArray(current.responses)) {
-			const responses = removeFilterIfChanged(current.responses, cleanSingleElement);
-			if (responses !== current.responses) {
-				current = { ...current, responses };
+		if ('responses' in current && Array.isArray(current.responses)) {
+			const currentResponses = current.responses;
+			const responses = removeFilterIfChanged(
+				currentResponses,
+				cleanSingleElement
+			);
+			if (responses !== currentResponses) {
+				current = { ...current, responses } as T;
 			}
 		}
-		if (Array.isArray(current.options)) {
-			const options = removeFilterIfChanged(current.options, cleanSingleElement);
-			if (options !== current.options) {
-				current = { ...current, options };
+		if ('options' in current && Array.isArray(current.options)) {
+			const currentOptions = current.options
+			const options = removeFilterIfChanged(currentOptions, cleanSingleElement);
+			if (options !== currentOptions) {
+				current = { ...current, options } as T;
 			}
 		}
 		return current;

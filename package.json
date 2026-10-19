@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "3.13.5",
+	"version": "4.0.0-rc-active-filters.0",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
