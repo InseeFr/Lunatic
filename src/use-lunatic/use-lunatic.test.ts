@@ -303,11 +303,15 @@ describe('use-lunatic()', () => {
 						name: 'PRENOM',
 						value: ['John', 'Doe', 'Marc'],
 					},
-					{ name: 'AGE', value: [18, 18, 18] },
 				]);
-				// Go in the first iteration
+				// Go in the first iteration (commit the resizing)
 				result.current.goNextPage();
 				result.current.goNextPage();
+			});
+			act(() => {
+				result.current.handleChanges(
+					[0, 1, 2].map((i) => ({ name: 'AGE', value: 18, iteration: [i] }))
+				);
 			});
 			const expectCollectedAgeToEqual = (expectation: unknown[]) => {
 				expect(result.current.getData(false).COLLECTED?.AGE.COLLECTED).toEqual(
