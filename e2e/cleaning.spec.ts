@@ -22,6 +22,8 @@ test.describe('Cleaning', () => {
 		// Page 2: fill TEST and the first TAB_ANNEX2 amount
 		await testInput.fill('test');
 		await tabInput.fill('50');
+		await expectCollectedData(page, 'TEST', 'test');
+		await expectCollectedData(page, 'TAB_ANNEX2', [50, null, null, null, null]);
 		await gotoPreviousPage(page);
 
 		// Page 1: change 30 to 31, Q is 3 (filter false) in between
@@ -32,8 +34,8 @@ test.describe('Cleaning', () => {
 		await gotoNextPage(page);
 
 		// Page 2: the data should not have been cleaned
-		await expect(testInput).toHaveValue('test');
-		await expect(tabInput).toHaveValue('50');
+		await expectCollectedData(page, 'TEST', 'test');
+		await expectCollectedData(page, 'TAB_ANNEX2', [50, null, null, null, null]);
 
 		// Page 1: change Q to 3 (filter false), page 2 is skipped
 		await gotoPreviousPage(page);
@@ -42,6 +44,12 @@ test.describe('Cleaning', () => {
 
 		// The data should be cleaned
 		await expectCollectedData(page, 'TEST', null);
-		await expectCollectedData(page, 'TAB_ANNEX2', [null]);
+		await expectCollectedData(page, 'TAB_ANNEX2', [
+			null,
+			null,
+			null,
+			null,
+			null,
+		]);
 	});
 });
