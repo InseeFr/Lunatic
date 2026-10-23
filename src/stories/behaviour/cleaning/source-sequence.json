@@ -1,0 +1,444 @@
+{
+	"$schema": "../../../../lunatic-schema.json",
+	"id": "mv592es3",
+	"label": {
+		"type": "VTL|MD",
+		"value": "BUG_FILTRE_OK_CLEAN_KO - Input Number"
+	},
+	"modele": "BUG_FILTRE",
+	"maxPage": "5",
+	"cleaning": {
+		"Q": {
+			"TEST": [
+				{
+					"expression": "nvl(Q,21)>20",
+					"shouldCheckAllIterations": false,
+					"shouldCheckDuringResizing": false
+				}
+			],
+			"TAB_ANNEX2": [
+				{
+					"shapeFrom": "TAB_ANNEX2",
+					"expression": "nvl(Q,21)>20",
+					"shouldCheckAllIterations": false,
+					"shouldCheckDuringResizing": false
+				}
+			]
+		}
+	},
+	"resizing": {},
+	"variables": [
+		{
+			"name": "Q",
+			"values": {
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "TEST",
+			"values": {
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "TAB_ANNEX2",
+			"values": {
+				"COLLECTED": []
+			},
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "mpfp48fx"
+		},
+		{
+			"name": "DUREE_REMPL",
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "COMMENT_QE",
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "FILTER_RESULT_Q",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true
+		},
+		{
+			"name": "FILTER_RESULT_TEST",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "(nvl(Q,21)>20)"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"bindingDependencies": ["Q"]
+		},
+		{
+			"name": "FILTER_RESULT_TAB_ANNEX2",
+			"dimension": 1,
+			"shapeFrom": ["TAB_ANNEX2"],
+			"expression": {
+				"type": "VTL",
+				"value": "(nvl(Q,21)>20)"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "mpfp48fx",
+			"bindingDependencies": ["Q"]
+		},
+		{
+			"name": "FILTER_RESULT_DUREE_REMPL",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true
+		},
+		{
+			"name": "FILTER_RESULT_COMMENT_QE",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true
+		}
+	],
+	"components": [
+		{
+			"id": "mpfp2xss",
+			"page": "1",
+			"label": {
+				"type": "VTL",
+				"value": "\"I - \" || \"S\""
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "question-mpfped8m",
+			"page": "1",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"1\\. \" || \"Q - permet d'afficher la question suivante si vide ou valeur >20\""
+			},
+			"components": [
+				{
+					"id": "mpfped8m",
+					"max": 1000,
+					"min": 1,
+					"page": "1",
+					"controls": [
+						{
+							"id": "mpfped8m-format-borne-inf-sup",
+							"type": "SIMPLE",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(Q)) and (1>Q or 1000<Q))"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\" La valeur doit être comprise entre 1 et 1000\""
+							},
+							"typeOfControl": "FORMAT"
+						},
+						{
+							"id": "mpfped8m-format-decimal",
+							"type": "SIMPLE",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(Q))  and round(Q,0)<>Q)"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule\""
+							},
+							"typeOfControl": "FORMAT"
+						}
+					],
+					"decimals": 0,
+					"response": {
+						"name": "Q"
+					},
+					"description": {
+						"type": "TXT",
+						"value": "Format attendu : un nombre entre 1 et 1 000"
+					},
+					"isMandatory": false,
+					"componentType": "InputNumber"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "mpfoxtyu",
+			"page": "2",
+			"label": {
+				"type": "VTL",
+				"value": "\"II - \" || \"S2\""
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "(nvl(Q,21)>20)"
+			}
+		},
+		{
+			"id": "question-mv58ouq2",
+			"page": "2",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"1\\. \" || \"TEST \""
+			},
+			"components": [
+				{
+					"id": "mv58ouq2",
+					"page": "2",
+					"response": {
+						"name": "TEST"
+					},
+					"maxLength": 249,
+					"isMandatory": false,
+					"componentType": "Input"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "(nvl(Q,21)>20)"
+			}
+		},
+		{
+			"id": "question-mpfp48fx",
+			"page": "2",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"2\\. \" || \"TAB_ANNEX\""
+			},
+			"components": [
+				{
+					"id": "mpfp48fx",
+					"page": "2",
+					"lines": {
+						"max": {
+							"type": "VTL",
+							"value": "5"
+						},
+						"min": {
+							"type": "VTL",
+							"value": "5"
+						}
+					},
+					"header": [
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"PROD\""
+							}
+						},
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Montant \""
+							}
+						}
+					],
+					"controls": [
+						{
+							"id": "mpfp48fx-RDOP-mpfougkl-format-borne-inf-sup",
+							"type": "ROW",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(TAB_ANNEX2)) and (0>TAB_ANNEX2 or 1000000<TAB_ANNEX2))"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\" La valeur doit être comprise entre 0 et 1000000\""
+							},
+							"typeOfControl": "FORMAT"
+						},
+						{
+							"id": "mpfp48fx-RDOP-mpfougkl-format-decimal",
+							"type": "ROW",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(TAB_ANNEX2))  and round(TAB_ANNEX2,0)<>TAB_ANNEX2)"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule\""
+							},
+							"typeOfControl": "FORMAT"
+						}
+					],
+					"components": [
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Produit numéro - [\" || cast(GLOBAL_ITERATION_INDEX,string) || \"]\""
+							},
+							"componentType": "Text"
+						},
+						{
+							"id": "mpfp48fx-RDOP-mpfougkl",
+							"max": 1000000,
+							"min": 0,
+							"unit": {
+								"type": "VTL",
+								"value": "\"k€\""
+							},
+							"decimals": 0,
+							"response": {
+								"name": "TAB_ANNEX2"
+							},
+							"componentType": "InputNumber"
+						}
+					],
+					"componentType": "RosterForLoop"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "(nvl(Q,21)>20)"
+			}
+		},
+		{
+			"id": "mpfp5p0r",
+			"page": "3",
+			"label": {
+				"type": "VTL",
+				"value": "\"III - \" || \"FIN\""
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "TIME-SEQ",
+			"page": "4",
+			"label": {
+				"type": "VTL",
+				"value": "\"Temps de réponse\""
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "question-TIME-QUESTION-RESPONSE",
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"1\\. \" || \"Combien de temps avez-vous mis en tout pour répondre à cette enquête (recherche des données + remplissage du questionnaire) ?\""
+			},
+			"components": [
+				{
+					"id": "TIME-QUESTION-RESPONSE",
+					"max": "PT99H59M",
+					"min": "PT0H0M",
+					"page": "4",
+					"format": "PTnHnM",
+					"controls": [
+						{
+							"id": "TIME-QUESTION-RESPONSE-format",
+							"type": "SIMPLE",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(DUREE_REMPL)) and (cast(substr(DUREE_REMPL, 3, instr(DUREE_REMPL, \"H\") - 3), integer) < 0 or (cast(substr(DUREE_REMPL, 3, instr(DUREE_REMPL, \"H\") - 3), integer) = 0 and cast(substr(DUREE_REMPL, instr(DUREE_REMPL, \"H\") + 1, instr(DUREE_REMPL, \"M\") - instr(DUREE_REMPL, \"H\") - 1), integer) < 0) or cast(substr(DUREE_REMPL, 3, instr(DUREE_REMPL, \"H\") - 3), integer) > 99 or (cast(substr(DUREE_REMPL, 3, instr(DUREE_REMPL, \"H\") - 3), integer) = 99 and cast(substr(DUREE_REMPL, instr(DUREE_REMPL, \"H\") + 1, instr(DUREE_REMPL, \"M\") - instr(DUREE_REMPL, \"H\") - 1), integer) > 59)))"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"La durée saisie doit être inférieure à 99 heures et 59 minutes\""
+							},
+							"typeOfControl": "FORMAT"
+						}
+					],
+					"response": {
+						"name": "DUREE_REMPL"
+					},
+					"description": {
+						"type": "TXT",
+						"value": "Jusqu'à 99 heures et 59 minutes"
+					},
+					"isMandatory": false,
+					"componentType": "Duration"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "COMMENT-SEQ",
+			"page": "5",
+			"label": {
+				"type": "VTL",
+				"value": "\"Commentaire\""
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "question-COMMENT-QUESTION",
+			"page": "5",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"2\\. \" || \"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
+			},
+			"components": [
+				{
+					"id": "COMMENT-QUESTION",
+					"page": "5",
+					"response": {
+						"name": "COMMENT_QE"
+					},
+					"maxLength": 2000,
+					"isMandatory": false,
+					"componentType": "Textarea"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		}
+	],
+	"pagination": "sequence",
+	"componentType": "Questionnaire",
+	"enoCoreVersion": "3.66.1",
+	"generatingDate": "23-10-2026 12:37:22",
+	"lunaticModelVersion": "6.0.0"
+}

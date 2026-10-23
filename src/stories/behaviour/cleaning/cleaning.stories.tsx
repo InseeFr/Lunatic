@@ -4,6 +4,7 @@ import {
 	type OrchestratorStory,
 } from '../../utils/Orchestrator';
 import source from './source.json';
+import sourceSequence from './source-sequence.json';
 import sourceLoop from './source-loop.json';
 import sourceLoopScopes from './source-loop-scopes.json';
 
@@ -21,6 +22,12 @@ export default meta;
 export const Default: OrchestratorStory = {
 	args: {
 		source,
+	},
+};
+
+export const Sequence: OrchestratorStory = {
+	args: {
+		source: sourceSequence,
 	},
 };
 

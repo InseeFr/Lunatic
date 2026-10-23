@@ -66,7 +66,7 @@ export function reducerInitializer({
 	logger?: LunaticLogger;
 }): LunaticReducerState {
 	const variables = LunaticVariablesStore.makeFromSource(source, data, {
-		autoCommit: source.pagination !== 'question',
+		autoCommit: false,
 		changeHandler: onVariableChange,
 		disableCleaning: disableFilters,
 	});
