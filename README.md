@@ -161,9 +161,9 @@ To facilitate expression execution, an `executeExpression()` method is exposed i
 
 ### Stable Branchs
 
-- Stable branches follow the glob pattern `'2.*'` or `'3.*'`, like `2.7` or `3.0`.
+- Stable branches follow the glob pattern `'2.*'` or `'3.*'`, like `2.7`, `3.0` or `4.0`.
 - We can maintain if needs, the old stable branches
-- `3.0` branch is currently the most advanced branch
+- `4.0` branch is currently the most advanced branch
 
 ### Commits and feature branches
 
