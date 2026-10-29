@@ -12,7 +12,7 @@ Le premier point d'entrée avec la librairie est le hook `useLunatic(source, dat
 
 Toutes les options sont **optionnelles**.
 
-- **disableFilters**, désactive les filtres de composants dans le questionnaire (défaut `false`)
+- **activeFilters**, définit les filtres actifs : `'ALL'` (tous les filtres), `'EXTERNAL'` (filtres basés uniquement sur des variables externes) ou `'NONE'` (aucun filtre ; défaut `'ALL'`)
 - **disableFiltersDescription**, désactive l'afficherage de la description des filtres (défaut `true`)
 - **features**, active le support du VTL et du Markdown (défaut `['VTL', 'MD']`)
 - ~~**preferences** (défaut `['COLLECTED']`), non utilisé~~
