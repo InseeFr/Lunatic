@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `disableFilter` property in useLunatic is now deprecated in favor of `activeFilter`
 
+## [3.14.0](https://github.com/InseeFr/Lunatic/releases/tag/3.14.0) - 2026-10-29
+
+### Changed
+
+- the delay cleaning (cleaning is done only when the page changes) is now also applied to `sequence` pagination.
+
 ## [3.13.5](https://github.com/InseeFr/Lunatic/releases/tag/3.13.5) - 2026-10-02
 
 ### Fixed

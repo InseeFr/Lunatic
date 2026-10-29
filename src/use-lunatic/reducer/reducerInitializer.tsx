@@ -34,7 +34,7 @@ const baseState = {
 	isInLoop: false,
 	updatedAt: Date.now(),
 	overview: [],
-	updateBindings: () => { },
+	updateBindings: () => {},
 	executeExpression: <T,>() => null as T,
 	options: {
 		activeFilters: 'ALL',
@@ -42,7 +42,7 @@ const baseState = {
 	},
 } satisfies LunaticReducerState;
 
-const onChange = { current: () => { } };
+const onChange = { current: () => {} };
 
 export function reducerInitializer({
 	source,
@@ -75,9 +75,10 @@ export function reducerInitializer({
 			: source;
 
 	// Cleaning is disabled if not all filters are active.
-	const disableCleaning = activeFilters !== undefined && activeFilters !== 'ALL';
+	const disableCleaning =
+		activeFilters !== undefined && activeFilters !== 'ALL';
 	const variables = LunaticVariablesStore.makeFromSource(filteredSource, data, {
-		autoCommit: filteredSource.pagination !== 'question',
+		autoCommit: false,
 		changeHandler: onVariableChange,
 		disableCleaning: disableCleaning,
 	});
