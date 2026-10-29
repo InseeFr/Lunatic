@@ -47,7 +47,7 @@ const LunaticComponentWrapper = slottableComponent(
 /**
  * Entry point for orchestrators, this component display the list of fields.
  *
- * Components offered by Lunatic can be seen at {@link https://github.com/InseeFr/Lunatic/tree/3.0/src/components}
+ * Components offered by Lunatic can be seen at {@link https://github.com/InseeFr/Lunatic/tree/4.0/src/components}
  */
 export function LunaticComponents<V = unknown>({
 	components,

@@ -63,7 +63,7 @@ const config: Config = {
 			{
 				docs: {
 					sidebarPath: './sidebars.ts',
-					editUrl: 'https://github.com/InseeFr/Lunatic/tree/3.0/docs',
+					editUrl: 'https://github.com/InseeFr/Lunatic/tree/4.0/docs',
 					routeBasePath: '/',
 					remarkPlugins: [
 						[require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],

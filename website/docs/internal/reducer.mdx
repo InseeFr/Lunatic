@@ -4,13 +4,13 @@ Cette partie est destinée aux personnes qui explorent le code de Lunatic. L'obj
 
 ## Le reducer
 
-En son cœur Lunatic repose sur un système de reducer qui peut recevoir plusieurs actions. L'état lié à ce reducer est [documenté via un type TypeScript](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/type.ts#L90).
+En son cœur Lunatic repose sur un système de reducer qui peut recevoir plusieurs actions. L'état lié à ce reducer est [documenté via un type TypeScript](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/type.ts#L90).
 
 ### Initialisation
 
 Cette action (`ActionKind.On_INIT`) est lancée lorsque le composant utilisant `useLunatic()` est monté et permet d'effectuer plusieurs opérations pour initialiser les données qui vont servir pour la suite.
 
-- Boucle sur les variables définies dans la source pour les sauvegarder dans un dictionnaire ([LunaticVariableStore](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/commons/variables/lunatic-variables-store.ts))
+- Boucle sur les variables définies dans la source pour les sauvegarder dans un dictionnaire ([LunaticVariableStore](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/commons/variables/lunatic-variables-store.ts))
 - Extrait depuis les composants les différentes pages et crée un objet contenant la liste des composants groupé par nom de page.
 - Décompose la valeur d'**initialPage** pour générer l'objet qui représentera l'état de la navigation (pager).
 - Génère une fonction `executeExpression()` qui permettra d'exécuter les expressions VTL
@@ -30,5 +30,5 @@ Cette action (`ActionKind.HANDLE_CHANGES`) est déclenchée lorsque l'utilisateu
 
 ## Génération des composants
 
-Lorsque l'état change Lunatic va régénérer la liste des composants à afficher. Cette génération se fait au travers de la fonction [`getComponentsFromState()`](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/commons/get-components-from-state.ts#L6) qui prendra l'état en paramètre et renverra la liste des composants (de leurs propriétés). Pour comprendre comment se passe ce remplissage, vous pouvez regarder le code de la méthode [fillComponent](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/commons/fill-components/fill-components.ts#L59-L69) qui sépare la logique.
+Lorsque l'état change Lunatic va régénérer la liste des composants à afficher. Cette génération se fait au travers de la fonction [`getComponentsFromState()`](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/commons/get-components-from-state.ts#L6) qui prendra l'état en paramètre et renverra la liste des composants (de leurs propriétés). Pour comprendre comment se passe ce remplissage, vous pouvez regarder le code de la méthode [fillComponent](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/commons/fill-components/fill-components.ts#L59-L69) qui sépare la logique.
 

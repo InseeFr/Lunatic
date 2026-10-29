@@ -12,6 +12,7 @@ Lunatic is a front-end library in the form of a React hook and component librari
 
 ---
 
+- [Storybook 4.0](https://inseefr.github.io/Lunatic/storybook-3.0), branch `4.0`
 - [Storybook 3.0](https://inseefr.github.io/Lunatic/storybook-3.0), branch `3.0`
 - [Storybook 2.7](https://inseefr.github.io/Lunatic/storybook-2.7), branch `2.7`
 - [Storybook 2.6](https://inseefr.github.io/Lunatic/storybook-2.6), branch `2.6`
@@ -85,7 +86,7 @@ And it returns an object that allows you to control the questionnaire:
 - `getData()`, returns the collected data in the questionnaire.
 - `loopVariables`, is an array containing the list of variables used for the current loop.
 
-For more information on the types of this return, you can refer to the available types in the [source code](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/type.ts). You can also find an example of using the hook in the [Storybook section](https://github.com/InseeFr/Lunatic/blob/3.0/src/stories/utils/orchestrator.jsx#L121-L152).
+For more information on the types of this return, you can refer to the available types in the [source code](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/type.ts). You can also find an example of using the hook in the [Storybook section](https://github.com/InseeFr/Lunatic/blob/4.0/src/stories/utils/orchestrator.jsx#L121-L152).
 
 ### Components
 
@@ -112,7 +113,7 @@ function App({ source, data }) {
 }
 ```
 
-All the components offered by Lunatic are available in the [src/components](https://github.com/InseeFr/Lunatic/tree/3.0/src/components) folder.
+All the components offered by Lunatic are available in the [src/components](https://github.com/InseeFr/Lunatic/tree/4.0/src/components) folder.
 
 To activate the **autofocus**, you need to pass a key in the `autoFocusKey` property of `LunaticComponents`. As soon as this value changes, the first field is focused (a good solution is to pass the `pageTag` provided by `useLunatic`).
 
@@ -139,13 +140,13 @@ This section covers the internal working of the `useLunatic()` hook. The goal is
 
 ### General Functioning
 
-The hook is based on an [internal state](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/type.ts#L79-L187) that is updated through a [reducer](https://reactjs.org/docs/hooks-reference.html#usereducer) system. The [actions](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/actions.ts) affecting this state are limited:
+The hook is based on an [internal state](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/type.ts#L79-L187) that is updated through a [reducer](https://reactjs.org/docs/hooks-reference.html#usereducer) system. The [actions](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/actions.ts) affecting this state are limited:
 
 - An action `'use-lunatic/on-init'` allows initialization of the state from the data received as a parameter of the hook.
 - The actions `'use-lunatic/go-previous'`, `'use-lunatic/go-next'`, and `'use-lunatic/go-to-page'` are called during navigation using the methods returned by the hook.
 - The action `use-lunatic/handle-change` is the most important action and is called whenever data is changed in the questionnaire.
 
-All the [reducers corresponding to these actions are available here](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/reducer/reducer.ts). Generally, they are broken down into several methods depending on the part of the state they modify.
+All the [reducers corresponding to these actions are available here](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/reducer/reducer.ts). Generally, they are broken down into several methods depending on the part of the state they modify.
 
 ### Pages and Pager
 
@@ -153,7 +154,7 @@ At initialization, the questionnaire scenario is modeled as an object which is s
 
 ### VTL Execution
 
-Another important point of Lunatic is the execution of VTL expressions which allow making certain properties dynamic (labels, errors, etc.). This filling is done [when the state changes](https://github.com/InseeFr/Lunatic/blob/3.0/src/use-lunatic/use-lunatic.ts#L162).
+Another important point of Lunatic is the execution of VTL expressions which allow making certain properties dynamic (labels, errors, etc.). This filling is done [when the state changes](https://github.com/InseeFr/Lunatic/blob/4.0/src/use-lunatic/use-lunatic.ts#L162).
 
 To facilitate expression execution, an `executeExpression()` method is exposed in the Lunatic state. This method is accompanied by an `updateBindings()` method which allows updating internal values. This expression execution system uses a memoization system to not re-execute the same expression multiple times. When the `use-lunatic/handle-change` action is executed, the values ("bindings") are updated to memorize the values associated with the different VTL variables. Similarly, the values of calculated variables on which the modified variable depends are forgotten to refresh the value during the next execution.
 
@@ -172,6 +173,7 @@ To facilitate expression execution, an `executeExpression()` method is exposed i
 - Files containing JSX should use the .jsx (or .tsx) extension.
 - Commits follow the specification [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 - Pull Requests should be prefixed in the same convention as commits:
+
   - `test(XXX?)`: XXX for adding tests.
   - `feat(XXX?)`: XXX for adding new features.
   - `fix(XXX?)`: XXX for bug fixes.
