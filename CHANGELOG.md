@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.14.0](https://github.com/InseeFr/Lunatic/releases/tag/3.14.0) - 2026-10-29
+
 ### Changed
 
 - the delay cleaning (cleaning is done only when the page changes) is now also applied to `sequence` pagination.
