@@ -7,13 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0](https://github.com/InseeFr/Lunatic/releases/tag/4.0.0) - 2026-10-29
+
 ### Added 
 
 - New `activeFilter` property in useLunatic to enable filtering of components based on variable types (all, externals only, none)
 
 ### Removed 
 
-- `disableFilter` property in useLunatic is now deprecated in favor of `activeFilter`
+- `disableFilter` property in useLunatic is now deprecated in favor of `activeFilter` -> breaking change
 
 ## [3.14.0](https://github.com/InseeFr/Lunatic/releases/tag/3.14.0) - 2026-10-29
 
