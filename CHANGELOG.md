@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- fix: remove extra attributs (score) in indexEntry type
+
 ## [4.0.0](https://github.com/InseeFr/Lunatic/releases/tag/4.0.0) - 2026-10-29
 
 ### Added 
