@@ -255,11 +255,7 @@ describe('use-lunatic()', () => {
 
 		it('should filter out some components by default', function () {
 			const { result } = renderHook(() =>
-				useLunatic(
-					sourceLogement,
-					undefined,
-					lunaticConfiguration
-				)
+				useLunatic(sourceLogement, undefined, lunaticConfiguration)
 			);
 			act(() => result.current.goToPage({ page: '3' }));
 			const currentPage = result.current.pageTag;
@@ -281,6 +277,20 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceLogement, undefined, {
 					...lunaticConfiguration,
 					activeFilters: 'NONE',
+				})
+			);
+			act(() => result.current.goToPage({ page: '3' }));
+			const currentPage = result.current.pageTag;
+			expect(currentPage).toBe('3');
+
+			const components = result.current.getComponents();
+			expect(components.length).toBe(1);
+		});
+		it('should not filter any component when activeFilters is DISABLED', function () {
+			const { result } = renderHook(() =>
+				useLunatic(sourceLogement, undefined, {
+					...lunaticConfiguration,
+					activeFilters: 'DISABLED',
 				})
 			);
 			act(() => result.current.goToPage({ page: '3' }));

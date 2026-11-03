@@ -82,6 +82,11 @@ const source = {
 } as unknown as LunaticSource;
 
 describe('removeConditionFilters', () => {
+	it('preserves the source for ALL and DISABLED', () => {
+		expect(removeConditionFilters(source, 'ALL')).toBe(source);
+		expect(removeConditionFilters(source, 'DISABLED')).toBe(source);
+	});
+
 	it('keeps only external-only filters throughout components, options, and responses', () => {
 		const cleaned = removeConditionFilters(source, 'EXTERNAL') as any;
 
@@ -107,7 +112,7 @@ describe('removeConditionFilters', () => {
 		expect(cleaned.components[1].components[0].conditionFilter).toBeUndefined();
 	});
 
-	it('removes filters recursively when activeFilters is NONE and preserves the source for ALL', () => {
+	it('removes filters recursively when activeFilters is NONE', () => {
 		const withoutFilters = removeConditionFilters(source, 'NONE') as any;
 
 		expect(withoutFilters.components[0].conditionFilter).toBeUndefined();

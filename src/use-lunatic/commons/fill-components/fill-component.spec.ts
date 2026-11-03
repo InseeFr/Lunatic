@@ -462,6 +462,51 @@ describe('fillComponents', () => {
 		expect(input.shouldBeFiltered).toBe(true);
 	});
 
+	it('should not filter out components with conditionFilter=false when activeFilters is DISABLED', () => {
+		const components = [
+			{
+				id: 'input1',
+				componentType: 'Input',
+				page: '1',
+				response: {
+					name: 'TESTINPUT',
+				},
+				label: {
+					type: 'VTL|MD',
+					value: '"Should be kept even with conditionFilter false"',
+				},
+				conditionFilter: {
+					type: 'VTL',
+					// value should be string, but did not find how to execute correctly with mocks
+					// for having a false conditionFilter at the end
+					value: false,
+				},
+			},
+		];
+
+		const mockVariables = LunaticVariablesStore.makeFromObject({
+			TESTINPUT: 'Some value',
+		});
+
+		const mockState = {
+			...defaultMockState,
+			variables: mockVariables,
+			activeFilters: 'DISABLED',
+		};
+
+		const filledComponents = fillComponents(
+			components as LunaticComponentDefinition[],
+			mockState as unknown as FillComponentArgs
+		) as any;
+
+		expect(filledComponents).toHaveLength(1);
+
+		const input = filledComponents[0];
+		expect(input.id).toBe('input1');
+		expect(input.conditionFilter).toBe(false);
+		expect(input.shouldBeFiltered).toBe(true);
+	});
+
 	it('should transform components into Text with empty label when conditionFilter is false and parentType is RosterForLoop', () => {
 		const components = [
 			{
@@ -562,6 +607,70 @@ describe('fillComponents', () => {
 		const mockState = {
 			...defaultMockState,
 			activeFilters: 'NONE',
+			variables: mockVariables,
+		};
+
+		const filledComponents = fillComponents(
+			components as LunaticComponentDefinition[],
+			mockState as unknown as FillComponentArgs,
+			'RosterForLoop'
+		) as any;
+
+		expect(filledComponents).toHaveLength(2);
+
+		// Check the first component that has conditionFilter: false
+		const input = filledComponents[0];
+		// The component should remain unchanged
+		expect(input.componentType).toBe('Input');
+		expect(input.label).toBe('"Input label"');
+		expect(input.conditionFilter).toBe(false);
+		expect(input.shouldBeFiltered).toBe(true);
+
+		// Check the second component that has conditionFilter: true
+		const radio = filledComponents[1];
+		// The component should remain unchanged
+		expect(radio.componentType).toBe('Radio');
+		expect(radio.label).toBe('"Radio label"');
+		expect(radio.options[0].label).toBe('"Yes"');
+		expect(radio.options[1].label).toBe('"No"');
+	});
+
+	it('should never transform components into Text when activeFilters is DISABLED', () => {
+		const components = [
+			{
+				id: 'input1',
+				componentType: 'Input',
+				page: '1',
+				label: { value: '"Input label"', type: 'VTL|MD' },
+				conditionFilter: {
+					type: 'VTL',
+					// value should be string, but did not find how to execute correctly with mocks
+					// for having a false conditionFilter at the end
+					value: false,
+				},
+				response: { name: 'TESTINPUT' },
+			},
+			{
+				id: 'radio1',
+				componentType: 'Radio',
+				page: '1',
+				label: { value: '"Radio label"', type: 'VTL|MD' },
+				options: [
+					{ value: 'yes', label: { value: '"Yes"', type: 'VTL|MD' } },
+					{ value: 'no', label: { value: '"No"', type: 'VTL|MD' } },
+				],
+				response: { name: 'TESTRADIO' },
+			},
+		];
+
+		const mockVariables = LunaticVariablesStore.makeFromObject({
+			TESTINPUT: 'Filled input',
+			TESTRADIO: 'yes',
+		});
+
+		const mockState = {
+			...defaultMockState,
+			activeFilters: 'DISABLED',
 			variables: mockVariables,
 		};
 

@@ -87,6 +87,7 @@ export const fillComponent = (
 			pagerIteration: state.pager.iteration,
 			value,
 			logger: state.logger,
+			disableFilters: state.activeFilters === 'DISABLED',
 			shouldParentBeFiltered: shouldBeFiltered,
 		}),
 		...getComponentTypeProps(interpretedProps, state),
@@ -119,6 +120,12 @@ export function fillComponents(
 	});
 
 	if (state.activeFilters === 'NONE') {
+		// every filters have been removed from source, no need to inspect components
+		return filledComponents;
+	}
+
+	if (state.activeFilters === 'DISABLED') {
+		// all filters are ignored, we show every components
 		return filledComponents;
 	}
 
@@ -128,11 +135,11 @@ export function fillComponents(
 			(filledComponent.conditionFilter ?? true)
 				? filledComponent
 				: // Replace the component by an empty text component
-				({
-					...filledComponent,
-					label: '',
-					componentType: 'Text',
-				} as LunaticComponentProps)
+					({
+						...filledComponent,
+						label: '',
+						componentType: 'Text',
+					} as LunaticComponentProps)
 		);
 	}
 

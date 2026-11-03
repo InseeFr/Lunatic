@@ -95,6 +95,12 @@ export function isPageEmpty(state: LunaticReducerState): boolean {
 
 	const visibleComponents = components.filter((component) => {
 		if (options.activeFilters === 'NONE') {
+			// every filters have been removed from source, no need to inspect components
+			return true;
+		}
+
+		if (options.activeFilters === 'DISABLED') {
+			// all filters are ignored, we show every components
 			return true;
 		}
 

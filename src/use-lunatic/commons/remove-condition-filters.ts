@@ -4,22 +4,23 @@ import type { ActiveFilter, LunaticExpression, LunaticSource } from '../type';
 /**
  * Decide if a conditionFilter must be kept, depending on the active filters mode.
  * - "ALL": Keep every filter
- * - "EXTERNAL": Keep filters based only on external variables
- * - "NONE": Ignore every filter
+ * - "EXTERNAL": Keep filters based only on external variables (or no variable)
+ * - "NONE": Remove every filter
+ * - "DISABLED": Keep every filter
  */
 export function shouldKeepFilter(
 	filter: LunaticExpression | undefined,
 	activeFilters: ActiveFilter
 ): boolean {
 	if (!filter) return true;
-	if (activeFilters === 'ALL') return true;
+	if (activeFilters === 'ALL' || activeFilters === 'DISABLED') return true;
 	if (activeFilters === 'NONE') return false;
 	// For external active filter we have to check dependencies and remove any filter based on collected or calculated variables
 	const dependencies = filter.variablesDependencies;
 	return Boolean(
 		dependencies &&
-		(dependencies.COLLECTED?.length ?? 0) === 0 &&
-		(dependencies.CALCULATED?.length ?? 0) === 0
+			(dependencies.COLLECTED?.length ?? 0) === 0 &&
+			(dependencies.CALCULATED?.length ?? 0) === 0
 	);
 }
 
@@ -44,7 +45,7 @@ export function removeConditionFilters(
 	source: LunaticSource,
 	activeFilters: ActiveFilter
 ): LunaticSource {
-	if (activeFilters === 'ALL') {
+	if (activeFilters === 'ALL' || activeFilters === 'DISABLED') {
 		return source;
 	}
 
@@ -88,7 +89,7 @@ export function removeConditionFilters(
 			}
 		}
 		if ('options' in current && Array.isArray(current.options)) {
-			const currentOptions = current.options
+			const currentOptions = current.options;
 			const options = removeFilterIfChanged(currentOptions, cleanSingleElement);
 			if (options !== currentOptions) {
 				current = { ...current, options } as T;
