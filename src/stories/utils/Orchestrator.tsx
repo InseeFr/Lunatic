@@ -305,7 +305,7 @@ export const OrchestratorMeta: Meta<typeof Orchestrator> = {
 		autoSuggesterLoading: { table: { disable: true } },
 		missingStrategy: { table: { disable: true } },
 		extraTabs: { table: { disable: true } },
-		activeFilters: { control: 'select', options: ['ALL', 'EXTERNAL', 'NONE'] },
+		activeFilters: { control: 'select', options: ['ALL', 'EXTERNAL', 'NONE', 'DISABLED'] },
 	},
 	args: {
 		disableFiltersDescription: false,

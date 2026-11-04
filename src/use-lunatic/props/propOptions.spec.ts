@@ -385,6 +385,65 @@ describe('computeOptionsFromComponent', () => {
 			expect(options).toHaveLength(1);
 			expect(options[0].shouldBeFiltered).toBe(false);
 		});
+		it('should keep responses when filters are DISABLED', () => {
+			const definition = {
+				...checkboxGroupDefinition,
+				responses: [
+					{
+						label: 'Option 1',
+						response: { name: 'O1' },
+						id: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			// ensure interpreted expression is false
+			vi.spyOn(variables, 'run').mockImplementation(() => {
+				return false;
+			});
+
+			const options = computeOptionsFromComponent(definition, {
+				variables,
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+				disabledFilters: true,
+			});
+
+			expect(options).toHaveLength(1);
+			expect(options[0].shouldBeFiltered).toBe(true);
+		});
+		it('should keep options when filters are DISABLED', () => {
+			const definition = {
+				...radioDefinition,
+				options: [
+					{
+						label: 'Option 1',
+						value: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
+
+			// ensure interpreted expression is false
+			vi.spyOn(variables, 'run').mockImplementation(() => {
+				return false;
+			});
+
+			const options = computeOptionsFromComponent(definition, {
+				variables,
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+				disabledFilters: true,
+			});
+
+			expect(options).toHaveLength(1);
+			expect(options[0].shouldBeFiltered).toBe(true);
+		});
 
 		it('should evaluate the external-only filters retained during initialization', () => {
 			const definition = {
@@ -458,6 +517,68 @@ describe('computeOptionsFromComponent', () => {
 			expect(
 				(options as InterpretedOption[]).map((option) => option.value)
 			).toEqual(['collected']);
+		});
+
+		it('should set the response (CheckboxGroup) as shouldBeFiltered when the parent component should be filtered', () => {
+			const definition = {
+				...checkboxGroupDefinition,
+				responses: [
+					{
+						label: 'Option 1',
+						response: { name: 'O1' },
+						id: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			const options = computeOptionsFromComponent(definition, {
+				variables,
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+				disabledFilters: true,
+				shouldParentBeFiltered: true,
+			});
+
+			expect(options).toHaveLength(1);
+			// the option would have been filtered if we did not disable filters because its parent would
+			expect(options[0].shouldBeFiltered).toBe(true);
+		});
+		it('should set the option (Radio) as shouldBeFiltered when the parent component should be filtered', () => {
+			const definition = {
+				...radioDefinition,
+				options: [
+					{
+						label: 'Option 1',
+						value: 'id1',
+						conditionFilter: {
+							type: 'VTL',
+							value: 'expression',
+							variablesDependencies: {
+								EXTERNAL: [],
+								COLLECTED: [],
+								CALCULATED: [],
+							},
+						},
+					},
+				],
+			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
+
+			const options = computeOptionsFromComponent(definition, {
+				variables,
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+				disabledFilters: true,
+				shouldParentBeFiltered: true,
+			});
+
+			expect(options).toHaveLength(1);
+			// the option would have been filtered if we did not disable filters because its parent would
+			expect(options[0].shouldBeFiltered).toBe(true);
 		});
 	});
 

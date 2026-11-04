@@ -56,3 +56,11 @@ export const NoFilters: OrchestratorStory = {
 		data: externalData('NON'),
 	},
 };
+
+export const DisabledFilters: OrchestratorStory = {
+	args: {
+		source: sourceActiveFilters,
+		activeFilters: 'DISABLED',
+		data: externalData('NON'),
+	},
+};

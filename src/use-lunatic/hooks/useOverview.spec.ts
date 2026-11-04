@@ -51,4 +51,16 @@ describe('use-overview test with useLunatic()', () => {
 		const { result } = renderHook(() => useLunatic(...params));
 		expect(result.current.overview.length).toBe(9);
 	});
+
+	it('should show filtered items when activeFilters is DISABLED', () => {
+		const params = [
+			source as any,
+			dataFromObject({}),
+			{ withOverview: true, activeFilters: 'DISABLED' },
+		] as const;
+
+		const { result } = renderHook(() => useLunatic(...params));
+		// All elements have to be presents
+		expect(result.current.overview.length).toBe(9);
+	});
 });

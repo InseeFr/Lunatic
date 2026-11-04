@@ -59,7 +59,7 @@ export type LunaticError = Pick<
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
 export type LunaticExpression = VTLExpression | VTLScalarExpression;
-export type ActiveFilter = 'ALL' | 'EXTERNAL' | 'NONE';
+export type ActiveFilter = 'ALL' | 'EXTERNAL' | 'NONE' | 'DISABLED';
 
 /**
  * Page numerotation.
@@ -143,22 +143,22 @@ export type LunaticReducerState = {
 	pager: LunaticPager;
 	pages: {
 		[key: number | string]:
-		| {
-			components: LunaticSource['components'];
-			isLoop: false;
-			iterations?: undefined;
-			loopDependencies?: undefined;
-			subPages?: undefined;
-		}
-		| {
-			components: LunaticSource['components'];
-			isLoop: true;
-			iterations: VTLScalarExpression;
-			/** Variables affecting this loop. */
-			loopDependencies: string[];
-			/** List of child pages (ex: ['20.1', '20.2'] */
-			subPages: string[];
-		};
+			| {
+					components: LunaticSource['components'];
+					isLoop: false;
+					iterations?: undefined;
+					loopDependencies?: undefined;
+					subPages?: undefined;
+			  }
+			| {
+					components: LunaticSource['components'];
+					isLoop: true;
+					iterations: VTLScalarExpression;
+					/** Variables affecting this loop. */
+					loopDependencies: string[];
+					/** List of child pages (ex: ['20.1', '20.2'] */
+					subPages: string[];
+			  };
 	};
 	/** Run an expression using the value from the state. */
 	executeExpression: <T = unknown>(
@@ -196,7 +196,8 @@ export type LunaticOptions = {
 	 * Decides whether or not filters are active.
 	 * - "ALL": Keep every filters
 	 * - "EXTERNAL": Keep filter only if it is based on external variables only
-	 * - "NONE": Ignore every filters
+	 * - "NONE": Remove every filters
+	 * - "DISABLED": Keep every filters, but never apply it to components (only tag them as they should have been filtered)
 	 * @default 'ALL'
 	 */
 	activeFilters?: ActiveFilter;

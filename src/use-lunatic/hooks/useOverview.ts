@@ -29,13 +29,24 @@ export const useOverview = (
 		overview,
 		executeExpression,
 		pager,
-	}: Pick<LunaticReducerState, 'executeExpression' | 'overview' | 'pager'>,
+		options,
+	}: Pick<
+		LunaticReducerState,
+		'executeExpression' | 'overview' | 'pager' | 'options'
+	>,
 	deps: DependencyList
 ) => {
 	return useMemo(
-		() => interpretOverview(overview, executeExpression, pager),
+		() =>
+			interpretOverview(
+				overview,
+				executeExpression,
+				pager,
+				// ignore active filters for showing every overview items
+				options.activeFilters === 'DISABLED'
+			),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[...deps, overview]
+		[...deps, overview, options.activeFilters]
 	);
 };
 
@@ -45,13 +56,15 @@ export const useOverview = (
 const interpretOverview = (
 	overviewItems: LunaticOverviewItem[],
 	executeExpression: LunaticReducerState['executeExpression'],
-	pager?: LunaticReducerState['pager']
+	pager?: LunaticReducerState['pager'],
+	disabledFilters?: boolean
 ) => {
 	// Flat structure of the overview
 	let items = overviewItems.reduce(
 		(acc, item) =>
 			interpretOverviewItem(acc, item, executeExpression, {
 				pager,
+				disabledFilters,
 			}),
 		[] as InterpretedLunaticOverviewItem[]
 	);
@@ -86,6 +99,7 @@ const interpretOverviewItem = (
 	executeExpression: LunaticReducerState['executeExpression'],
 	state: {
 		pager?: LunaticReducerState['pager'];
+		disabledFilters?: boolean;
 	},
 
 	iteration?: number
@@ -101,8 +115,9 @@ const interpretOverviewItem = (
 		);
 	}
 
+	// if filters are disabled, item are visible and reached by default
 	const isVisible = (() => {
-		if (!item.conditionFilter) return true;
+		if (state.disabledFilters || !item.conditionFilter) return true;
 		return Boolean(
 			executeExpression(item.conditionFilter, {
 				iteration: iteration,
