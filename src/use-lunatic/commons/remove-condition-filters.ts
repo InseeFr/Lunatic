@@ -6,7 +6,7 @@ import type { ActiveFilter, LunaticExpression, LunaticSource } from '../type';
  * - "ALL": Keep every filter
  * - "EXTERNAL": Keep filters based only on external variables (or no variable)
  * - "NONE": Remove every filter
- * - "DISABLED": Keep every filter
+ * - "DISABLED": Keep every filter, but we disable them (showing every components)
  */
 export function shouldKeepFilter(
 	filter: LunaticExpression | undefined,

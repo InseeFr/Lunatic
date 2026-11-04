@@ -87,7 +87,7 @@ export const fillComponent = (
 			pagerIteration: state.pager.iteration,
 			value,
 			logger: state.logger,
-			disableFilters: state.activeFilters === 'DISABLED',
+			disabledFilters: state.activeFilters === 'DISABLED',
 			shouldParentBeFiltered: shouldBeFiltered,
 		}),
 		...getComponentTypeProps(interpretedProps, state),

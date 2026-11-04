@@ -409,7 +409,7 @@ describe('computeOptionsFromComponent', () => {
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
+				disabledFilters: true,
 			});
 
 			expect(options).toHaveLength(1);
@@ -438,7 +438,7 @@ describe('computeOptionsFromComponent', () => {
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
+				disabledFilters: true,
 			});
 
 			expect(options).toHaveLength(1);
@@ -538,7 +538,7 @@ describe('computeOptionsFromComponent', () => {
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
+				disabledFilters: true,
 				shouldParentBeFiltered: true,
 			});
 
@@ -572,7 +572,7 @@ describe('computeOptionsFromComponent', () => {
 				pagerIteration: undefined,
 				value: undefined,
 				logger: mockLogger,
-				disableFilters: true,
+				disabledFilters: true,
 				shouldParentBeFiltered: true,
 			});
 
