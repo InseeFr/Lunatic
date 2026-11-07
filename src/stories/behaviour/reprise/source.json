@@ -1,0 +1,90 @@
+{
+	"$schema": "../../../../lunatic-schema.json",
+	"components": [
+		{
+			"componentType": "Input",
+			"label": {
+				"value": "\"Nom de l'occupant principal.\"",
+				"type": "VTL|MD"
+			},
+			"maxLength": 30,
+			"id": "surname",
+			"description": {
+				"value": "\"For example, Bob.\"",
+				"type": "VTL|MD"
+			},
+			"response": {
+				"name": "NOM"
+			},
+			"page": "1"
+		},
+		{
+			"componentType": "Loop",
+			"bindingDependencies": ["PRENOMS"],
+			"lines": {
+				"min": { "value": "1", "type": "VTL" },
+				"max": { "value": "10", "type": "VTL" }
+			},
+			"components": [
+				{
+					"id": "prenoms",
+					"componentType": "Input",
+					"label": { "value": "\"Prénom\"", "type": "VTL|MD" },
+					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
+					"response": {
+						"name": "PRENOMS"
+					}
+				},
+				{
+					"id": "majeur",
+					"componentType": "CheckboxBoolean",
+					"label": { "value": "Majeur ?", "type": "TXT" },
+					"bindingDependencies": ["MAJEUR"],
+					"options": [
+						{ "value": "1", "label": { "value": "\"oui\"", "type": "VTL|MD" } },
+						{ "value": "0", "label": { "value": "\"non\"", "type": "VTL|MD" } }
+					],
+					"response": {
+						"name": "MAJEUR"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NOM",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOMS",
+			"values": {
+				"PREVIOUS": [],
+				"COLLECTED": [],
+				"FORCED": [],
+				"EDITED": [],
+				"INPUTTED": []
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "MAJEUR",
+			"values": {
+				"PREVIOUS": [],
+				"COLLECTED": [],
+				"FORCED": [],
+				"EDITED": [],
+				"INPUTTED": []
+			}
+		}
+	]
+}
