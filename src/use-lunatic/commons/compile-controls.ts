@@ -211,10 +211,7 @@ function checkComponentInLoop(
 				component.conditionFilter &&
 				typeof component.conditionFilter == 'object' &&
 				'value' in component.conditionFilter &&
-				!state.executeExpression(
-					{ value: component.conditionFilter.value, type: 'VTL' },
-					iterationPager
-				)) ||
+				!state.executeExpression(component.conditionFilter, iterationPager)) ||
 			// @ts-expect-error TS doesn't understand that conditionFilter is a boolean here
 			component.conditionFilter === false
 		) {

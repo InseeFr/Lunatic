@@ -1,5 +1,6 @@
 import {
 	getChangedKey,
+	getDefaultNameFromExpression,
 	type LunaticVariablesStore,
 } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
@@ -43,7 +44,7 @@ export function cleaningBehaviour(
 			if (Array.isArray(cleaning[source][target])) {
 				for (const cleaningInfo of cleaning[source][target]) {
 					store.setCalculated(
-						cleaningInfo.expression,
+						getDefaultNameFromExpression(cleaningInfo.expression),
 						cleaningInfo.expression,
 						{
 							shapeFrom: cleaningInfo.shapeFrom,

@@ -60,7 +60,10 @@ export function useMultimode(
 		const leafRules = source.multimode.leaf?.rules || {};
 
 		// If neither has rules, return an empty object
-		if (Object.keys(questionnaireRules).length === 0 && Object.keys(leafRules).length === 0) {
+		if (
+			Object.keys(questionnaireRules).length === 0 &&
+			Object.keys(leafRules).length === 0
+		) {
 			return {};
 		}
 
@@ -77,19 +80,16 @@ export function useMultimode(
 				source.components,
 				source.multimode.leaf.source
 			);
-			iterations = forceInt(
-				store.run(roundabout?.iterations?.value ?? '') ?? 0
-			);
+			iterations = roundabout?.iterations
+				? forceInt(store.run(roundabout?.iterations))
+				: 0;
 		}
 
 		return Object.fromEntries(
 			Array.from(keys).map((key) => {
 				// Check the rule at the questionnaire level
 				const questionnaireExpression = questionnaireRules[key];
-				if (
-					questionnaireExpression &&
-					store.run(questionnaireExpression.value)
-				) {
+				if (questionnaireExpression && store.run(questionnaireExpression)) {
 					return [key, true];
 				}
 
@@ -100,7 +100,7 @@ export function useMultimode(
 				}
 
 				for (let i = 0; i < iterations; i++) {
-					if (store.run(leafExpression.value, { iteration: [i] })) {
+					if (store.run(leafExpression, { iteration: [i] })) {
 						return [key, true];
 					}
 				}

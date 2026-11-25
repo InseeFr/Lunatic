@@ -2,7 +2,6 @@ import type { LunaticVariablesStore } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
 import { forceInt } from '../../../../utils/number';
 import { resizeArrayVariable } from '../../../reducer/commons';
-import { getExpressionAsString } from '../../../../utils/vtl';
 import { resizeArray } from '../../../../utils/array';
 import { DynamicScalarExpression } from '../../../../type.source';
 
@@ -84,7 +83,7 @@ function resizePairwise(
 				resizingInfo.sizeForLinksVariables.yAxisSize,
 			];
 	const [xSize, ySize] = sizeExpressions.map((expression) => {
-		return forceInt(store.run(getExpressionAsString(expression)));
+		return forceInt(store.run(expression));
 	});
 	resizingInfo.linksVariables.forEach((variable) => {
 		const value = store.get(variable);

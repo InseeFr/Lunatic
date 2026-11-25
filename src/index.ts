@@ -35,8 +35,8 @@ export type { LunaticSource } from './use-lunatic/type';
 
 // Export errors (useful for typeof)
 export {
-	VTLMissingDependencies,
+	DynamicMissingDependencies,
 	VTLExpressionError,
-	VTLMissingDependency,
+	DynamicMissingDependency,
 	VTLInterpretationError,
 } from './use-lunatic/commons/variables/errors';
