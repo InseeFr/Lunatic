@@ -201,9 +201,6 @@ export type LunaticOptions = {
 	 * @default 'ALL'
 	 */
 	activeFilters?: ActiveFilter;
-
-	/** Enable VTL and Markdown support. */
-	features?: ('MD' | 'VTL')[];
 	preferences?: ['COLLECTED'];
 	/**
 	 * Key in which the data is saved.

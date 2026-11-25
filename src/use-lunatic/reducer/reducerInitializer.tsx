@@ -8,7 +8,7 @@ import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-st
 import { checkLoops, createMapPages } from '../commons';
 import { removeConditionFilters } from '../commons/remove-condition-filters';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
-import { MD, VTL } from '../../utils/constants';
+import { CEL, MD, VTL } from '../../utils/constants';
 import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
 import { getPagerFromPageTag } from '../commons/pagination/page-tag';
 import { buildOverview } from './overview/overviewOnInit';
@@ -16,6 +16,7 @@ import { forceInt } from '../../utils/number';
 import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
 import type { RefObject } from 'react';
 import type { LunaticLogger } from '../logger/type';
+import { DynamicExpression } from '../../type.source';
 
 const basePager = {
 	page: 1,
@@ -34,7 +35,7 @@ const baseState = {
 	isInLoop: false,
 	updatedAt: Date.now(),
 	overview: [],
-	updateBindings: () => { },
+	updateBindings: () => {},
 	executeExpression: <T,>() => null as T,
 	options: {
 		activeFilters: 'ALL',
@@ -42,12 +43,11 @@ const baseState = {
 	},
 } satisfies LunaticReducerState;
 
-const onChange = { current: () => { } };
+const onChange = { current: () => {} };
 
 export function reducerInitializer({
 	source,
 	data,
-	features = ['VTL'],
 	initialPage = '1',
 	lastReachedPage = undefined,
 	withOverview = false,
@@ -59,7 +59,6 @@ export function reducerInitializer({
 }: {
 	source: LunaticSource;
 	data: LunaticData;
-	features?: LunaticOptions['features'];
 	initialPage?: LunaticOptions['initialPage'];
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
@@ -69,7 +68,9 @@ export function reducerInitializer({
 	onVariableChange?: RefObject<LunaticOptions['onVariableChange']>;
 	logger?: LunaticLogger;
 }): LunaticReducerState {
-	const filteredSource = activeFilters ? removeConditionFilters(source, activeFilters) : source
+	const filteredSource = activeFilters
+		? removeConditionFilters(source, activeFilters)
+		: source;
 
 	// Cleaning is disabled if not all filters are active.
 	const disableCleaning =
@@ -90,6 +91,10 @@ export function reducerInitializer({
 		registerSuggesters(source.suggesters, getReferentiel);
 	}
 
+	const isDynamicExpression = (expression: DynamicExpression): boolean => {
+		return expression.type.includes(VTL) || expression.type.includes(CEL);
+	};
+
 	const executeExpression: LunaticReducerState['executeExpression'] = (
 		expression,
 		args = {}
@@ -100,13 +105,13 @@ export function reducerInitializer({
 		}
 		// Remove above code on next update
 		const expressionType = getExpressionType(expression);
-		const expressionString = getExpressionAsString(expression);
-		// If VTL is not supported, or the expression does not use VTL, return the uninterpreted value
-		if (!features?.includes(VTL) || !expressionType.includes(VTL)) {
-			return expressionString;
+		const expressionAsString = getExpressionAsString(expression);
+		// If the expression does not use VTL or CEL, return the uninterpreted value
+		if (!isDynamicExpression(expression)) {
+			return expressionAsString;
 		}
 		try {
-			const result = variables.run(expressionString, {
+			const result = variables.run(expression, {
 				...args,
 				iteration:
 					typeof args.iteration === 'number'
@@ -114,7 +119,6 @@ export function reducerInitializer({
 						: args.iteration,
 			});
 			if (
-				features.includes(MD) &&
 				expressionType.includes(MD) &&
 				typeof result === 'string' &&
 				result !== ''
@@ -130,7 +134,7 @@ export function reducerInitializer({
 					error: e as Error,
 				});
 			}
-			return expressionString;
+			return expressionAsString;
 		}
 	};
 

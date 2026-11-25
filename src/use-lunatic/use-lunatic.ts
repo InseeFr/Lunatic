@@ -37,7 +37,6 @@ import { useMultimode } from '../hooks/useMultimode';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
-const DEFAULT_FEATURES = ['VTL', 'MD'] as ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED] as ['COLLECTED'];
 const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
@@ -47,11 +46,10 @@ const DEFAULT_REFUSED = D.RF;
 const defaultOptions = {
 	disableFiltersDescription: true,
 	activeFilters: 'ALL',
-	features: DEFAULT_FEATURES,
 	preferences: DEFAULT_PREFERENCES,
 	savingType: COLLECTED,
-	onChange: () => { },
-	onVariableChange: () => { },
+	onChange: () => {},
+	onVariableChange: () => {},
 	management: false,
 	shortcut: false,
 	initialPage: '1' as PageTag,
@@ -61,7 +59,7 @@ const defaultOptions = {
 	// Calculate an overview of every sequence (will be exposed as "overview")
 	withOverview: false,
 	missing: false,
-	missingStrategy: () => { },
+	missingStrategy: () => {},
 	missingShortcut: DEFAULT_SHORTCUT,
 	dontKnowButton: DEFAULT_DONT_KNOW,
 	refusedButton: DEFAULT_REFUSED,
