@@ -2,6 +2,7 @@ import { objectMap } from './object';
 import { interpret } from '@inseefr/trevas';
 import antlr4 from 'antlr4';
 import { VtlLexer } from '@inseefr/vtl-2.0-antlr-tools';
+import { DynamicExpression, DynamicExpressionLanguage } from '../type.source';
 
 type DataSet = { dataPoints: { result: unknown } };
 
@@ -64,19 +65,16 @@ export function getVTLCompatibleValue(value: unknown) {
 	return value;
 }
 
-export function getExpressionType(expression: unknown): string {
+export function getExpressionType(
+	expression: string | DynamicExpression
+): DynamicExpressionLanguage {
 	if (typeof expression === 'string') {
 		return 'TXT';
 	}
-	if (
-		expression &&
-		typeof expression === 'object' &&
-		'type' in expression &&
-		typeof expression.type === 'string'
-	) {
+	if (expression && typeof expression === 'object' && 'type' in expression) {
 		return expression.type;
 	}
-	return '';
+	return 'TXT';
 }
 
 export function getExpressionAsString(expression: unknown): string {

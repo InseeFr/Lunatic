@@ -8,7 +8,7 @@ import type { DeepTranslateExpression } from '../commons/fill-components/fill-co
 import { isNumber } from '../../utils/number';
 import type { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { LunaticLogger } from '../logger/type';
-import { DynamicExpression } from '../../components/type';
+import { DynamicExpression } from '../../type.source';
 
 /* Used for radio option and checkbox one option */
 export type InterpretedOption = {
@@ -244,7 +244,7 @@ function isFilteredOutOption(
 ): boolean {
 	if (!conditionFilter) return false;
 	try {
-		return !variables.run(conditionFilter.value, { iteration });
+		return !variables.run(conditionFilter, { iteration });
 	} catch (e) {
 		logger({ type: 'ERROR', error: e as Error });
 		return false;

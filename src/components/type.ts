@@ -8,12 +8,9 @@ import type {
 	LunaticReducerState,
 } from '../use-lunatic/type';
 import type { InterpretedOption } from '../use-lunatic/props/propOptions';
+import { DynamicExpression } from '../type.source';
 
 export type DurationFormat = 'PTnHnM' | 'PnYnM';
-export type DynamicExpression = {
-	value: string;
-	type: 'VTL' | 'VTL|MD' | 'CEL' | 'CEL|MD' | 'TXT';
-};
 
 export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
@@ -46,7 +43,6 @@ export type LunaticBaseProps<ValueType = unknown> = {
 		position: string;
 		label: ReactNode;
 	}[];
-	features?: string[];
 	goNextPage?: () => void;
 	goPreviousPage?: () => void;
 	meta?: Record<string, unknown>;
@@ -250,7 +246,6 @@ export type ComponentPropsByType = {
 	};
 	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
-		features?: LunaticOptions['features'];
 		executeExpression: LunaticReducerState['executeExpression'];
 		size: number;
 		symLinks: Record<string, Record<string, string>>;

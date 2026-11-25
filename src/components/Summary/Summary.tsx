@@ -1,6 +1,7 @@
-import type { LunaticComponentProps, DynamicExpression } from '../type';
+import type { LunaticComponentProps } from '../type';
 import { type ReactNode } from 'react';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
+import { DynamicExpression } from '../../type.source';
 
 type Section = {
 	id?: string;
