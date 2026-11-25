@@ -6,7 +6,7 @@
 	"type": "object",
 	"properties": {
 		"label": {
-			"$ref": "#/$defs/VTLExpression"
+			"$ref": "#/$defs/DynamicExpression"
 		},
 		"pagination": {
 			"enum": ["question", "sequence"]
@@ -59,7 +59,15 @@
 								"type": "object",
 								"properties": {
 									"expression": {
-										"type": "string"
+										"oneOf": [
+											{
+												"type": "string",
+												"description": "VTL Expression for cleaning, deprecated."
+											},
+											{
+												"$ref": "#/$defs/DynamicScalarExpression"
+											}
+										]
 									},
 									"shapeFrom": {
 										"type": "string"
@@ -100,8 +108,16 @@
 						"type": "object",
 						"properties": {
 							"size": {
-								"type": "string",
-								"description": "VTL Expression for size."
+								"description": "Expression for size, VTL string or DynamicExpression typed",
+								"oneOf": [
+									{
+										"type": "string",
+										"description": "VTL Expression for size, deprecated."
+									},
+									{
+										"$ref": "#/$defs/DynamicScalarExpression"
+									}
+								]
 							},
 							"variables": {
 								"type": "array",
@@ -133,10 +149,25 @@
 										"type": "object",
 										"properties": {
 											"xAxisSize": {
-												"type": "string"
+												"oneOf": [
+													{
+														"type": "string",
+														"description": "VTL Expression for size, deprecated."
+													},
+													{
+														"$ref": "#/$defs/DynamicScalarExpression"
+													}
+												]
 											},
 											"yAxisSize": {
-												"type": "string"
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"$ref": "#/$defs/DynamicScalarExpression"
+													}
+												]
 											}
 										},
 										"required": ["xAxisSize", "yAxisSize"]
@@ -156,8 +187,16 @@
 						"type": "object",
 						"properties": {
 							"size": {
-								"type": "string",
-								"description": "VTL Expression for size."
+								"description": "Expression for size, VTL string or DynamicExpression typed",
+								"oneOf": [
+									{
+										"type": "string",
+										"description": "VTL Expression for size, deprecated."
+									},
+									{
+										"$ref": "#/$defs/DynamicScalarExpression"
+									}
+								]
 							},
 							"variables": {
 								"type": "array",
@@ -183,10 +222,26 @@
 										"type": "object",
 										"properties": {
 											"xAxisSize": {
-												"type": "string"
+												"oneOf": [
+													{
+														"type": "string",
+														"description": "VTL Expression for size, deprecated."
+													},
+													{
+														"$ref": "#/$defs/DynamicScalarExpression"
+													}
+												]
 											},
 											"yAxisSize": {
-												"type": "string"
+												"oneOf": [
+													{
+														"type": "string",
+														"description": "VTL Expression for size, deprecated."
+													},
+													{
+														"$ref": "#/$defs/DynamicScalarExpression"
+													}
+												]
 											}
 										},
 										"required": ["xAxisSize", "yAxisSize"]
@@ -250,7 +305,7 @@
 						"rules": {
 							"type": "object",
 							"additionalProperties": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							}
 						}
 					},
@@ -265,7 +320,7 @@
 						"rules": {
 							"type": "object",
 							"additionalProperties": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							}
 						}
 					},
@@ -277,11 +332,11 @@
 	},
 	"required": ["components", "variables"],
 	"$defs": {
-		"VTLExpression": {
+		"DynamicExpression": {
 			"type": "object",
 			"properties": {
 				"value": {
-					"description": "Valid VTL Expression",
+					"description": "Valid Dynamic Expression",
 					"type": "string"
 				},
 				"bindingDependencies": {
@@ -296,17 +351,17 @@
 				},
 				"type": {
 					"type": "string",
-					"enum": ["VTL", "VTL|MD", "TXT"]
+					"enum": ["VTL", "VTL|MD", "CEL", "CEL|MD", "TXT"]
 				}
 			},
 			"required": ["value", "type"],
 			"additionalProperties": false
 		},
-		"VTLScalarExpression": {
+		"DynamicScalarExpression": {
 			"type": "object",
 			"properties": {
 				"value": {
-					"description": "Valid VTL Expression",
+					"description": "Valid scalar dynamic Expression, based on VTL or CEL",
 					"type": "string"
 				},
 				"bindingDependencies": {
@@ -321,7 +376,7 @@
 				},
 				"type": {
 					"type": "string",
-					"const": "VTL"
+					"enum": ["VTL", "CEL"]
 				},
 				"shapeFrom": {
 					"type": "string"
@@ -382,7 +437,7 @@
 					]
 				},
 				"label": {
-					"$ref": "#/$defs/VTLExpression"
+					"$ref": "#/$defs/DynamicExpression"
 				}
 			},
 			"required": ["id", "declarationType", "position", "label"],
@@ -403,10 +458,10 @@
 					"enum": ["FORMAT", "CONSISTENCY", "MANDATORY"]
 				},
 				"control": {
-					"$ref": "#/$defs/VTLExpression"
+					"$ref": "#/$defs/DynamicExpression"
 				},
 				"errorMessage": {
-					"$ref": "#/$defs/VTLExpression"
+					"$ref": "#/$defs/DynamicExpression"
 				},
 				"bindingDependencies": {
 					"type": "array",
@@ -419,7 +474,7 @@
 					"enum": ["roundabout", "ROW", "simple"]
 				},
 				"iterations": {
-					"$ref": "#/$defs/VTLScalarExpression"
+					"$ref": "#/$defs/DynamicScalarExpression"
 				}
 			},
 			"required": ["id", "criticality", "control", "errorMessage"],
@@ -537,10 +592,10 @@
 			"type": "object",
 			"properties": {
 				"label": {
-					"$ref": "#/$defs/VTLExpression"
+					"$ref": "#/$defs/DynamicExpression"
 				},
 				"description": {
-					"$ref": "#/$defs/VTLExpression"
+					"$ref": "#/$defs/DynamicExpression"
 				},
 				"declarations": {
 					"type": "array",
@@ -549,7 +604,7 @@
 					}
 				},
 				"conditionFilter": {
-					"$ref": "#/$defs/VTLScalarExpression"
+					"$ref": "#/$defs/DynamicScalarExpression"
 				},
 				"controls": {
 					"type": "array",
@@ -567,7 +622,7 @@
 					"$ref": "#/$defs/ResponseDefinition"
 				},
 				"conditionReadOnly": {
-					"$ref": "#/$defs/VTLScalarExpression"
+					"$ref": "#/$defs/DynamicScalarExpression"
 				}
 			},
 			"required": ["id"]
@@ -623,10 +678,10 @@
 								"type": "string"
 							},
 							"iterations": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							},
 							"title": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							},
 							"responses": {
 								"type": "array",
@@ -637,10 +692,10 @@
 											"type": "string"
 										},
 										"label": {
-											"$ref": "#/$defs/VTLExpression"
+											"$ref": "#/$defs/DynamicExpression"
 										},
 										"value": {
-											"$ref": "#/$defs/VTLExpression"
+											"$ref": "#/$defs/DynamicExpression"
 										}
 									},
 									"required": ["id", "label", "value"]
@@ -689,7 +744,7 @@
 					}
 				},
 				"iterations": {
-					"$ref": "#/$defs/VTLScalarExpression"
+					"$ref": "#/$defs/DynamicScalarExpression"
 				},
 				"locked": {
 					"type": "boolean"
@@ -701,13 +756,13 @@
 					"type": "object",
 					"properties": {
 						"label": {
-							"$ref": "#/$defs/VTLScalarExpression"
+							"$ref": "#/$defs/DynamicScalarExpression"
 						},
 						"description": {
-							"$ref": "#/$defs/VTLScalarExpression"
+							"$ref": "#/$defs/DynamicScalarExpression"
 						},
 						"disabled": {
-							"$ref": "#/$defs/VTLScalarExpression"
+							"$ref": "#/$defs/DynamicScalarExpression"
 						}
 					},
 					"required": ["label"]
@@ -750,10 +805,10 @@
 					"type": "object",
 					"properties": {
 						"min": {
-							"$ref": "#/$defs/VTLScalarExpression"
+							"$ref": "#/$defs/DynamicScalarExpression"
 						},
 						"max": {
-							"$ref": "#/$defs/VTLScalarExpression"
+							"$ref": "#/$defs/DynamicScalarExpression"
 						}
 					},
 					"required": ["min", "max"]
@@ -826,7 +881,7 @@
 									"required": ["label"],
 									"properties": {
 										"label": {
-											"$ref": "#/$defs/VTLExpression"
+											"$ref": "#/$defs/DynamicExpression"
 										}
 									},
 									"not": {
@@ -864,7 +919,7 @@
 							"type": "string"
 						},
 						{
-							"$ref": "#/$defs/VTLExpression"
+							"$ref": "#/$defs/DynamicExpression"
 						}
 					]
 				},
@@ -946,16 +1001,16 @@
 						"required": ["label", "response", "id"],
 						"properties": {
 							"label": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							},
 							"description": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							},
 							"response": {
 								"$ref": "#/$defs/ResponseDefinition"
 							},
 							"conditionFilter": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							},
 							"id": {
 								"type": "string"
@@ -964,7 +1019,7 @@
 								"type": "object",
 								"properties": {
 									"label": {
-										"$ref": "#/$defs/VTLExpression"
+										"$ref": "#/$defs/DynamicExpression"
 									},
 									"maxLength": {
 										"type": "integer"
@@ -1150,10 +1205,10 @@
 					"const": "PairwiseLinks"
 				},
 				"xAxisIterations": {
-					"$ref": "#/$defs/VTLScalarExpression"
+					"$ref": "#/$defs/DynamicScalarExpression"
 				},
 				"yAxisIterations": {
-					"$ref": "#/$defs/VTLScalarExpression"
+					"$ref": "#/$defs/DynamicScalarExpression"
 				},
 				"symLinks": {
 					"type": "object",
@@ -1206,7 +1261,7 @@
 					"const": "Text"
 				},
 				"label": {
-					"$ref": "#/$defs/VTLExpression"
+					"$ref": "#/$defs/DynamicExpression"
 				}
 			},
 			"required": ["componentType", "label"]
@@ -1219,7 +1274,7 @@
 					"const": "FilterDescription"
 				},
 				"label": {
-					"$ref": "#/$defs/VTLExpression"
+					"$ref": "#/$defs/DynamicExpression"
 				}
 			},
 			"required": ["componentType", "label"]
@@ -1237,10 +1292,10 @@
 						"type": "object",
 						"properties": {
 							"label": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							},
 							"body": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							}
 						},
 						"required": ["label", "body"]
@@ -1320,7 +1375,7 @@
 							"type": "string"
 						},
 						"expression": {
-							"$ref": "#/$defs/VTLExpression"
+							"$ref": "#/$defs/DynamicExpression"
 						},
 						"isIgnoredByLunatic": {
 							"type": "boolean"
@@ -1392,7 +1447,7 @@
 					}
 				},
 				"iterations": {
-					"$ref": "#/$defs/VTLScalarExpression"
+					"$ref": "#/$defs/DynamicScalarExpression"
 				},
 				"maxPage": {
 					"type": "string"
@@ -1437,10 +1492,10 @@
 							"type": "object",
 							"properties": {
 								"min": {
-									"$ref": "#/$defs/VTLExpression"
+									"$ref": "#/$defs/DynamicExpression"
 								},
 								"max": {
-									"$ref": "#/$defs/VTLExpression"
+									"$ref": "#/$defs/DynamicExpression"
 								}
 							},
 							"required": ["min", "max"]
@@ -1452,7 +1507,7 @@
 					"required": ["iterations"],
 					"properties": {
 						"iterations": {
-							"$ref": "#/$defs/VTLExpression"
+							"$ref": "#/$defs/DynamicExpression"
 						}
 					}
 				}
@@ -1475,7 +1530,7 @@
 					"type": "string"
 				},
 				"optionFilter": {
-					"$ref": "#/$defs/VTLExpression"
+					"$ref": "#/$defs/DynamicExpression"
 				}
 			},
 			"required": ["optionSource"]
@@ -1496,13 +1551,13 @@
 						]
 					},
 					"label": {
-						"$ref": "#/$defs/VTLExpression"
+						"$ref": "#/$defs/DynamicExpression"
 					},
 					"description": {
-						"$ref": "#/$defs/VTLExpression"
+						"$ref": "#/$defs/DynamicExpression"
 					},
 					"conditionFilter": {
-						"$ref": "#/$defs/VTLExpression"
+						"$ref": "#/$defs/DynamicExpression"
 					}
 				},
 				"required": ["value", "label"]
@@ -1524,16 +1579,16 @@
 						]
 					},
 					"label": {
-						"$ref": "#/$defs/VTLExpression"
+						"$ref": "#/$defs/DynamicExpression"
 					},
 					"description": {
-						"$ref": "#/$defs/VTLExpression"
+						"$ref": "#/$defs/DynamicExpression"
 					},
 					"detail": {
 						"type": "object",
 						"properties": {
 							"label": {
-								"$ref": "#/$defs/VTLExpression"
+								"$ref": "#/$defs/DynamicExpression"
 							},
 							"maxLength": {
 								"type": "integer"
@@ -1563,7 +1618,7 @@
 						"type": "string"
 					},
 					"label": {
-						"$ref": "#/$defs/VTLExpression"
+						"$ref": "#/$defs/DynamicExpression"
 					},
 					"colspan": {
 						"type": "integer"

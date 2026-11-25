@@ -49,13 +49,13 @@ export type ComponentSequenceDefinition = ComponentDefinitionBase & {
 export type ComponentRoundaboutDefinition = ComponentDefinitionBase & {
 	componentType: 'Roundabout';
 	loopDependencies?: string[];
-	iterations: VTLScalarExpression;
+	iterations: DynamicScalarExpression;
 	locked: boolean;
 	progressVariable: string;
 	item: {
-		label: VTLScalarExpression;
-		description?: VTLScalarExpression;
-		disabled?: VTLScalarExpression;
+		label: DynamicScalarExpression;
+		description?: DynamicScalarExpression;
+		disabled?: DynamicScalarExpression;
 	};
 	components: ComponentDefinitionWithPage[];
 };
@@ -66,7 +66,7 @@ export type ComponentLoopDefinition = {
 export type ComponentLoopDefinition1 = PaginatedLoop | BlockLoop;
 export type PaginatedLoop = ComponentDefinitionBase & {
 	components: ComponentDefinitionWithPage[];
-	iterations: VTLScalarExpression;
+	iterations: DynamicScalarExpression;
 	maxPage: string;
 	paginatedLoop: true;
 };
@@ -77,31 +77,31 @@ export type BlockLoop = ComponentDefinitionBase & {
 export type BlockLoop1 =
 	| {
 			lines: {
-				min: VTLExpression;
-				max: VTLExpression;
+				min: DynamicExpression;
+				max: DynamicExpression;
 			};
 	  }
 	| {
-			iterations: VTLExpression;
+			iterations: DynamicExpression;
 	  };
 export type ComponentRosterForLoopDefinition = ComponentDefinitionBase & {
 	componentType: 'RosterForLoop';
 	components: ComponentDefinition[];
 	lines: {
-		min: VTLScalarExpression;
-		max: VTLScalarExpression;
+		min: DynamicScalarExpression;
+		max: DynamicScalarExpression;
 	};
 	header?: TableHeader;
 };
 export type Options = {
 	value: string | boolean;
-	label: VTLExpression;
-	description?: VTLExpression;
-	conditionFilter?: VTLExpression;
+	label: DynamicExpression;
+	description?: DynamicExpression;
+	conditionFilter?: DynamicExpression;
 }[];
 export type TableHeader = {
 	value?: string;
-	label: VTLExpression;
+	label: DynamicExpression;
 	colspan?: number;
 	rowspan?: number;
 	options?: Options;
@@ -112,13 +112,13 @@ export type ComponentTableDefinition = ComponentDefinitionBase & {
 	body: (
 		| ComponentDefinition
 		| {
-				label: VTLExpression;
+				label: DynamicExpression;
 		  }
 	)[][];
 };
 export type ComponentNumberDefinition = ComponentDefinitionBaseWithResponse & {
 	componentType: 'InputNumber';
-	unit?: string | VTLExpression;
+	unit?: string | DynamicExpression;
 	min?: number;
 	max?: number;
 	decimals?: number;
@@ -139,13 +139,13 @@ export type ComponentCheckboxGroupDefinition = ComponentDefinitionBase & {
 	componentType: 'CheckboxGroup';
 	orientation?: 'horizontal' | 'vertical';
 	responses: {
-		label: VTLExpression;
-		description?: VTLExpression;
+		label: DynamicExpression;
+		description?: DynamicExpression;
 		response: ResponseDefinition;
-		conditionFilter?: VTLExpression;
+		conditionFilter?: DynamicExpression;
 		id: string;
 		detail?: {
-			label?: VTLExpression;
+			label?: DynamicExpression;
 			maxLength?: number;
 			response: ResponseDefinition;
 		};
@@ -162,10 +162,10 @@ export type ComponentRadioDefinition = ComponentDefinitionBaseWithResponse & {
 export type ComponentRadioDefinition1 = StaticOptions | OptionsFromVariable;
 export type OptionsWithDetail = {
 	value: string | boolean;
-	label: VTLExpression;
-	description?: VTLExpression;
+	label: DynamicExpression;
+	description?: DynamicExpression;
 	detail?: {
-		label: VTLExpression;
+		label: DynamicExpression;
 		maxLength?: number;
 		response: {
 			name: string;
@@ -217,8 +217,8 @@ export type ComponentSuggesterDefinition =
 	};
 export type ComponentPairWiseLinksDefinition = ComponentDefinitionBase & {
 	componentType: 'PairwiseLinks';
-	xAxisIterations?: VTLScalarExpression;
-	yAxisIterations?: VTLScalarExpression;
+	xAxisIterations?: DynamicScalarExpression;
+	yAxisIterations?: DynamicScalarExpression;
 	symLinks: {
 		[k: string]: {
 			[k: string]: string | null;
@@ -240,12 +240,12 @@ export type ComponentSummaryDefinition = ComponentDefinitionBase & {
 	componentType: 'Summary';
 	sections: {
 		id: string;
-		iterations?: VTLExpression;
-		title: VTLExpression;
+		iterations?: DynamicExpression;
+		title: DynamicExpression;
 		responses: {
 			id: string;
-			label: VTLExpression;
-			value: VTLExpression;
+			label: DynamicExpression;
+			value: DynamicExpression;
 		}[];
 	}[];
 };
@@ -270,7 +270,7 @@ export type Variable =
 	| {
 			variableType: 'CALCULATED';
 			name: string;
-			expression: VTLExpression;
+			expression: DynamicExpression;
 			isIgnoredByLunatic?: boolean;
 			bindingDependencies?: string[];
 			shapeFrom?: string[] | string;
@@ -284,7 +284,7 @@ export type VariableScalarValue = string | number | null | boolean;
  * Representation of a Lunatic questionnaire.
  */
 export type LunaticSource = {
-	label?: VTLExpression;
+	label?: DynamicExpression;
 	pagination?: 'question' | 'sequence';
 	enoCoreVersion?: string;
 	lunaticModelVersion?: string;
@@ -299,7 +299,7 @@ export type LunaticSource = {
 			[k: string]:
 				| string
 				| {
-						expression: string;
+						expression: string | DynamicScalarExpression;
 						shapeFrom?: string;
 						/**
 						 * @deprecated
@@ -318,31 +318,31 @@ export type LunaticSource = {
 		[k: string]:
 			| {
 					/**
-					 * VTL Expression for size.
+					 * Expression for size, VTL string or DynamicExpression typed
 					 */
-					size: string;
+					size: string | DynamicScalarExpression;
 					variables: string[];
 			  }
 			| {
 					sizeForLinksVariables:
 						| [string, string]
 						| {
-								xAxisSize: string;
-								yAxisSize: string;
+								xAxisSize: string | DynamicScalarExpression;
+								yAxisSize: string | DynamicScalarExpression;
 						  };
 					linksVariables: string[];
 			  }
 			| {
 					/**
-					 * VTL Expression for size.
+					 * Expression for size, VTL string or DynamicExpression typed
 					 */
-					size: string;
+					size: string | DynamicScalarExpression;
 					variables: string[];
 					sizeForLinksVariables:
 						| [string, string]
 						| {
-								xAxisSize: string;
-								yAxisSize: string;
+								xAxisSize: string | DynamicScalarExpression;
+								yAxisSize: string | DynamicScalarExpression;
 						  };
 					linksVariables: string[];
 			  };
@@ -370,20 +370,20 @@ export type LunaticSource = {
 	multimode?: {
 		questionnaire: {
 			rules: {
-				[k: string]: VTLExpression;
+				[k: string]: DynamicExpression;
 			};
 		};
 		leaf: {
 			source: string;
 			rules: {
-				[k: string]: VTLExpression;
+				[k: string]: DynamicExpression;
 			};
 		};
 	};
 };
-export type VTLExpression = {
+export type DynamicExpression = {
 	/**
-	 * Valid VTL Expression
+	 * Valid Dynamic Expression
 	 */
 	value: string;
 	/**
@@ -391,7 +391,7 @@ export type VTLExpression = {
 	 */
 	bindingDependencies?: string[];
 	variablesDependencies?: VariablesDependencies;
-	type: 'VTL' | 'VTL|MD' | 'TXT';
+	type: 'VTL' | 'VTL|MD' | 'CEL' | 'CEL|MD' | 'TXT';
 };
 /**
  * Variables grouped by type (collected, external and calculated)
@@ -402,15 +402,15 @@ export type VariablesDependencies = {
 	CALCULATED?: string[];
 };
 export type ComponentDefinitionBase = {
-	label?: VTLExpression;
-	description?: VTLExpression;
+	label?: DynamicExpression;
+	description?: DynamicExpression;
 	declarations?: Declaration[];
-	conditionFilter?: VTLScalarExpression;
+	conditionFilter?: DynamicScalarExpression;
 	controls?: ControlDefinition[];
 	id: string;
 	isMandatory?: boolean;
 	missingResponse?: ResponseDefinition;
-	conditionReadOnly?: VTLScalarExpression;
+	conditionReadOnly?: DynamicScalarExpression;
 };
 export type Declaration = {
 	id: string;
@@ -426,11 +426,11 @@ export type Declaration = {
 		| 'AFTER_RESPONSE'
 		| 'BEFORE_QUESTION_TEXT'
 		| 'DETACHABLE';
-	label: VTLExpression;
+	label: DynamicExpression;
 };
-export type VTLScalarExpression = {
+export type DynamicScalarExpression = {
 	/**
-	 * Valid VTL Expression
+	 * Valid scalar dynamic Expression, based on VTL or CEL
 	 */
 	value: string;
 	/**
@@ -438,18 +438,18 @@ export type VTLScalarExpression = {
 	 */
 	bindingDependencies?: string[];
 	variablesDependencies?: VariablesDependencies;
-	type: 'VTL';
+	type: 'VTL' | 'CEL';
 	shapeFrom?: string;
 };
 export type ControlDefinition = {
 	id: string;
 	criticality: 'INFO' | 'WARN' | 'ERROR';
 	typeOfControl?: 'FORMAT' | 'CONSISTENCY' | 'MANDATORY';
-	control: VTLExpression;
-	errorMessage: VTLExpression;
+	control: DynamicExpression;
+	errorMessage: DynamicExpression;
 	bindingDependencies?: string[];
 	type?: 'roundabout' | 'ROW' | 'simple';
-	iterations?: VTLScalarExpression;
+	iterations?: DynamicScalarExpression;
 };
 export type ResponseDefinition = {
 	name: string;
@@ -459,22 +459,22 @@ export type StaticOptions = {
 };
 export type OptionsFromVariable = {
 	optionSource: string;
-	optionFilter?: VTLExpression;
+	optionFilter?: DynamicExpression;
 };
 export type ComponentText = {
 	componentType: 'Text';
-	label: VTLExpression;
+	label: DynamicExpression;
 };
 export type ComponentAccordion = {
 	componentType: 'Accordion';
 	items: {
-		label: VTLExpression;
-		body: VTLExpression;
+		label: DynamicExpression;
+		body: DynamicExpression;
 	}[];
 };
 export type ComponentFilterDescriptionDefinition = {
 	componentType: 'FilterDescription';
-	label: VTLExpression;
+	label: DynamicExpression;
 };
 export type SuggesterDefinition = {
 	/**
