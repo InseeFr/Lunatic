@@ -4,6 +4,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type DynamicExpressionLanguage =
+	| 'VTL'
+	| 'VTL|MD'
+	| 'CEL'
+	| 'CEL|MD'
+	| 'TXT';
 export type ComponentDefinitionWithPage = ComponentDefinition &
 	(
 		| {
@@ -42,6 +48,7 @@ export type ComponentInputDefinition = ComponentDefinitionBaseWithResponse & {
 export type ComponentDefinitionBaseWithResponse = ComponentDefinitionBase & {
 	response: ResponseDefinition;
 };
+export type DynamicScalarExpressionLanguage = 'VTL' | 'CEL';
 export type ComponentSequenceDefinition = ComponentDefinitionBase & {
 	componentType: 'Sequence' | 'Subsequence';
 	goToPage?: string;
@@ -391,7 +398,7 @@ export type DynamicExpression = {
 	 */
 	bindingDependencies?: string[];
 	variablesDependencies?: VariablesDependencies;
-	type: 'VTL' | 'VTL|MD' | 'CEL' | 'CEL|MD' | 'TXT';
+	type: DynamicExpressionLanguage;
 };
 /**
  * Variables grouped by type (collected, external and calculated)
@@ -438,7 +445,7 @@ export type DynamicScalarExpression = {
 	 */
 	bindingDependencies?: string[];
 	variablesDependencies?: VariablesDependencies;
-	type: 'VTL' | 'CEL';
+	type: DynamicScalarExpressionLanguage;
 	shapeFrom?: string;
 };
 export type ControlDefinition = {

@@ -332,6 +332,14 @@
 	},
 	"required": ["components", "variables"],
 	"$defs": {
+		"DynamicExpressionLanguage": {
+			"type": "string",
+			"enum": ["VTL", "VTL|MD", "CEL", "CEL|MD", "TXT"]
+		},
+		"DynamicScalarExpressionLanguage": {
+			"type": "string",
+			"enum": ["VTL", "CEL"]
+		},
 		"DynamicExpression": {
 			"type": "object",
 			"properties": {
@@ -350,8 +358,7 @@
 					"$ref": "#/$defs/VariablesDependencies"
 				},
 				"type": {
-					"type": "string",
-					"enum": ["VTL", "VTL|MD", "CEL", "CEL|MD", "TXT"]
+					"$ref": "#/$defs/DynamicExpressionLanguage"
 				}
 			},
 			"required": ["value", "type"],
@@ -375,8 +382,7 @@
 					"$ref": "#/$defs/VariablesDependencies"
 				},
 				"type": {
-					"type": "string",
-					"enum": ["VTL", "CEL"]
+					"$ref": "#/$defs/DynamicScalarExpressionLanguage"
 				},
 				"shapeFrom": {
 					"type": "string"
