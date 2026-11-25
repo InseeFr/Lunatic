@@ -287,8 +287,15 @@
 								"description": "Libellé du champs"
 							},
 							"value": {
-								"type": "string",
-								"description": "Expression VTL"
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"$ref": "#/$defs/DynamicExpression"
+									}
+								],
+								"description": "DynamicExpression or string (so it's VTL)"
 							}
 						}
 					}

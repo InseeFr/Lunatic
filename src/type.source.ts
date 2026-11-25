@@ -369,9 +369,9 @@ export type LunaticSource = {
 			 */
 			label: string;
 			/**
-			 * Expression VTL
+			 * DynamicExpression or string (so it's VTL)
 			 */
-			value: string;
+			value: string | DynamicExpression;
 		}[];
 	};
 	multimode?: {
