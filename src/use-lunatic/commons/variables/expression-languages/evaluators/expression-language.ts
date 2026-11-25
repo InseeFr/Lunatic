@@ -1,7 +1,7 @@
-export type ExpressionType = 'VTL' | 'CEL' | 'TXT';
+import { DynamicExpressionLanguage } from '../../../../../type.source';
 
 export interface ExpressionEvaluatorLanguage {
-	readonly type: ExpressionType;
+	readonly type: DynamicExpressionLanguage;
 	evaluate(expression: string, bindings: Record<string, unknown>): unknown;
 	getDependencies(expression: string): string[];
 }
@@ -9,7 +9,7 @@ export interface ExpressionEvaluatorLanguage {
 export class ExpressionEvaluationError extends Error {
 	constructor(
 		public readonly expression: string,
-		public readonly type: ExpressionType,
+		public readonly type: DynamicExpressionLanguage,
 		public readonly bindings: Record<string, unknown>,
 		public readonly cause?: Error
 	) {

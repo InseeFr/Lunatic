@@ -195,7 +195,7 @@ function checkComponentInLoop(
 		// For Roundabout, we don't check controls for iterations that are disabled
 		if (isRoundaboutComponent(component) && component.item.disabled) {
 			const isIterationDisabled = state.executeExpression(
-				{ value: component.item.disabled?.value, type: 'VTL' },
+				component.item.disabled,
 				iterationPager
 			);
 

@@ -1,15 +1,17 @@
-import { DynamicExpression } from '../../../../type.source';
 import {
-	ExpressionEvaluatorLanguage,
-	ExpressionType,
-} from './evaluators/expression-language';
+	DynamicExpression,
+	DynamicExpressionLanguage,
+} from '../../../../type.source';
+import { ExpressionEvaluatorLanguage } from './evaluators/expression-language';
 import { TXTEvaluator } from './evaluators/txt-evaluator';
 import { VTLEvaluator } from './evaluators/vtl-evaluator';
 
 export class ExpressionEvaluator {
 	private static instance: ExpressionEvaluator;
-	private evaluators: Map<ExpressionType, ExpressionEvaluatorLanguage> =
-		new Map();
+	private readonly evaluators: Map<
+		DynamicExpressionLanguage,
+		ExpressionEvaluatorLanguage
+	> = new Map();
 
 	private constructor() {
 		this.register(new VTLEvaluator());
@@ -41,7 +43,9 @@ export class ExpressionEvaluator {
 		return evaluator.getDependencies(expression.value);
 	}
 
-	private getEvaluator(type: ExpressionType): ExpressionEvaluatorLanguage {
+	private getEvaluator(
+		type: DynamicExpressionLanguage
+	): ExpressionEvaluatorLanguage {
 		const evaluator = this.evaluators.get(type);
 		if (!evaluator) {
 			throw new Error(`No evaluator registered for expression type: "${type}"`);

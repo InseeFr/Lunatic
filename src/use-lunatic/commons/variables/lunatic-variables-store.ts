@@ -548,7 +548,7 @@ export class LunaticVariable {
 			);
 			this.setValue(value, { iteration });
 		} else {
-			// compute thanks to VTL expression
+			// compute thanks to Dynamic expression used CEL or VTL
 
 			// Uncomment this if you want to track the number of calculation
 			// this.calculatedCount++;
