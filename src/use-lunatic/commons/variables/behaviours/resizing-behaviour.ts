@@ -4,6 +4,7 @@ import { forceInt } from '../../../../utils/number';
 import { resizeArrayVariable } from '../../../reducer/commons';
 import { getExpressionAsString } from '../../../../utils/vtl';
 import { resizeArray } from '../../../../utils/array';
+import { DynamicScalarExpression } from '../../../../type.source';
 
 /**
  * Resizing behaviour for the store
@@ -64,15 +65,19 @@ function resizePairwise(
 	resizingInfo: {
 		sizeForLinksVariables:
 			| [string, string]
-			| { xAxisSize: string; yAxisSize: string };
+			| {
+					xAxisSize: string | DynamicScalarExpression;
+					yAxisSize: string | DynamicScalarExpression;
+			  };
 		linksVariables: string[];
 	}
 ) {
 	// Handle expression being sent as an array or an object (ensure backward compatibility)
 	// Issue : https://github.com/InseeFr/Lunatic/issues/883
-	const sizeExpressions: [string, string] = Array.isArray(
-		resizingInfo.sizeForLinksVariables
-	)
+	const sizeExpressions: [
+		string | DynamicScalarExpression,
+		string | DynamicScalarExpression,
+	] = Array.isArray(resizingInfo.sizeForLinksVariables)
 		? resizingInfo.sizeForLinksVariables
 		: [
 				resizingInfo.sizeForLinksVariables.xAxisSize,

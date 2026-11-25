@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { LunaticSource, LunaticState } from '../../use-lunatic/type';
 import { isObject, objectFilter, objectKeys } from '../../utils/object';
+import { DynamicScalarExpression } from '../../type.source';
 
 type Props = {
 	getData: LunaticState['getData'];
@@ -96,7 +97,7 @@ const ResizeInfo = ({
 	resizing,
 }: {
 	resizing: {
-		size: string;
+		size: string | DynamicScalarExpression;
 		variables: string[];
 	};
 }) => {
@@ -138,7 +139,7 @@ const CleaningInfo = ({
 		[p: string]:
 			| string
 			| {
-					expression: string;
+					expression: string | DynamicScalarExpression;
 					shapeFrom?: string;
 					/**
 					 * @deprecated

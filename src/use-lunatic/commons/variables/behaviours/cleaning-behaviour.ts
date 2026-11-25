@@ -6,9 +6,10 @@ import type { LunaticSource } from '../../../type';
 import { depth, setAtIndex } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
 import { IterationLevel } from '../models';
+import { DynamicScalarExpression } from '../../../../type.source';
 
 type CleaningExpression = {
-	expression: string;
+	expression: string | DynamicScalarExpression;
 	shapeFrom?: string;
 	/**
 	 * @deprecated: use `shouldCheckDuringResizing` since lunaticModelVersion 5.16.0
