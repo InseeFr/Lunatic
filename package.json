@@ -37,7 +37,7 @@
 		"test:e2e:codegen": "playwright codegen http://localhost:9999/iframe.html?viewMode=story&id=",
 		"test:storybook": "test-storybook --url http://localhost:9999 --maxWorkers=4 --no-cache",
 		"test-watch": "vitest",
-		"build:types": "node ./tools/schema-ts-generator.js && prettier src/type.source.ts --write",
+		"build:types": "node ./tools/schema-ts-generator.js && prettier src/type.source.ts  lunatic-schema.json --write",
 		"check": "tsc --noEmit",
 		"lint:check": "eslint ./src",
 		"_format": "prettier **/*.{ts,tsx,json,scss}",
