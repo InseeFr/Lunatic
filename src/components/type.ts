@@ -10,9 +10,9 @@ import type {
 import type { InterpretedOption } from '../use-lunatic/props/propOptions';
 
 export type DurationFormat = 'PTnHnM' | 'PnYnM';
-export type VtlExpression = {
+export type DynamicExpression = {
 	value: string;
-	type: 'VTL' | 'VTL|MD' | 'TXT';
+	type: 'VTL' | 'VTL|MD' | 'CEL' | 'CEL|MD' | 'TXT';
 };
 
 export type LunaticBaseProps<ValueType = unknown> = {
@@ -295,11 +295,11 @@ export type ComponentPropsByType = {
 			id: string;
 			responses?: Array<{
 				id: string;
-				label: VtlExpression;
-				value: VtlExpression;
+				label: DynamicExpression;
+				value: DynamicExpression;
 			}>;
-			title?: VtlExpression;
-			iterations?: VtlExpression;
+			title?: DynamicExpression;
+			iterations?: DynamicExpression;
 		}>;
 	};
 };

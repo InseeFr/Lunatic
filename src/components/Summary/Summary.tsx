@@ -1,4 +1,4 @@
-import type { LunaticComponentProps, VtlExpression } from '../type';
+import type { LunaticComponentProps, DynamicExpression } from '../type';
 import { type ReactNode } from 'react';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 
@@ -90,7 +90,7 @@ export const SummaryResponses = slottableComponent<{ sections: Section[] }>(
 );
 
 function interpretTitle(
-	title: VtlExpression | undefined,
+	title: DynamicExpression | undefined,
 	executeExpression: LunaticComponentProps<'Summary'>['executeExpression'],
 	iteration?: number | undefined
 ): ReactNode {
@@ -105,7 +105,11 @@ function interpretTitle(
 }
 
 function interpretResponses(
-	responses: Array<{ label: VtlExpression; value: VtlExpression; id: string }>,
+	responses: Array<{
+		label: DynamicExpression;
+		value: DynamicExpression;
+		id: string;
+	}>,
 	executeExpression: LunaticComponentProps<'Summary'>['executeExpression'],
 	iteration?: number
 ) {

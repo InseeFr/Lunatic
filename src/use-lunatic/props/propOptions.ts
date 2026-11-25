@@ -8,7 +8,7 @@ import type { DeepTranslateExpression } from '../commons/fill-components/fill-co
 import { isNumber } from '../../utils/number';
 import type { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { LunaticLogger } from '../logger/type';
-import { VtlExpression } from '../../components/type';
+import { DynamicExpression } from '../../components/type';
 
 /* Used for radio option and checkbox one option */
 export type InterpretedOption = {
@@ -129,7 +129,7 @@ export function computeOptionsFromComponent(
 				variables,
 				iteration,
 				logger,
-				option.conditionFilter as VtlExpression | undefined
+				option.conditionFilter as DynamicExpression | undefined
 			);
 		})
 		.map((option) => ({
@@ -166,7 +166,7 @@ export function computeOptionsFromComponent(
 						variables,
 						iteration,
 						logger,
-						option.conditionFilter as VtlExpression | undefined
+						option.conditionFilter as DynamicExpression | undefined
 					)),
 		}));
 }
@@ -191,7 +191,7 @@ function computeOptionsFromSource(
 		responseName: string;
 		logger: LunaticLogger;
 		shouldParentBeFiltered?: boolean;
-		optionFilter?: VtlExpression;
+		optionFilter?: DynamicExpression;
 	}
 ): InterpretedOption[] {
 	// we don't know the type of the optionSource values (string, numbers, boolean)
@@ -240,7 +240,7 @@ function isFilteredOutOption(
 	variables: LunaticVariablesStore,
 	iteration: number[] | undefined,
 	logger: LunaticLogger,
-	conditionFilter?: VtlExpression
+	conditionFilter?: DynamicExpression
 ): boolean {
 	if (!conditionFilter) return false;
 	try {
