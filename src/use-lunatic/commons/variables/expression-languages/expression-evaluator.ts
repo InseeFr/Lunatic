@@ -14,9 +14,10 @@ export class ExpressionEvaluator {
 	> = new Map();
 
 	private constructor() {
-		this.register(new VTLEvaluator());
-		// this.register(new CELEvaluator());
-		this.register(new TXTEvaluator());
+		const vtlEvaluator = new VTLEvaluator();
+		this.evaluators.set('VTL', vtlEvaluator);
+		this.evaluators.set('VTL|MD', vtlEvaluator);
+		this.evaluators.set('TXT', new TXTEvaluator());
 	}
 
 	public static getInstance(): ExpressionEvaluator {
@@ -24,10 +25,6 @@ export class ExpressionEvaluator {
 			ExpressionEvaluator.instance = new ExpressionEvaluator();
 		}
 		return ExpressionEvaluator.instance;
-	}
-
-	public register(evaluator: ExpressionEvaluatorLanguage): void {
-		this.evaluators.set(evaluator.type, evaluator);
 	}
 
 	public evaluate(

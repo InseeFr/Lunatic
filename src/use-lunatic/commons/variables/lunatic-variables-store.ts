@@ -31,7 +31,10 @@ const getCompatibleDynamicExpression = (
 	expression: string | DynamicExpression
 ): DynamicExpression => {
 	if (typeof expression === 'string') {
-		return { type: 'VTL', value: expression };
+		return { value: expression, type: 'VTL' };
+	}
+	if (expression.type === undefined) {
+		return { ...expression, type: 'VTL' };
 	}
 	return expression;
 };
@@ -42,7 +45,7 @@ export const getDefaultNameFromExpression = (
 	if (typeof expression === 'string') {
 		return expression;
 	}
-	return `${expression.type}_${expression.value}`;
+	return expression.value;
 };
 /** Interpret counter. Used for testing purpose. */
 let interpretCount = 0;
@@ -513,7 +516,7 @@ export class LunaticVariable {
 		// For calculated variable, ignore iteration if shapeFrom exists and is not an array
 		if (
 			// We have a calculated variable (not a simple expression)
-			this.name !== this.expression &&
+			this.name !== this.expression?.value &&
 			!Array.isArray(shapeFromValue)
 		) {
 			iteration = undefined;

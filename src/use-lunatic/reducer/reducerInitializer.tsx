@@ -92,6 +92,7 @@ export function reducerInitializer({
 	}
 
 	const isDynamicExpression = (expression: DynamicExpression): boolean => {
+		if (expression.type === undefined) return true;
 		return expression.type.includes(VTL) || expression.type.includes(CEL);
 	};
 
