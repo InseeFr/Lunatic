@@ -502,9 +502,12 @@ describe('computeOptionsFromComponent', () => {
 				},
 				{ label: 'Collected option', value: 'collected' },
 			]);
-			vi.spyOn(variables, 'run').mockImplementation(
-				(expression) => expression !== 'externalFilter'
-			);
+			vi.spyOn(variables, 'run').mockImplementation((expression) => {
+				const value =
+					typeof expression === 'string' ? expression : expression.value;
+
+				return value !== 'externalFilter';
+			});
 
 			const options = computeOptionsFromComponent(cleanedDefinition, {
 				variables,
