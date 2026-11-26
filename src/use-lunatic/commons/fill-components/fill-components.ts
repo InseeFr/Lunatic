@@ -14,7 +14,7 @@ import { getValueProp } from '../../props/propValue';
 import { getIterationsProp } from '../../props/propIterations';
 import { computeOptionsFromComponent } from '../../props/propOptions';
 import { LunaticLogger } from '../../logger/type';
-import { VTLScalarExpression } from '../../../type.source';
+import { DynamicScalarExpression } from '../../../type.source';
 
 export type FillComponentArgs = {
 	disableFiltersDescription?: true;
@@ -102,8 +102,8 @@ export function fillComponents(
 	components: LunaticComponentDefinition[],
 	state: FillComponentArgs,
 	parentType?: LunaticComponentDefinition['componentType'],
-	parentConditionFilter?: VTLScalarExpression,
-	parentReadOnly?: VTLScalarExpression
+	parentConditionFilter?: DynamicScalarExpression,
+	parentReadOnly?: DynamicScalarExpression
 ): LunaticComponentProps[] {
 	// Flatmap to directly remove FilterDescription components if disableFiltersDescription is true
 	const filledComponents = components.flatMap((component) => {

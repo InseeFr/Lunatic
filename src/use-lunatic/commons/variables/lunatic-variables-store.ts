@@ -1,4 +1,3 @@
-import { interpretVTL, parseVTLVariables } from '../../../utils/vtl';
 import { isTestEnv } from '../../../utils/env';
 import type { LunaticData, LunaticOptions, LunaticSource } from '../../type';
 import { getInitialVariableValue } from '../../../utils/variables';
@@ -13,11 +12,7 @@ import {
 } from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
 import type { RefObject } from 'react';
-import {
-	VTLInterpretationError,
-	VTLMissingDependencies,
-	VTLMissingDependency,
-} from './errors';
+import { DynamicMissingDependencies, DynamicMissingDependency } from './errors';
 import {
 	computePairwiseGlobalVariables,
 	computePairwiseGlobalVariableValue,
@@ -28,7 +23,30 @@ import {
 	GLOBAL_ITERATION_INDEX,
 } from './global-variables';
 import { IterationLevel } from './models';
+import { DynamicExpression } from '../../../type.source';
+import { expressionEvaluator } from './expression-languages/expression-evaluator';
+import { ExpressionEvaluationError } from './expression-languages/evaluators/expression-language';
 
+const getCompatibleDynamicExpression = (
+	expression: string | DynamicExpression
+): DynamicExpression => {
+	if (typeof expression === 'string') {
+		return { value: expression, type: 'VTL' };
+	}
+	if (expression.type === undefined) {
+		return { ...expression, type: 'VTL' };
+	}
+	return expression;
+};
+
+export const getDefaultNameFromExpression = (
+	expression: string | DynamicExpression
+): string => {
+	if (typeof expression === 'string') {
+		return expression;
+	}
+	return expression.value;
+};
 /** Interpret counter. Used for testing purpose. */
 let interpretCount = 0;
 
@@ -281,7 +299,7 @@ export class LunaticVariablesStore {
 	 */
 	public setCalculated(
 		name: string,
-		expression: string,
+		expression: string | DynamicExpression,
 		{
 			dependencies,
 			iterationDepth,
@@ -297,8 +315,9 @@ export class LunaticVariablesStore {
 		if (this.dictionary.has(name)) {
 			return this.dictionary.get(name)!;
 		}
+
 		const variable = new LunaticVariable({
-			expression: expression,
+			expression: getCompatibleDynamicExpression(expression),
 			dictionary: this.dictionary,
 			shapeFrom,
 			dependencies,
@@ -345,15 +364,19 @@ export class LunaticVariablesStore {
 	}
 
 	/**
-	 * Run a VTL expression
+	 * Run a Dynamic expression
 	 */
 	public run(
-		expression: string,
+		expression: string | DynamicExpression,
 		args: { iteration?: IterationLevel; deps?: string[] } = {}
 	): unknown {
-		return this.setCalculated(expression, expression, {
-			dependencies: args.deps,
-		}).getValue(args.iteration);
+		return this.setCalculated(
+			getDefaultNameFromExpression(expression),
+			expression,
+			{
+				dependencies: args.deps,
+			}
+		).getValue(args.iteration);
 	}
 
 	/**
@@ -418,7 +441,7 @@ export class LunaticVariable {
 	/** List of direct dependencies, ex: ['FULLNAME', 'FIRSTNAME', 'LASTNAME']. */
 	private dependencies?: string[];
 	/** Expression for calculated variable. */
-	public readonly expression?: string;
+	public readonly expression?: DynamicExpression;
 	/** Dictionary holding all the available variables. */
 	private readonly dictionary?: Map<string, LunaticVariable>;
 	/** Specific iteration depth to get value from dependencies (used for yAxis for instance). */
@@ -437,7 +460,7 @@ export class LunaticVariable {
 	public dimension?: number;
 
 	constructor(args: {
-		expression?: string;
+		expression?: DynamicExpression;
 		dependencies?: string[];
 		dictionary?: Map<string, LunaticVariable>;
 		iterationDepth?: number;
@@ -467,7 +490,7 @@ export class LunaticVariable {
 		this.iterationDepth = args.iterationDepth;
 		this.shapeFrom =
 			typeof args.shapeFrom === 'string' ? [args.shapeFrom] : args.shapeFrom;
-		this.name = args.name ?? args.expression;
+		this.name = args.name ?? args.expression?.value;
 		this.dimension = args.dimension;
 		this.storeUpdatedAt = args.storeUpdatedAt;
 		this.isGlobal = args.isGlobal || false;
@@ -493,7 +516,7 @@ export class LunaticVariable {
 		// For calculated variable, ignore iteration if shapeFrom exists and is not an array
 		if (
 			// We have a calculated variable (not a simple expression)
-			this.name !== this.expression &&
+			this.name !== this.expression?.value &&
 			!Array.isArray(shapeFromValue)
 		) {
 			iteration = undefined;
@@ -547,19 +570,26 @@ export class LunaticVariable {
 				this.dictionary!
 			);
 			this.setValue(value, { iteration });
-		} else {
-			// compute thanks to VTL expression
+		} else if (this.expression) {
+			// compute thanks to Dynamic expression used CEL or VTL
 
 			// Uncomment this if you want to track the number of calculation
 			// this.calculatedCount++;
 
 			// Remember the value
 			try {
-				this.setValue(interpretVTL(this.expression!, bindings), {
-					iteration: iteration,
-				});
-			} catch {
-				throw new VTLInterpretationError(this.expression!, bindings);
+				const result = expressionEvaluator.evaluate(this.expression, bindings);
+				this.setValue(result, { iteration });
+			} catch (error) {
+				if (error instanceof ExpressionEvaluationError) {
+					throw error;
+				}
+				throw new ExpressionEvaluationError(
+					this.expression.value,
+					this.expression.type,
+					bindings,
+					error as Error
+				);
 			}
 		}
 		this.updateTimestamps(iteration, 'calculatedAt');
@@ -653,8 +683,13 @@ export class LunaticVariable {
 
 	private getDependencies(): string[] {
 		// Calculate dependencies from expression on the fly if necessary
-		this.dependencies ??= parseVTLVariables(this.expression!);
-		return this.dependencies;
+		if (this.dependencies) {
+			return this.dependencies;
+		}
+		if (!this.expression || !this.dictionary) {
+			return [];
+		}
+		return expressionEvaluator.getDependencies(this.expression);
 	}
 
 	private getDependenciesValues(
@@ -677,7 +712,10 @@ export class LunaticVariable {
 					// The variable is not registered in the variable dictionary
 					// Happens when calculating unquoted VTL expression
 					if (!this.dictionary?.has(dep)) {
-						throw new VTLMissingDependency(this.expression!, dep);
+						throw new DynamicMissingDependency(
+							this.expression?.value ?? '',
+							dep
+						);
 					}
 
 					return [dep, this.dictionary.get(dep)?.getValue(dependencyIteration)];
@@ -685,8 +723,8 @@ export class LunaticVariable {
 			);
 		} catch (e) {
 			if (e instanceof RangeError) {
-				throw new VTLMissingDependencies(
-					this.expression!,
+				throw new DynamicMissingDependencies(
+					this.expression?.value ?? '',
 					this.getDependencies()
 				);
 			}

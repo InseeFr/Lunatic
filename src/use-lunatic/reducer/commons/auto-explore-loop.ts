@@ -63,7 +63,7 @@ export function autoExploreLoop(
 
 				// check if the first iteration should be disabled
 				isFirstIterationDisabled = state.executeExpression(
-					{ value: roundaboutComponent.item.disabled?.value, type: 'VTL' },
+					roundaboutComponent.item.disabled,
 					firstIterationPager
 				);
 			}

@@ -1,14 +1,16 @@
 import {
 	getChangedKey,
+	getDefaultNameFromExpression,
 	type LunaticVariablesStore,
 } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
 import { depth, setAtIndex } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
 import { IterationLevel } from '../models';
+import { DynamicScalarExpression } from '../../../../type.source';
 
 type CleaningExpression = {
-	expression: string;
+	expression: string | DynamicScalarExpression;
 	shapeFrom?: string;
 	/**
 	 * @deprecated: use `shouldCheckDuringResizing` since lunaticModelVersion 5.16.0
@@ -42,7 +44,7 @@ export function cleaningBehaviour(
 			if (Array.isArray(cleaning[source][target])) {
 				for (const cleaningInfo of cleaning[source][target]) {
 					store.setCalculated(
-						cleaningInfo.expression,
+						getDefaultNameFromExpression(cleaningInfo.expression),
 						cleaningInfo.expression,
 						{
 							shapeFrom: cleaningInfo.shapeFrom,

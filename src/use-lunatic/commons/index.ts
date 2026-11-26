@@ -5,7 +5,6 @@ export {
 	removeConditionFilters,
 	shouldKeepFilter,
 } from './remove-condition-filters';
-export { default as getCompatibleVTLExpression } from './get-compatible-vtl-expression';
 export { default as isFirstLastPage } from './pagination/is-First-last-page';
 export {
 	getNewReachedPage,

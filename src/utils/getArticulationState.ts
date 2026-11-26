@@ -89,9 +89,9 @@ export function getArticulationState(
 	}
 
 	const { variables } = reducerInitializer({ source, data });
-	const iterations = castNumber(
-		variables.run(roundabout.iterations.value ?? '0')
-	);
+	const iterations = roundabout.iterations
+		? castNumber(variables.run(roundabout.iterations))
+		: 0;
 
 	const rows = times(iterations, (k) =>
 		source.articulation.items.map((item) => ({

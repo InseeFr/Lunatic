@@ -1,3 +1,12 @@
+export class DynamicExpressionError extends Error {
+	constructor(
+		public readonly expression: string,
+		message: string
+	) {
+		super(`Cannot interpret expression "${expression}" ${message}`);
+	}
+}
+
 export class VTLExpressionError extends Error {
 	constructor(
 		public readonly expression: string,
@@ -16,7 +25,7 @@ export class VTLInterpretationError extends VTLExpressionError {
 	}
 }
 
-export class VTLMissingDependency extends VTLExpressionError {
+export class DynamicMissingDependency extends DynamicExpressionError {
 	constructor(
 		public readonly expression: string,
 		public readonly variableName: string
@@ -25,7 +34,7 @@ export class VTLMissingDependency extends VTLExpressionError {
 	}
 }
 
-export class VTLMissingDependencies extends VTLExpressionError {
+export class DynamicMissingDependencies extends DynamicExpressionError {
 	constructor(
 		public readonly expression: string,
 		public readonly dependencies: string[]

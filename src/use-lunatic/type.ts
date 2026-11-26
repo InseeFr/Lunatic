@@ -2,11 +2,11 @@ import type { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
 import type {
 	ComponentDefinition,
 	ControlDefinition,
+	DynamicExpression,
+	DynamicScalarExpression,
 	LunaticSource,
 	SuggesterDefinition,
 	Variable,
-	VTLExpression,
-	VTLScalarExpression,
 } from '../type.source';
 import type {
 	EventArgs as LunaticVariablesStoreEvents,
@@ -58,7 +58,7 @@ export type LunaticError = Pick<
 };
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
-export type LunaticExpression = VTLExpression | VTLScalarExpression;
+export type LunaticExpression = DynamicExpression | DynamicScalarExpression;
 export type ActiveFilter = 'ALL' | 'EXTERNAL' | 'NONE' | 'DISABLED';
 
 /**
@@ -153,7 +153,7 @@ export type LunaticReducerState = {
 			| {
 					components: LunaticSource['components'];
 					isLoop: true;
-					iterations: VTLScalarExpression;
+					iterations: DynamicScalarExpression;
 					/** Variables affecting this loop. */
 					loopDependencies: string[];
 					/** List of child pages (ex: ['20.1', '20.2'] */
@@ -162,7 +162,7 @@ export type LunaticReducerState = {
 	};
 	/** Run an expression using the value from the state. */
 	executeExpression: <T = unknown>(
-		expression: VTLExpression,
+		expression: DynamicExpression,
 		args?: {
 			iteration?: number | number[];
 			/** @deprecated  */
@@ -201,9 +201,6 @@ export type LunaticOptions = {
 	 * @default 'ALL'
 	 */
 	activeFilters?: ActiveFilter;
-
-	/** Enable VTL and Markdown support. */
-	features?: ('MD' | 'VTL')[];
 	preferences?: ['COLLECTED'];
 	/**
 	 * Key in which the data is saved.
