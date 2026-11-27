@@ -7,8 +7,6 @@ import type {
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { checkLoops, createMapPages } from '../commons';
 import { removeConditionFilters } from '../commons/remove-condition-filters';
-import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
-import { CEL, MD, VTL } from '../../utils/constants';
 import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
 import { getPagerFromPageTag } from '../commons/pagination/page-tag';
 import { buildOverview } from './overview/overviewOnInit';
@@ -16,7 +14,10 @@ import { forceInt } from '../../utils/number';
 import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
 import type { RefObject } from 'react';
 import type { LunaticLogger } from '../logger/type';
-import { DynamicExpression } from '../../type.source';
+import {
+	getExpressionAsString,
+	getExpressionLanguagesFeatures,
+} from '../../utils/expression-language';
 
 const basePager = {
 	page: 1,
@@ -91,11 +92,6 @@ export function reducerInitializer({
 		registerSuggesters(source.suggesters, getReferentiel);
 	}
 
-	const isDynamicExpression = (expression: DynamicExpression): boolean => {
-		if (expression.type === undefined) return true;
-		return expression.type.includes(VTL) || expression.type.includes(CEL);
-	};
-
 	const executeExpression: LunaticReducerState['executeExpression'] = (
 		expression,
 		args = {}
@@ -105,12 +101,9 @@ export function reducerInitializer({
 			args.deps = args.bindingDependencies;
 		}
 		// Remove above code on next update
-		const expressionType = getExpressionType(expression);
+		const expressionFeatures = getExpressionLanguagesFeatures(expression);
 		const expressionAsString = getExpressionAsString(expression);
 		// If the expression does not use VTL or CEL, return the uninterpreted value
-		if (!isDynamicExpression(expression)) {
-			return expressionAsString;
-		}
 		try {
 			const result = variables.run(expression, {
 				...args,
@@ -120,7 +113,7 @@ export function reducerInitializer({
 						: args.iteration,
 			});
 			if (
-				expressionType.includes(MD) &&
+				expressionFeatures.includes('MD') &&
 				typeof result === 'string' &&
 				result !== ''
 			) {

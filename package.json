@@ -82,6 +82,7 @@
 		"@inseefr/trevas": "^0.1.21",
 		"@inseefr/vtl-2.0-antlr-tools": "^0.3.2",
 		"antlr4": "^4.13.2",
+		"@marcbachmann/cel-js": "^8.0.0",
 		"classnames": "^2.5.1",
 		"http-server": "^14.1.1",
 		"minisearch": "^7.1.0",

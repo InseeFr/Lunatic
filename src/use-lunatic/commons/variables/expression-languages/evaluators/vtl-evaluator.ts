@@ -1,4 +1,7 @@
-import { interpretVTL, parseVTLVariables } from '../../../../../utils/vtl';
+import {
+	getExpressionVariables,
+	interpretVTL,
+} from '../../../../../utils/expression-language/vtl/vtl';
 import {
 	ExpressionEvaluationError,
 	ExpressionEvaluatorLanguage,
@@ -19,6 +22,6 @@ export class VTLEvaluator implements ExpressionEvaluatorLanguage {
 		}
 	}
 	getDependencies(expression: string): string[] {
-		return parseVTLVariables(expression);
+		return getExpressionVariables(expression);
 	}
 }

@@ -6,6 +6,11 @@ import { ExpressionEvaluatorLanguage } from './evaluators/expression-language';
 import { TXTEvaluator } from './evaluators/txt-evaluator';
 import { VTLEvaluator } from './evaluators/vtl-evaluator';
 
+export const VTL = 'VTL' as const;
+export const CEL = 'CEL' as const;
+export const MD = 'MD' as const;
+export const TXT = 'TXT' as const;
+
 export class ExpressionEvaluator {
 	private static instance: ExpressionEvaluator;
 	private readonly evaluators: Map<
@@ -14,10 +19,12 @@ export class ExpressionEvaluator {
 	> = new Map();
 
 	private constructor() {
-		const vtlEvaluator = new VTLEvaluator();
-		this.evaluators.set('VTL', vtlEvaluator);
-		this.evaluators.set('VTL|MD', vtlEvaluator);
-		this.evaluators.set('TXT', new TXTEvaluator());
+		this.register(new TXTEvaluator());
+		this.register(new VTLEvaluator());
+	}
+
+	private register(expressionEvaluator: ExpressionEvaluatorLanguage) {
+		this.evaluators.set(expressionEvaluator.type, expressionEvaluator);
 	}
 
 	public static getInstance(): ExpressionEvaluator {

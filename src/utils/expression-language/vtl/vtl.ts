@@ -1,8 +1,7 @@
-import { objectMap } from './object';
+import { objectMap } from '../../object';
 import { interpret } from '@inseefr/trevas';
 import antlr4 from 'antlr4';
 import { VtlLexer } from '@inseefr/vtl-2.0-antlr-tools';
-import { DynamicExpression, DynamicExpressionLanguage } from '../type.source';
 
 type DataSet = { dataPoints: { result: unknown } };
 
@@ -26,7 +25,7 @@ export function interpretVTL<T>(
 /**
  * Extract variables used in a VTL expression
  */
-export function parseVTLVariables(expression: string): string[] {
+export function getExpressionVariables(expression: string): string[] {
 	try {
 		const chars = new antlr4.InputStream(expression);
 		const lexer = new VtlLexer(chars);
@@ -63,34 +62,6 @@ export function getVTLCompatibleValue(value: unknown) {
 	}
 
 	return value;
-}
-
-export function getExpressionType(
-	expression: string | DynamicExpression
-): DynamicExpressionLanguage {
-	if (typeof expression === 'string') {
-		return 'TXT';
-	}
-	if (expression && typeof expression === 'object' && 'type' in expression) {
-		return expression.type;
-	}
-	return 'TXT';
-}
-
-export function getExpressionAsString(expression: unknown): string {
-	if (typeof expression === 'string' || typeof expression === 'number') {
-		return expression.toString();
-	}
-	if (
-		expression &&
-		typeof expression === 'object' &&
-		'value' in expression &&
-		(typeof expression.value === 'string' ||
-			typeof expression.value === 'number')
-	) {
-		return expression.value.toString();
-	}
-	return '';
 }
 
 function isDataSet(result: unknown): result is DataSet {

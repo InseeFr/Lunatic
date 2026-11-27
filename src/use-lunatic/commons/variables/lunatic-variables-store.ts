@@ -23,20 +23,34 @@ import {
 	GLOBAL_ITERATION_INDEX,
 } from './global-variables';
 import { IterationLevel } from './models';
-import { DynamicExpression } from '../../../type.source';
+import {
+	DynamicExpression,
+	DynamicScalarExpression,
+	DynamicScalarExpressionLanguage,
+} from '../../../type.source';
 import { expressionEvaluator } from './expression-languages/expression-evaluator';
 import { ExpressionEvaluationError } from './expression-languages/evaluators/expression-language';
 
+/**
+ * Handle legacy expression (string as VTL)
+ * @param expression without MD interpretion
+ * 'MD' (markdown) feature is only handled by React process, see reducerInitializer.tsx
+ * @returns
+ */
 const getCompatibleDynamicExpression = (
 	expression: string | DynamicExpression
-): DynamicExpression => {
+): DynamicScalarExpression => {
 	if (typeof expression === 'string') {
 		return { value: expression, type: 'VTL' };
 	}
 	if (expression.type === undefined) {
 		return { ...expression, type: 'VTL' };
 	}
-	return expression;
+
+	const typeWithoutMD = expression.type.split(
+		'|'
+	)[0] as DynamicScalarExpressionLanguage;
+	return { ...expression, type: typeWithoutMD };
 };
 
 export const getDefaultNameFromExpression = (
