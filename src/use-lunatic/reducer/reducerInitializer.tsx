@@ -7,7 +7,6 @@ import type {
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { checkLoops, createMapPages } from '../commons';
 import { removeConditionFilters } from '../commons/remove-condition-filters';
-import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
 import { CEL, MD, VTL } from '../../utils/constants';
 import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
 import { getPagerFromPageTag } from '../commons/pagination/page-tag';
@@ -17,6 +16,10 @@ import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
 import type { RefObject } from 'react';
 import type { LunaticLogger } from '../logger/type';
 import { DynamicExpression } from '../../type.source';
+import {
+	getExpressionAsString,
+	getExpressionType,
+} from '../../utils/expression-language';
 
 const basePager = {
 	page: 1,
