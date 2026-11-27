@@ -1,18 +1,15 @@
-import {
-	DynamicExpression,
-	DynamicExpressionLanguage,
-} from '../../type.source';
+import { DynamicExpression } from '../../type.source';
 
-export function getExpressionType(
+type FeatureLanguage = 'TXT' | 'VTL' | 'CEL' | 'MD';
+
+export function getExpressionLanguagesFeatures(
 	expression: string | DynamicExpression
-): DynamicExpressionLanguage {
-	if (typeof expression === 'string') {
-		return 'TXT';
-	}
+): FeatureLanguage[] {
 	if (expression && typeof expression === 'object' && 'type' in expression) {
-		return expression.type;
+		return expression.type.split('|') as FeatureLanguage[];
 	}
-	return 'TXT';
+	// legacy, fallback to VTL
+	return ['VTL'];
 }
 
 export function getExpressionAsString(expression: unknown): string {
