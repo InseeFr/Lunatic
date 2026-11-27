@@ -1,13 +1,63 @@
 import { ASTNode, Environment } from '@marcbachmann/cel-js';
+import { registerDateLibrary, registerListsLibrary } from './helpers';
 
 /** init CEL environnement */
-const env = new Environment();
+const celEnv = new Environment({
+	unlistedVariablesAreDyn: true,
+	homogeneousAggregateLiterals: false,
+	enableOptionalTypes: true,
+});
+// first
+
+registerListsLibrary(celEnv);
+registerDateLibrary(celEnv);
 
 export function evaluateCEL<T>(
 	expression: string,
 	bindings: Record<string, unknown>
 ): T {
-	return env.evaluate(expression, bindings);
+	const result = celEnv.evaluate(expression, bindings);
+	return normalizeCELValue(result) as T;
+}
+
+/**
+ * Convertit récursivement les bigint en number
+ * (CEL retourne des bigint pour les entiers, ce qui pose problème avec JSON, React, etc.)
+ */
+function normalizeCELValue(value: unknown): unknown {
+	if (typeof value === 'bigint') {
+		// Évite la perte de précision silencieuse
+		if (
+			value > BigInt(Number.MAX_SAFE_INTEGER) ||
+			value < BigInt(Number.MIN_SAFE_INTEGER)
+		) {
+			console.warn(
+				`[CEL] Perte de précision lors de la conversion de ${value} en number`
+			);
+		}
+		return Number(value);
+	}
+
+	if (Array.isArray(value)) {
+		return value.map(normalizeCELValue);
+	}
+
+	if (value instanceof Map) {
+		return new Map(
+			Array.from(value, ([k, v]) => [
+				normalizeCELValue(k),
+				normalizeCELValue(v),
+			])
+		);
+	}
+
+	if (value !== null && typeof value === 'object') {
+		return Object.fromEntries(
+			Object.entries(value).map(([k, v]) => [k, normalizeCELValue(v)])
+		);
+	}
+
+	return value;
 }
 
 /**
@@ -125,5 +175,5 @@ export function getExpressionVariables(
 	expression: string,
 	options?: ExtractOptions
 ): string[] {
-	return extractVariables(env.parse(expression).ast, options);
+	return extractVariables(celEnv.parse(expression).ast, options);
 }
